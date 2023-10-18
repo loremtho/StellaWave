@@ -153,7 +153,8 @@ public class GameManager : MonoBehaviour
                 enemyCntA++;
                 break;
                 case 1:
-                enemyCntB++;
+                 enemyCntA++; //현재는 b가 없으니 임시 A 생성만
+                //enemyCntB++;
                 break;
                 case 2:
                 enemyCntC++;

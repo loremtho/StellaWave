@@ -65,6 +65,7 @@ public class GunController : MonoBehaviour
 
         if (isActivate == true)
         {
+            
             GunFireRateCalc();
             TryFire();
             TryReload();
@@ -137,12 +138,14 @@ public class GunController : MonoBehaviour
     //맞는 판정
     private void Hit()
     {
-    // 레이캐스트 방향 설정
-        Vector3 raycastDirection = theCam.transform.forward +
+    // 레이캐스트 방향 설정 임시 고정
+        Vector3 raycastDirection = theCam.transform.forward/* +
             new Vector3(Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy),
                        Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy),
-                        0);
+                        0)*/;
+                        
 
+        
         if (Physics.Raycast(theCam.transform.position, raycastDirection, out hitlnfo/*, currentGun.Range*/))
         {
             Debug.DrawLine(BulletPos.position, hitlnfo.point, Color.red);
