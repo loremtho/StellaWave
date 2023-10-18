@@ -7,3 +7,10 @@ ShaderImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 155758
+  packageName: Ice pillars
+  packageVersion: 1.0
+  assetPath: Assets/_DieselMachinesConstructor/__CubemapsShaders/ASE_Standart2Sided.shader
+  uploadId: 337637

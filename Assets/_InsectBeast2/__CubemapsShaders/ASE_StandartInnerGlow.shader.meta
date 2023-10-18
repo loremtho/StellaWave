@@ -1,8 +1,27 @@
 fileFormatVersion: 2
 guid: 64e22165f15883d4c9bf56b78c0ebabd
+AssetOrigin:
+  serializedVersion: 1
+  productId: 155758
+  packageName: Ice pillars
+  packageVersion: 1.0
+  assetPath: Assets/_DieselMachinesConstructor/__CubemapsShaders/ASE_StandartInnerGlow.shader
+  uploadId: 337637
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _InnerGlowMask: {instanceID: 0}
+  - _SructureGlowTexture: {instanceID: 0}
+  - _InnerHeightMap: {instanceID: 0}
+  - _Albedo: {instanceID: 0}
+  - _EmissionMap: {instanceID: 0}
+  - _NormalMap: {instanceID: 0}
+  - _SmoothnessMap: {instanceID: 0}
+  - _MetallicMap: {instanceID: 0}
+  - _texcoord: {instanceID: 0}
+  - unity_Lightmaps: {instanceID: 0}
+  - unity_LightmapsInd: {instanceID: 0}
+  - unity_ShadowMasks: {instanceID: 0}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

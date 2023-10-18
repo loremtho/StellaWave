@@ -1,8 +1,26 @@
 fileFormatVersion: 2
 guid: 2025378261652f844b092c2b464cfa67
+AssetOrigin:
+  serializedVersion: 1
+  productId: 176934
+  packageName: Sliced rocks
+  packageVersion: 1.0
+  assetPath: Assets/_DieselMachinesConstructor/__CubemapsShaders/ASE_StandartPlants.shader
+  uploadId: 385779
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _Albedo: {instanceID: 0}
+  - _Cubmap: {instanceID: 0}
+  - _CubemapBlured: {instanceID: 0}
+  - _EmissionMap: {instanceID: 0}
+  - _NormalMap: {instanceID: 0}
+  - _SmoothnessMap: {instanceID: 0}
+  - _MetallicMap: {instanceID: 0}
+  - _texcoord: {instanceID: 0}
+  - unity_Lightmaps: {instanceID: 0}
+  - unity_LightmapsInd: {instanceID: 0}
+  - unity_ShadowMasks: {instanceID: 0}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

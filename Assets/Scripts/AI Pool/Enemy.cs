@@ -185,7 +185,7 @@ public class Enemy : MonoBehaviour
         currentHp -= damage;
         isChase = false;
         player.AddHitScore(20);
-        gunController.hitreaction();
+       // gunController.hitreaction();
 
         // 체력이 0 이하로 떨어지면 몬스터 등록수를 -한후  파괴
         if (currentHp <= 0)
@@ -205,7 +205,6 @@ public class Enemy : MonoBehaviour
         }
 
         anim.SetTrigger("Hit");
-
         StartCoroutine(ResumeChaseAfterDelay(1f));
    
     }
@@ -223,11 +222,25 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
-        player.AddScore(20);
-        player.AddKillcount(1);
+    
+        isChase = false;
+        isAttack = false;
+        nav.enabled = false;
+        boxCollider.enabled = false;
+        anim.SetTrigger("Die");
+        StartCoroutine(Diecheck(3));
        
     }
+
+     private IEnumerator Diecheck(int dietime)
+    {
+        player.AddScore(20);
+        player.AddKillcount(1);
+        yield return new WaitForSeconds(dietime);
+        Destroy(gameObject);
+    }
+
+
 
 
  
