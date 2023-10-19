@@ -187,6 +187,16 @@ public class PlayerController : MonoBehaviour
             playeraxe = false;
         }
 
+        if(!gunObject.activeSelf)
+        {
+            SetGunMode(false);
+            SetDefaultMode(true);
+            playergun = false;
+            playeraxe = false;
+            playergunActive = false;
+         
+        }
+
     }
 
     private void SetAxeMode(bool enableAxeMode)
@@ -232,6 +242,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             Playeranim.SetBool("Gunmode", false);
+           
+            
         }
     }
 
