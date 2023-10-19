@@ -185,7 +185,7 @@ public class Enemy : MonoBehaviour
         currentHp -= damage;
         isChase = false;
         player.AddHitScore(20);
-       // gunController.hitreaction();
+        gunController.hitreaction();
 
         // 체력이 0 이하로 떨어지면 몬스터 등록수를 -한후  파괴
         if (currentHp <= 0)
