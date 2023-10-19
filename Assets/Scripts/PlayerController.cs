@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
     private bool axeSwingInProgress = false; //도끼가 나가는 중인지 판단
 
     private bool playergunActive = false; //달리거나 총이 순간 필요없을때 사용
+
+    private bool playeraxeActice = false;
    
     //움직임 체크 변수
     private Vector3 lastPos;
@@ -173,6 +175,8 @@ public class PlayerController : MonoBehaviour
         else if(axeobject.activeSelf)
         {
             SetAxeMode(true);
+            playeraxe = true;
+            playeraxeActice = true;
         }
         else
         {
@@ -180,6 +184,7 @@ public class PlayerController : MonoBehaviour
             SetGunMode(false);
             SetAxeMode(false);
             playergun = false;
+            playeraxe = false;
         }
 
     }
@@ -311,6 +316,11 @@ public class PlayerController : MonoBehaviour
             {
                 gunObject.SetActive(false);
             }
+            else if(playeraxeActice)
+            {
+                axeobject.SetActive(false);
+            }
+            
 
         }
         if(Input.GetKeyUp(KeyCode.LeftShift) || theStatusController.GetCurrentSP() <= 0)
@@ -321,6 +331,11 @@ public class PlayerController : MonoBehaviour
             {
                 playergun = true;
                 gunObject.SetActive(true);
+            }
+            else if(playeraxeActice)
+            {
+                playeraxe = true;
+                axeobject.SetActive(true);
             }
 
         }
