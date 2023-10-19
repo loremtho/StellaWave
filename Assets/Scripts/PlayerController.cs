@@ -45,9 +45,14 @@ public class PlayerController : MonoBehaviour
 
     private bool isInGunMode = false;
 
+    private bool isInAxeMode = false;
+
     private bool isDefaultmode = true;
 
     public bool playergun = false;  //총을 들었을떄 모드
+
+    public bool playeraxe = false; //도끼 모드
+    private bool axeSwingInProgress = false; //도끼가 나가는 중인지 판단
 
     private bool playergunActive = false; //달리거나 총이 순간 필요없을때 사용
    
@@ -90,6 +95,8 @@ public class PlayerController : MonoBehaviour
 
 
     public GameObject gunObject; //총 활성화 확인
+
+    public GameObject axeobject; //도끼 활성화 확인
 
     public int score = 0;
     public int hitscore = 0;
@@ -163,14 +170,49 @@ public class PlayerController : MonoBehaviour
             playergun = true;
             playergunActive = true;
         }
+        else if(axeobject.activeSelf)
+        {
+            SetAxeMode(true);
+        }
         else
         {
             SetDefaultMode(true);
             SetGunMode(false);
+            SetAxeMode(false);
             playergun = false;
         }
 
     }
+
+    private void SetAxeMode(bool enableAxeMode)
+    {
+        isInAxeMode = enableAxeMode;
+
+
+        if (isInAxeMode)
+        {
+            //도끼 idle 애니메이션 쓸거면 추가
+            if(Input.GetButton("Fire1"))
+            {  
+                if(!axeSwingInProgress && Input.GetButtonDown("Fire1") && axeobject.activeSelf)  //등록한 도끼만 사용
+                {
+                   Playeranim.SetTrigger("Axemode_Swing");
+                   SetDefaultMode(true);
+                   axeSwingInProgress = true;
+                }
+                axeSwingInProgress = false; //2번 재생 방지
+
+          
+            }
+        }
+        else
+        {
+            //도끼 idle 취소
+            
+        }
+
+    }
+
 
     private void SetGunMode(bool enableGunMode)  //총모드
     {
