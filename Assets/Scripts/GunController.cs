@@ -157,7 +157,6 @@ public class GunController : MonoBehaviour
             }
             var clone = Instantiate(hit_effect, hitlnfo.point, Quaternion.LookRotation(hitlnfo.normal));
             Destroy(clone, 0.7f);
-            hitreaction();
 
             // 방향을 수정하지 않고 그대로 사용
             FireBullet(raycastDirection);
