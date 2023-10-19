@@ -461,19 +461,21 @@ public class PlayerController : MonoBehaviour
             else
             {
                 isWalk = false;
-                if(isGround)
-                {
-                    if(playergun)
-                    {
-                        Playeranim.SetBool("Gunmode_walk" , false);
-                    }
-                    else
-                    {
-                        Playeranim.SetBool("Walk" , false);
-                    }
-                }
+           
                  
             }
+
+            if(!isWalk && isGround)
+            {
+                if(playergun)
+                 {
+                    Playeranim.SetBool("Gunmode_walk" , false);
+                }
+                else
+                {
+                    Playeranim.SetBool("Walk" , false);
+                }
+             }
              
 
             theCrosshair.WalkingAnimation(isWalk);
