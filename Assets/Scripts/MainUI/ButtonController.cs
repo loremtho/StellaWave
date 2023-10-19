@@ -97,7 +97,7 @@ public class ButtonController : MonoBehaviour
 
     public void HomeBtn()
     {
-        SceneManager.LoadScene("mainHDRP");
+        SceneManager.LoadScene("MainLobby");
     }
 
     public void RestartBtn()
