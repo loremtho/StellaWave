@@ -174,7 +174,7 @@ public class GunController : MonoBehaviour
         Vector3 bulletSpawnPosition = BulletPos.position;
         Rigidbody rd = Instantiate(Bullet, bulletSpawnPosition, transform.rotation);
         rd.velocity = shootDirection.normalized * BulletSpeed;
-        Destroy(rd.gameObject, 1.0f);
+        Destroy(rd.gameObject, 0.5f);
     }
 
     private void TryReload()
