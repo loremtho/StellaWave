@@ -215,8 +215,8 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   statusController: {fileID: 0}
   Hp: 3
-  Monsteratt: Monsteratt
-  MonsterDie: MonsterDie
+  monsterAtt: MonsterAtt
+  monsterDie: MonsterDie
   gunController: {fileID: 0}
 --- !u!1 &5256287375934151459
 GameObject:
