@@ -90,7 +90,7 @@ Material:
     - _Emissive: 8
     - _EmissiveFctor: 33
     - _EnvironmentReflections: 1
-    - _Exp: 1.66
+    - _Exp: 1.46
     - _Float10: 1
     - _Float9: 0.45
     - _InverseAnimation: 0

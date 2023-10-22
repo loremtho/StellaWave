@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: UltimateDissolve_03
   m_Shader: {fileID: 4800000, guid: b1b229594ad126848a479a8ccee6ca6a, type: 3}
-  m_ShaderKeywords: _MANUALAUTOMATIC_ON _MAPMATCAP_ON
+  m_ShaderKeywords: _MANUALAUTOMATIC_ON _MAPMATCAP_ON _TRANSITIONXVSY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -90,7 +90,7 @@ Material:
     - _EmissiveFctor: 22
     - _EmissiveMult: 20
     - _EnvironmentReflections: 1
-    - _Exp: 1.299
+    - _Exp: 1.073
     - _Float10: 1
     - _Float9: 0.45
     - _InverseAnimation: 0
@@ -104,10 +104,10 @@ Material:
     - _QueueControl: -1
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _STEP: 0
+    - _STEP: 2.83
     - _SUBS: 300
     - _SharpTransition: 1.088
-    - _SizeWhenTransition: 0.39
+    - _SizeWhenTransition: 0.55
     - _Smoothness: 0.385
     - _SpecularHighlights: 1
     - _SphereSquare: 0
@@ -120,9 +120,9 @@ Material:
     - _TransNormalDistortion: 0.1
     - _TransScattering: 2
     - _TransShadow: 0.9
-    - _Transition: 0.627
+    - _Transition: 0.542
     - _TransitionFactor: -0.553
-    - _TransitionXvsY: 0
+    - _TransitionXvsY: 1
     - _Translucency: 1
     - _UseMainTexture: 0
     - _UseNormalMap: 0
