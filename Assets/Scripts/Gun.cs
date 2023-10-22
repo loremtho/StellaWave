@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Gun : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
 
     public AudioClip fire_Sound;
-
 
 
 }

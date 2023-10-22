@@ -19,6 +19,7 @@ public class GunController : MonoBehaviour
 
     //상태변수
     private bool isReload = false;
+    private bool isPlaying = false;
     [HideInInspector]
     public bool isFIneSightMode = false;
 
@@ -119,8 +120,7 @@ public class GunController : MonoBehaviour
         currentFireRate = currentGun.fireRate; //연사속도 재계산
         PlaySE(currentGun.fire_Sound);
         currentGun.muzzleFlash.Play();
-    
-
+        //currentGun.muzzle.Play();
         Hit(); //다르게 할거면 오브젝트 폴링 쓰기
         //총기 반동 코루틴
         StopAllCoroutines();
