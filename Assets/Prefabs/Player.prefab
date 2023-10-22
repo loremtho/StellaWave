@@ -894,6 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunPivot: {fileID: 0}
+  axePivot: {fileID: 0}
   walkSpeed: 10
   runSpeed: 30
   crouchSpeed: 1.5
@@ -1376,6 +1377,10 @@ PrefabInstance:
     - target: {fileID: 5642307864890156377, guid: 1a11b85cfa6a41542af0379f6d6f86bc, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5783034404433875541, guid: 1a11b85cfa6a41542af0379f6d6f86bc, type: 3}
+      propertyPath: muzzleFlash
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5783034404433875541, guid: 1a11b85cfa6a41542af0379f6d6f86bc, type: 3}
       propertyPath: reloadBulletCount
