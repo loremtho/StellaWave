@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     
-    private string MonsterAtt;
+    private string Monsteratt;
 
     [SerializeField]
     private string MonsterDie;
@@ -147,7 +147,7 @@ public class Enemy : MonoBehaviour
         isChase = false;
         isAttack = true;
         anim.SetBool("isAttack", true);
-        SoundManager.instance.PlaySE(MonsterAtt);
+        SoundManager.instance.PlaySE(Monsteratt);
 
         switch(enemyType) {
             case Type.A:
