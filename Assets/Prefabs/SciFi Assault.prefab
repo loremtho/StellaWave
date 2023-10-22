@@ -212,7 +212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunName: Rifle
-  range: 200
   accuracy: 0.02
   fireRate: 0.14
   reloadTime: 2
