@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-     public Transform gunPivot; //총 배치의 기준점
+    public Transform gunPivot; //총 배치의 기준점
+    public Transform axePivot; //도끼 배치의 기준점
     //public Transform rightHandMount;  //오른손 위치
     //스피드 조정
     [SerializeField]    
@@ -169,43 +170,31 @@ public class PlayerController : MonoBehaviour
         {
             // 오브젝트가 활성화되면 GunMode로 변경
             SetGunMode(true);
-            playergun = true;
-            playergunActive = true;
         }
         else if(axeobject.activeSelf)
         {
             SetAxeMode(true);
-            playeraxe = true;
-            playeraxeActice = true;
         }
         else
         {
             SetDefaultMode(true);
-            SetGunMode(false);
-            SetAxeMode(false);
-            playergun = false;
-            playeraxe = false;
         }
 
-        if(!gunObject.activeSelf)
-        {
-            SetGunMode(false);
-            SetDefaultMode(true);
-            playergun = false;
-            playeraxe = false;
-            playergunActive = false;
-         
-        }
 
     }
 
     private void SetAxeMode(bool enableAxeMode)
     {
         isInAxeMode = enableAxeMode;
-
+       
 
         if (isInAxeMode)
         {
+            playeraxe = true;
+            playeraxeActice = true;
+            playergun = false;
+            playergunActive = false;
+            Playeranim.SetBool("Gunmode", false);
             //도끼 idle 애니메이션 쓸거면 추가
             if(Input.GetButton("Fire1"))
             {  
@@ -236,14 +225,18 @@ public class PlayerController : MonoBehaviour
 
         if (isInGunMode)
         {
+            playergun = true;
+            playergunActive = true;
+            playeraxe = false;
+            playeraxeActice = false;
+
             Playeranim.SetBool("Gunmode", true);
             Playeranim.SetBool("Idle", false);
         }
         else
         {
             Playeranim.SetBool("Gunmode", false);
-           
-            
+             
         }
     }
 
@@ -341,13 +334,15 @@ public class PlayerController : MonoBehaviour
             
             if(playergunActive)
             {
-                playergun = true;
+                SetGunMode(true);
                 gunObject.SetActive(true);
+               
             }
             else if(playeraxeActice)
             {
-                playeraxe = true;
+                SetAxeMode(true);
                 axeobject.SetActive(true);
+               
             }
 
         }
@@ -503,6 +498,7 @@ public class PlayerController : MonoBehaviour
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
 
         gunPivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
+        axePivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         //gunPivot.position = rightHandMount.position;
     }
 
