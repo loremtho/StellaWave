@@ -5015,7 +5015,7 @@ Transform:
   m_GameObject: {fileID: 2350693433643567005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 75.76, y: -27.46, z: 80.34}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2350693433643670459}
@@ -5174,7 +5174,7 @@ MonoBehaviour:
   spinSpeed: 50
   layerMask:
     serializedVersion: 2
-    m_Bits: 2052
+    m_Bits: 526340
   tf_TopGun: {fileID: 3795785418595944758}
   particle_MuzzleFlash: {fileID: 4168972103924304195}
   go_HitEffect_Prefab: {fileID: 4907882110527335544, guid: b9434b74dc1289348a73b813db617c22, type: 3}
