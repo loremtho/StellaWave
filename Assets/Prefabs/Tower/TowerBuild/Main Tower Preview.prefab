@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 594078218868015297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 74.19046, y: -27.302, z: 84.036736}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 594078218867924199}
@@ -47,8 +47,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.175502, y: 3.4762604, z: 5.106056}
-  m_Center: {x: -0.021832585, y: 1.7239292, z: -0.02411286}
+  m_Size: {x: 5.3303223, y: 3.4684734, z: 5.6645737}
+  m_Center: {x: -0.019584656, y: 1.7278223, z: -0.04944992}
 --- !u!114 &2430287139785398308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4ac9538718ad084a9ed4e9897604de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  needType: 2
+  needType: 0
   layerGround: 14
   green: {fileID: 2100000, guid: 1e772b2cb536b30489ebc839dcae14d5, type: 2}
   red: {fileID: 2100000, guid: f7f8f24362b8d53418ca69c185fd91eb, type: 2}
@@ -314,21 +314,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 594078219216338063}
     m_Modifications:
-    - target: {fileID: 100000, guid: 3505ca4e5b0723c48b3e20086c8c8a15, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 3505ca4e5b0723c48b3e20086c8c8a15, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 3505ca4e5b0723c48b3e20086c8c8a15, type: 3}
       propertyPath: m_Name
       value: Base_Top_Mount_Simple
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 3505ca4e5b0723c48b3e20086c8c8a15, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: 3505ca4e5b0723c48b3e20086c8c8a15, type: 3}
       propertyPath: m_RootOrder
@@ -392,21 +380,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 594078218867924197}
     m_Modifications:
-    - target: {fileID: 100000, guid: a0533c03fad7486498aa8376bb5a18ef, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: a0533c03fad7486498aa8376bb5a18ef, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: a0533c03fad7486498aa8376bb5a18ef, type: 3}
       propertyPath: m_Name
       value: Tower_Frame
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: a0533c03fad7486498aa8376bb5a18ef, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a0533c03fad7486498aa8376bb5a18ef, type: 3}
       propertyPath: m_RootOrder
@@ -475,41 +451,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 594078219039504644}
     m_Modifications:
-    - target: {fileID: 100000, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 100012, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
       propertyPath: m_Name
       value: Cockpit_Gun_Mount_1x
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 57bc481fd3e618d4d878f735f59f2b9b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -580,10 +528,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Top Gun
       objectReference: {fileID: 0}
-    - target: {fileID: 8612462694261714496, guid: f0d1a34d2fed6d54eabbe0f093653cb2, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8612462694261714499, guid: f0d1a34d2fed6d54eabbe0f093653cb2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -628,10 +572,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8612462696038268793, guid: f0d1a34d2fed6d54eabbe0f093653cb2, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0d1a34d2fed6d54eabbe0f093653cb2, type: 3}
 --- !u!1 &2021156896098160233 stripped
@@ -656,41 +596,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2021156897808129873}
     m_Modifications:
-    - target: {fileID: 2587074285947997345, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997347, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997349, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2587074285947997351, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
       propertyPath: m_Name
       value: Cockpit_Weapon_Raygun_Lvl1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997351, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997353, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997355, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997357, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2587074285947997359, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2587074285948227719, guid: 14facf56ccf190a4b84ac6cbfee62102, type: 3}
       propertyPath: m_RootOrder

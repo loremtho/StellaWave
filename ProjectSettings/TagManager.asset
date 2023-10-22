@@ -14,8 +14,6 @@ TagManager:
   - Computer
   - Trap
   - Battery
-  - Monster
-  - BaseCamp
   layers:
   - Default
   - TransparentFX
@@ -36,7 +34,7 @@ TagManager:
   - Computer
   - Minimap
   - Invisible
-  - Monster
+  - 
   - 
   - 
   - 

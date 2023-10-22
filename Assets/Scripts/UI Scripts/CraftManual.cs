@@ -261,7 +261,7 @@ public class CraftManual : MonoBehaviour
                     go_Preview.transform.Rotate(0, +90f, 0f);
                 }
 
-                _location.Set(Mathf.Round(_location.x / 0.1f)* 0.1f, Mathf.Round(_location.y / 0.1f)* 0.1f, Mathf.Round(_location.z));
+                _location.Set(Mathf.Round(_location.x), Mathf.Round(_location.y / 0.1f)* 0.1f, Mathf.Round(_location.z));
 
                 go_Preview.transform.position = _location;
             }
