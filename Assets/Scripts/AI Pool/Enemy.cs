@@ -41,6 +41,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     
     private string monsterAtt;
+    
+    [SerializeField]
+    private string MonsterDie;
 
     public GunController gunController;
 
@@ -228,6 +231,7 @@ public class Enemy : MonoBehaviour
         nav.enabled = false;
         boxCollider.enabled = false;
         anim.SetTrigger("Die");
+        SoundManager.instance.PlaySE(MonsterDie);
         StartCoroutine(Diecheck(3));
        
     }
