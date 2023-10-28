@@ -119,7 +119,7 @@ Material:
     - _TransNormalDistortion: 0.1
     - _TransScattering: 2
     - _TransShadow: 0.9
-    - _Transition: 0.5
+    - _Transition: 0.413
     - _TransitionFactor: 0
     - _TransitionXvsY: 0
     - _Translucency: 1

@@ -122,7 +122,7 @@ Material:
     - _ReceiveShadows: 1
     - _SSSConcentration: 0
     - _SSSScale: 0
-    - _Smoothness: 0.346
+    - _Smoothness: 0.491
     - _SmoothnessTextureChannel: 1
     - _SpecularHighlights: 1
     - _SrcBlend: 1
