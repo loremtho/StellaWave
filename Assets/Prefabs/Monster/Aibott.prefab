@@ -695,7 +695,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &7938431552718338801
 BoxCollider:
@@ -744,13 +744,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81766463b523f7343ae738d1d4dc848e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   target: {fileID: 0}
   muzzleFlashs: {fileID: 7691587065232879606}
   meleeArea: {fileID: 355650733}
   isAttack: 0
   anim: {fileID: 7938431552718338803}
   isChase: 0
+  gameManager: {fileID: 0}
+  statusController: {fileID: 0}
   Hp: 5
+  monsterAtt: 
+  monsterDie: 
+  gunController: {fileID: 0}
 --- !u!1001 &7494530099401354194
 PrefabInstance:
   m_ObjectHideFlags: 0

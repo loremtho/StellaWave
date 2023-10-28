@@ -14,6 +14,7 @@ public class GunController : MonoBehaviour
     private Gun currentGun;
 
     private Enemy enemy; //몬스터 관리
+    private Boss boss;
 
     private float currentFireRate;
 
@@ -151,9 +152,14 @@ public class GunController : MonoBehaviour
             Debug.DrawLine(BulletPos.position, hitlnfo.point, Color.red);
    
             Enemy enemy = hitlnfo.collider.gameObject.GetComponent<Enemy>();
+            Boss boss = hitlnfo.collider.gameObject.GetComponent<Boss>();
             if (enemy != null)
             {
                 enemy.TakeDamage(currentGun.damage);
+            }
+            else if(boss != null)
+            {
+                boss.TakeDamage(currentGun.damage);
             }
             var clone = Instantiate(hit_effect, hitlnfo.point, Quaternion.LookRotation(hitlnfo.normal));
             Destroy(clone, 0.7f);

@@ -234,7 +234,7 @@ MonoBehaviour:
   enemyType: 0
   target: {fileID: 0}
   muzzleFlashs: {fileID: 0}
-  meleeArea: {fileID: 8101698442714162891}
+  meleeArea: {fileID: 0}
   isAttack: 0
   anim: {fileID: 0}
   isChase: 0

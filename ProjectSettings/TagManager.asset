@@ -16,6 +16,8 @@ TagManager:
   - Battery
   - Monster
   - BaseCamp
+  - CinemachineTarget
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - Minimap
   - Invisible
   - Monster
-  - 
+  - EnemyBullet
   - 
   - 
   - 
