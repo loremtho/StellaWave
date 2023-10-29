@@ -44,11 +44,13 @@ public class Boss : MonoBehaviour
 
     public GunController gunController;
 
-     Rigidbody rigid;
-    BoxCollider boxCollider;
-    NavMeshAgent nav;
+    public Rigidbody rigid;
+    public BoxCollider boxCollider;
+    public NavMeshAgent nav;
 
-    MeshRenderer[] meshs;
+    public MeshRenderer[] meshs;
+
+    public bool isDead;
 
     void FreezeVelocity()
     {
@@ -220,6 +222,8 @@ public class Boss : MonoBehaviour
             }
 
         }
+
+        isDead = true;
         //player.AddHitScore(20);
         gunController.hitreaction();
           if (currentHp <= 0)
