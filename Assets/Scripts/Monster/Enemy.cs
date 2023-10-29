@@ -189,7 +189,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.CompareTag("Player") && isAttack) // 플레이어 태그와 공격 중인지 확인
         {
-            statusController.DecreaseHP(20);
+            statusController.DecreaseHP(100);
         }
     }
 
