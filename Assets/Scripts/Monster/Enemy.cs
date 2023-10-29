@@ -233,14 +233,14 @@ public class Enemy : MonoBehaviour
         boxCollider.enabled = false;
         anim.SetTrigger("Die");
         SoundManager.instance.PlaySE(monsterDie);
+        player.AddScore(20);
+        player.AddKillcount(1);
         StartCoroutine(Diecheck(3));
        
     }
 
      private IEnumerator Diecheck(int dietime)
     {
-        player.AddScore(20);
-        player.AddKillcount(1);
         yield return new WaitForSeconds(dietime);
         Destroy(gameObject);
     }

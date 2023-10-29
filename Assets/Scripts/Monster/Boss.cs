@@ -50,9 +50,8 @@ public class Boss : MonoBehaviour
 
     public MeshRenderer[] meshs;
 
-    public bool isDead;
+    public bool isDead = false;
 
-    public MonsterBullet monsterBullet;
 
     void FreezeVelocity()
     {
@@ -86,7 +85,9 @@ public class Boss : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
         meshs = GetComponentsInChildren<MeshRenderer>();
-        
+
+        Invoke("ChaseStart", 2);
+        currentHp = 100;
         currentHp = Hp;
   
         Invoke("ChaseStart", 2);
@@ -208,6 +209,7 @@ public class Boss : MonoBehaviour
     {
         currentHp -= damage;
         isChase = false;
+
         foreach(MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.red;
@@ -221,13 +223,13 @@ public class Boss : MonoBehaviour
             }
 
         }
-
-        isDead = true;
+       
         //player.AddHitScore(20);
         gunController.hitreaction();
-          if (currentHp <= 0)
+        if (currentHp <= 0)
         {
             Die();
+            isDead = true;
         }
 
         anim.SetTrigger("Hit");

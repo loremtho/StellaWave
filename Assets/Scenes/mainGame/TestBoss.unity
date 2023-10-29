@@ -51925,7 +51925,6 @@ MonoBehaviour:
   nav: {fileID: 0}
   meshs: []
   isDead: 0
-  monsterBullet: {fileID: 0}
   missile: {fileID: 6420774189820580619, guid: 91e01753a4a5277469a1ca6dd636ed7c, type: 3}
   missilePortA: {fileID: 2110558299}
   missilePortB: {fileID: 862250618}
@@ -65412,34 +65411,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: Hp
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 1262345141}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1675389010}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: enemyType
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 17621719}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: gunController
-      value: 
-      objectReference: {fileID: 401050322}
-    - target: {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
-      propertyPath: statusController
-      value: 
-      objectReference: {fileID: 1675389013}
     - target: {fileID: 5698613826173259638, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_Name
       value: Melee Area
@@ -65500,6 +65471,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3142764025498874625, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a613577a2e997b94fab966097b159fdb, type: 3}
