@@ -48,6 +48,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     
     private string monsterDie;
+     [SerializeField]
+    
+    private string monsterBlood;
 
     public GunController gunController;
 
@@ -194,6 +197,7 @@ public class Enemy : MonoBehaviour
         player.AddHitScore(20);
         gunController.hitreaction();
         bloodHit.SetActive(true);
+        SoundManager.instance.PlaySE(monsterBlood);
 
         // 체력이 0 이하로 떨어지면 몬스터 등록수를 -한후  파괴
         if (currentHp <= 0)
