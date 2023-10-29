@@ -12,8 +12,10 @@ public class BaseCamp : MonoBehaviour
     public float CurHP;
 
     [SerializeField]
-    private float decreaseInterval = 5f;
+    private float decreaseInterval = 1f;
     private float BaseTimer = 0;
+    [SerializeField]
+    private float DecreValue;
 
     private GameManager gameManager;
 
@@ -22,7 +24,7 @@ public class BaseCamp : MonoBehaviour
         CurHP = MaxHP;
         BaseHPSlider.value = (float) CurHP / (float) MaxHP;
         BaseHpTxt.text = CurHP.ToString();
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>(); 
     }
 
     private void Update() 
@@ -33,7 +35,7 @@ public class BaseCamp : MonoBehaviour
 
             if(BaseTimer >= decreaseInterval)
             {
-                BaseDecrease(20f);
+                BaseDecrease(DecreValue);
                 BaseTimer = 0f;
             }    
         }
