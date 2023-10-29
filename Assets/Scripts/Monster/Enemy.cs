@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Redcode.Pools;
+using UnityEngine.VFX;
 
 public class Enemy : MonoBehaviour 
 {
@@ -15,6 +16,8 @@ public class Enemy : MonoBehaviour
     BoxCollider boxCollider;
 
     public ParticleSystem muzzleFlashs;
+    public GameObject bloodHit;
+    public GameObject bloodDie;
 
     public BoxCollider meleeArea;
 
@@ -190,6 +193,7 @@ public class Enemy : MonoBehaviour
         isChase = false;
         player.AddHitScore(20);
         gunController.hitreaction();
+        bloodHit.SetActive(true);
 
         // 체력이 0 이하로 떨어지면 몬스터 등록수를 -한후  파괴
         if (currentHp <= 0)
@@ -233,6 +237,7 @@ public class Enemy : MonoBehaviour
         boxCollider.enabled = false;
         anim.SetTrigger("Die");
         SoundManager.instance.PlaySE(monsterDie);
+        bloodDie.SetActive(true);
         StartCoroutine(Diecheck(3));
        
     }
