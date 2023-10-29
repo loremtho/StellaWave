@@ -221,6 +221,7 @@ MonoBehaviour:
   Hp: 3
   monsterAtt: MonsterAtt
   monsterDie: MonsterDie
+  monsterBlood: MonsterBlood
   gunController: {fileID: 0}
 --- !u!1 &5256287375934151459
 GameObject:
@@ -284,7 +285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7998487297164368392, guid: 03c45aa0450394949a419c13d81e8de3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.403
       objectReference: {fileID: 0}
     - target: {fileID: 7998487297164368392, guid: 03c45aa0450394949a419c13d81e8de3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -321,6 +322,14 @@ PrefabInstance:
     - target: {fileID: 7998487297164368393, guid: 03c45aa0450394949a419c13d81e8de3, type: 3}
       propertyPath: m_Name
       value: BloodEffect DIE
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998487297164368393, guid: 03c45aa0450394949a419c13d81e8de3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7998487298198781449, guid: 03c45aa0450394949a419c13d81e8de3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c45aa0450394949a419c13d81e8de3, type: 3}
@@ -608,6 +617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BloodEffect HIT
       objectReference: {fileID: 0}
+    - target: {fileID: 2868070416283382586, guid: 10a63a0c8fcb3c64885d821094292d70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868070416283382587, guid: 10a63a0c8fcb3c64885d821094292d70, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -650,6 +663,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868070416283382587, guid: 10a63a0c8fcb3c64885d821094292d70, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2868070417384920890, guid: 10a63a0c8fcb3c64885d821094292d70, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
