@@ -209,6 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyType: 0
   target: {fileID: 0}
+  muzzleFlashs: {fileID: 0}
   bloodHit: {fileID: 5881913638684802872}
   bloodDie: {fileID: 8158451274397175381}
   meleeArea: {fileID: 5256287375934151458}
@@ -220,6 +221,7 @@ MonoBehaviour:
   Hp: 250
   monsterAtt: MonsterAtt
   monsterDie: MonsterDie
+  monsterBlood: MonsterBlood
   gunController: {fileID: 0}
 --- !u!1 &5256287375934151459
 GameObject:
