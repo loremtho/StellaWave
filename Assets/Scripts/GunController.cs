@@ -15,6 +15,7 @@ public class GunController : MonoBehaviour
 
     private Enemy enemy; //몬스터 관리
     private Boss boss;
+    private  MonsterBullet monsterBullet;
 
     private float currentFireRate;
 
@@ -143,30 +144,39 @@ public class GunController : MonoBehaviour
         Vector3 raycastDirection = theCam.transform.forward/* +
             new Vector3(Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy),
                        Random.Range(-theCrosshair.GetAccuracy() - currentGun.accuracy, theCrosshair.GetAccuracy() + currentGun.accuracy),
-                        0)*/;
-                        
-
-        
+                        0)*/;     
         if (Physics.Raycast(theCam.transform.position, raycastDirection, out hitlnfo/*, currentGun.Range*/))
         {
             Debug.DrawLine(BulletPos.position, hitlnfo.point, Color.red);
    
-            Enemy enemy = hitlnfo.collider.gameObject.GetComponent<Enemy>();
-            Boss boss = hitlnfo.collider.gameObject.GetComponent<Boss>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(currentGun.damage);
-            }
-            else if(boss != null)
-            {
-                boss.TakeDamage(currentGun.damage);
-            }
+            objcheck(); //명중 인식
+
             var clone = Instantiate(hit_effect, hitlnfo.point, Quaternion.LookRotation(hitlnfo.normal));
             Destroy(clone, 0.7f);
 
             // 방향을 수정하지 않고 그대로 사용
             FireBullet(raycastDirection);
         }
+    }
+
+    private void objcheck() //명중 인식
+    {
+        Enemy enemy = hitlnfo.collider.gameObject.GetComponent<Enemy>();
+        Boss boss = hitlnfo.collider.gameObject.GetComponent<Boss>();
+        MonsterBullet monsterBullet = hitlnfo.collider.gameObject.GetComponent<MonsterBullet>();
+        if (enemy != null)
+        {
+            enemy.TakeDamage(currentGun.damage);
+        }
+        else if(boss != null)
+        {
+            boss.TakeDamage(currentGun.damage);
+        }
+        else if(monsterBullet != null)
+        {
+            monsterBullet.TakeDamage(currentGun.damage);
+        }
+
     }
 
     public void hitreaction()

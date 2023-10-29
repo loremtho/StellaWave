@@ -81,11 +81,15 @@ public class BossAtt : Boss
         GameObject instantMissileA = Instantiate(missile, missilePortA.position, missilePortA.rotation);
         MonsterBullet bossMissileA = instantMissileA.GetComponent<MonsterBullet>();
         bossMissileA.target =target;
+        MonsterBullet monsterBullet = instantMissileA.GetComponent<MonsterBullet>();
+        monsterBullet.statusController = statusController;
 
          yield return new WaitForSeconds(0.3f);
         GameObject instantMissileB = Instantiate(missile, missilePortB.position, missilePortB.rotation);
-        MonsterBullet bossMissileB = instantMissileA.GetComponent<MonsterBullet>();
-        bossMissileA.target =target;
+        MonsterBullet bossMissileB = instantMissileB.GetComponent<MonsterBullet>();
+        bossMissileB.target =target;
+        MonsterBullet monsterBullet2 = instantMissileB.GetComponent<MonsterBullet>();
+        monsterBullet2.statusController = statusController;
         
 
         yield return new WaitForSeconds(2f);

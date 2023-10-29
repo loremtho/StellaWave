@@ -108,8 +108,8 @@ NavMeshSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 3
-    agentSlope: 45.5
-    agentClimb: 0.4
+    agentSlope: 48
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -13597,6 +13597,7 @@ GameObject:
   - component: {fileID: 318226225}
   - component: {fileID: 318226224}
   - component: {fileID: 318226223}
+  - component: {fileID: 318226227}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -13683,6 +13684,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &318226227
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318226222}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0eed1d7191b816a488cdcfc8995993b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &318783236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42451,7 +42472,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862250617}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.7, z: -0.1}
+  m_LocalPosition: {x: -0.5, y: -0.3, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51852,7 +51873,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 0
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -51904,7 +51925,8 @@ MonoBehaviour:
   nav: {fileID: 0}
   meshs: []
   isDead: 0
-  missile: {fileID: 727795763910082836, guid: 9f588107482a16a4f8b484cbdcdb216f, type: 3}
+  monsterBullet: {fileID: 0}
+  missile: {fileID: 6420774189820580619, guid: 91e01753a4a5277469a1ca6dd636ed7c, type: 3}
   missilePortA: {fileID: 2110558299}
   missilePortB: {fileID: 862250618}
   childChildObject: {fileID: 28441679}
@@ -64656,7 +64678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110558298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.7, z: -0.1}
+  m_LocalPosition: {x: 0.5, y: -0.3, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

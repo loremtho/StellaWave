@@ -52,6 +52,8 @@ public class Boss : MonoBehaviour
 
     public bool isDead;
 
+    public MonsterBullet monsterBullet;
+
     void FreezeVelocity()
     {
         if(isChase)
@@ -85,9 +87,6 @@ public class Boss : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         meshs = GetComponentsInChildren<MeshRenderer>();
         
-
-        Invoke("ChaseStart", 2);
-       
         currentHp = Hp;
   
         Invoke("ChaseStart", 2);

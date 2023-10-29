@@ -82,6 +82,7 @@ public class BaseCamp : MonoBehaviour
         gameManager.isBattle = false;
     }
 
+    /*
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Enemy"))
@@ -89,6 +90,7 @@ public class BaseCamp : MonoBehaviour
             BaseDamage(50f);
         }
     }
+    */
 
     public void BaseDamage(float Damage)
     {
