@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     public BoxCollider meleeArea;
 
     public bool isAttack;
+    private bool isDie = false;
 
     public Animator anim;
 
@@ -110,6 +111,10 @@ public class Enemy : MonoBehaviour
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
+        }
+        if(isDie)
+        {
+            StartCoroutine(Diecheck(2));
         }
 
     }
@@ -234,7 +239,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-    
+        isDie = true;
         isChase = false;
         isAttack = false;
         nav.enabled = false;
@@ -242,14 +247,12 @@ public class Enemy : MonoBehaviour
         anim.SetTrigger("Die");
         SoundManager.instance.PlaySE(monsterDie);
         bloodDie.SetActive(true);
-        StartCoroutine(Diecheck(3));
-       
+        player.AddScore(20);
+        player.AddKillcount(1);
     }
 
      private IEnumerator Diecheck(int dietime)
     {
-        player.AddScore(20);
-        player.AddKillcount(1);
         yield return new WaitForSeconds(dietime);
         Destroy(gameObject);
     }
