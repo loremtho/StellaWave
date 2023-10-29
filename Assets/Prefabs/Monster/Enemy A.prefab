@@ -216,6 +216,7 @@ MonoBehaviour:
   statusController: {fileID: 0}
   Hp: 3
   monsterAtt: MonsterAtt
+  monsterBlood: MonsterBlood
   monsterDie: MonsterDie
   gunController: {fileID: 0}
 --- !u!1 &5256287375934151459

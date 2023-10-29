@@ -27,13 +27,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
-    [SerializeField] 
-    private string Walk_sound;
-    [SerializeField] 
-    private string Run_sound;
-
-    [SerializeField] 
-    private string Beath_sound;
 
     //상태 변수
     private bool isWalk = false;
@@ -63,6 +56,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastPos;
     
     public Animator Playeranim;
+
+    public AudioClip footstepSound; // Inspector에서 할당할 플레이어 걸음 소리
+    public AudioClip RunSound;
+
+    private AudioSource audioSource;
 
     
 
@@ -131,6 +129,7 @@ public class PlayerController : MonoBehaviour
         theCrosshair = FindObjectOfType<Crosshair>();
         theStatusController = FindObjectOfType<StatusController>();
         Playeranim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         //초기화
         applySpeed = walkSpeed;
@@ -178,6 +177,19 @@ public class PlayerController : MonoBehaviour
         else
         {
             SetDefaultMode(true);
+        }
+
+         if (Input.GetKey(KeyCode.LeftShift)&& theStatusController.GetCurrentSP() > 0)
+        {
+            if (!audioSource.isPlaying)
+             {
+                audioSource.PlayOneShot(RunSound);
+             }
+        }
+        else
+        {
+            // 키를 떼면 소리를 중지
+            audioSource.Stop();
         }
 
 
@@ -317,6 +329,7 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKey(KeyCode.LeftShift) && theStatusController.GetCurrentSP() > 0)
         {
             Running();
+            
             if(playergunActive)
             {
                 gunObject.SetActive(false);
@@ -402,7 +415,8 @@ public class PlayerController : MonoBehaviour
         }
         theStatusController.DecreaseStamina(10);
         applySpeed = runSpeed;
-    }
+       
+        }
 
     //달리기 취소
     private void RunningCancel()
@@ -489,10 +503,12 @@ public class PlayerController : MonoBehaviour
         if (playergun)
         {
             Playeranim.SetBool("Gunmode_walk", _moveDirX != 0 || _moveDirZ != 0);
+            //SoundManager.instance.PlaySE(Run_sound);
         }
         else
         {
             Playeranim.SetBool("Walk", _moveDirX != 0 || _moveDirZ != 0);
+            
         }
 
         Vector3 _moveHorizontal = transform.right * _moveDirX;
@@ -501,6 +517,18 @@ public class PlayerController : MonoBehaviour
         Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
 
         myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+            {
+                if (!audioSource.isPlaying)
+                {
+                    //audioSource.PlayOneShot(footstepSound);
+                }
+            }
+            else
+            {
+                //audioSource.Stop();
+            }
     }
 
 

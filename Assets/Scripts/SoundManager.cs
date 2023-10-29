@@ -86,4 +86,16 @@ public class SoundManager : MonoBehaviour
         Debug.Log("재생 중인" + _name + "사운드가 없습니다.");
     }
 
+    public bool IsSoundPlaying(string soundName)
+    {
+        for (int i = 0; i < audioSourcesEffects.Length; i++)
+        {
+            if (playSoundName[i] == soundName && audioSourcesEffects[i].isPlaying)
+            {
+                return true; // 사운드가 이미 재생 중
+            }
+        }
+        return false; // 사운드가 재생 중이 아님
+    }
+
 }
