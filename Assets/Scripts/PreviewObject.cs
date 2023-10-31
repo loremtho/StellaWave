@@ -7,11 +7,10 @@ public class PreviewObject : MonoBehaviour
     public Building.Type needType;
     private bool needTypeFlag;
 
-    //충동할 오브젝트의 콜라이더
     private List<Collider> colliderList= new List<Collider>();
 
     [SerializeField]
-    private int layerGround; //지상레이어
+    private int layerGround; 
     private const int IGNORE_RAYCAST_LAYER = 2;
 
     [SerializeField]
