@@ -64,10 +64,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: BasicDefenseTower
-  range: 15
-  damage: 100
+  range: 25
+  damage: 250
   rateOfAccurasy: 0.1
-  rateOfFire: 0.25
+  rateOfFire: 0.6
   viewAngle: 50
   spinSpeed: 100
   layerMask:
@@ -75,7 +75,7 @@ MonoBehaviour:
     m_Bits: 526340
   tf_TopGun: {fileID: 5639394070938045957}
   particle_MuzzleFlash: {fileID: 6412775518950527145}
-  go_HitEffect_Prefab: {fileID: 6585116972127672233, guid: 1e6246b73320c68488b16f37c2559dfa, type: 3}
+  go_HitEffect_Prefab: {fileID: 8761425545806872281, guid: 3f2ebbbd465116945a2d5198352da968, type: 3}
   sound_Fire: {fileID: 8300000, guid: 73d4bbd32bf493b4984af6658ea5943e, type: 3}
 --- !u!95 &1395049722918922188
 Animator:

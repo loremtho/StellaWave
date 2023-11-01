@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerName: Laser Tower
-  range: 15
-  damage: 100
+  range: 50
+  damage: 1000
   rateOfAccurasy: 0.1
-  rateOfFire: 0.25
+  rateOfFire: 1.5
   viewAngle: 50
   spinSpeed: 100
   layerMask:
@@ -136,7 +136,7 @@ MonoBehaviour:
     m_Bits: 526340
   tf_TopGun: {fileID: 36608802804457073}
   particle_MuzzleFlash: {fileID: 3132689781913440992}
-  go_HitEffect_Prefab: {fileID: 6585116972127672233, guid: 1e6246b73320c68488b16f37c2559dfa, type: 3}
+  go_HitEffect_Prefab: {fileID: 5239836718748980335, guid: 03f1b5fb814ea614eb09fc2bfe595322, type: 3}
   sound_Fire: {fileID: 8300000, guid: 73d4bbd32bf493b4984af6658ea5943e, type: 3}
 --- !u!82 &3783401498801120043
 AudioSource:
