@@ -2850,7 +2850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -4968,7 +4968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -5596,7 +5596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
@@ -5978,7 +5978,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.41365647315979006,"g":0.0,"b":0.8509804010391235,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.1911802887916565},{"color":{"r":15.502671241760254,"g":3.7647061347961427,"b":23.9686279296875,"a":1.0},"time":0.5617609024047852},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.06471351534128189},{"alpha":0.9797580242156982,"time":0.16765087842941285},{"alpha":0.0,"time":0.21176470816135407},{"alpha":0.0,"time":0.46471351385116579},{"alpha":0.800000011920929,"time":0.5647059082984924},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.8509804010391235,"g":0.6047753095626831,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.1911802887916565},{"color":{"r":23.9686279296875,"g":16.765235900878908,"b":3.89019513130188,"a":1.0},"time":0.5617609024047852},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.06471351534128189},{"alpha":0.9797580242156982,"time":0.16765087842941285},{"alpha":0.0,"time":0.21176470816135407},{"alpha":0.0,"time":0.46471351385116579},{"alpha":0.800000011920929,"time":0.5647059082984924},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: gradient
@@ -6297,7 +6297,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.378984272480011,"g":0.0,"b":0.8509804010391235,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.1911802887916565},{"color":{"r":0.3583574891090393,"g":0.11764706671237946,"b":0.7490196228027344,"a":1.0},"time":0.5647059082984924},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.06471351534128189},{"alpha":0.9797580242156982,"time":0.16765087842941285},{"alpha":0.0,"time":0.21176470816135407},{"alpha":0.0,"time":0.46471351385116579},{"alpha":0.800000011920929,"time":0.5647059082984924},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":0.8509804010391235,"g":0.578728437423706,"b":0.0,"a":1.0},"time":0.0},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":0.1911802887916565},{"color":{"r":0.7490196228027344,"g":0.5753732919692993,"b":0.11764706671237946,"a":1.0},"time":0.5647059082984924},{"color":{"r":0.0,"g":0.0,"b":0.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.0},{"alpha":1.0,"time":0.06471351534128189},{"alpha":0.9797580242156982,"time":0.16765087842941285},{"alpha":0.0,"time":0.21176470816135407},{"alpha":0.0,"time":0.46471351385116579},{"alpha":0.800000011920929,"time":0.5647059082984924},{"alpha":0.0,"time":1.0}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: gradient
@@ -6816,7 +6816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
