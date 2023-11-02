@@ -335,6 +335,14 @@ public class StatusController : MonoBehaviour
         return currentSp;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Attack"))
+        {
+            DecreaseHP(50);
+        }
+    }
+
 
 }
 

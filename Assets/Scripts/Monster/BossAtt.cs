@@ -77,7 +77,7 @@ public class BossAtt : Boss
 
     }
 
-    IEnumerator MissileShot() //패턴 추가 시 늘리기
+    IEnumerator MissileShot() //유도 미사일
     {
         missileeffect.SetActive(true);
         anim.SetTrigger("isAttack"); //임시 
@@ -112,7 +112,7 @@ public class BossAtt : Boss
         nav.isStopped = false;
         //boxCollider.enabled = false;
             
-        anim.SetTrigger("isShot");
+        //anim.SetTrigger("isShot");
         yield return new WaitForSeconds(1.5f);
         meleeArea.enabled = true;
 
@@ -123,6 +123,18 @@ public class BossAtt : Boss
         isLook = true;
         nav.isStopped = true;
         //boxCollider.enabled = true;
+
+        StartCoroutine(Think());
+    }
+
+    IEnumerator StraightMissileShot() //직선 미사일
+    {
+    
+        
+
+        yield return new WaitForSeconds(2f);
+
+        missileeffect.SetActive(false);
 
         StartCoroutine(Think());
     }

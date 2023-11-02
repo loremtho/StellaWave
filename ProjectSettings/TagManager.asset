@@ -18,6 +18,7 @@ TagManager:
   - BaseCamp
   - CinemachineTarget
   - EnemyBullet
+  - Attack
   layers:
   - Default
   - TransparentFX
