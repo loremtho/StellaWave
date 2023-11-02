@@ -745,7 +745,8 @@ MonoBehaviour:
   BulletPos: {fileID: 1126240784}
   Bullet: {fileID: -7122411684936666160, guid: 28da17609c717774da52678567b45914, type: 3}
   BulletSpeed: 200
-  gunObject: {fileID: 1440372957361304772}
+  gunObject:
+  - {fileID: 0}
 --- !u!114 &1486368880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1424,7 +1425,8 @@ MonoBehaviour:
   camera: {fileID: 223423289}
   axe: {fileID: 5826613260047888500}
   axePivot: {fileID: 4155485877450741682}
-  gunPivot: {fileID: 1780869355687980670}
+  gunPivot:
+  - {fileID: 0}
   leftHandMount: {fileID: 1856863604870674086}
   rightHandMount: {fileID: 971991036}
   AxeHandMount: {fileID: 1157324575}
@@ -1454,11 +1456,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1440372957307757124, guid: 8ed5e46e60030a14fab6d36bba94ceda, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1780869355716229374, guid: 8ed5e46e60030a14fab6d36bba94ceda, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780869355716229374, guid: 8ed5e46e60030a14fab6d36bba94ceda, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780869355716229374, guid: 8ed5e46e60030a14fab6d36bba94ceda, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780869355716229374, guid: 8ed5e46e60030a14fab6d36bba94ceda, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1780869355716229374, guid: 8ed5e46e60030a14fab6d36bba94ceda, type: 3}
       propertyPath: m_LocalPosition.x

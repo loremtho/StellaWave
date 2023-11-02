@@ -170,6 +170,11 @@ public class PlayerController : MonoBehaviour
             // 오브젝트가 활성화되면 GunMode로 변경
             SetGunMode(true);
         }
+        /*else if (gunObject[1].activeSelf)
+        {
+            // 오브젝트가 활성화되면 GunMode로 변경
+            SetGunMode(true);
+        }*/
         else if(axeobject.activeSelf)
         {
             SetAxeMode(true);
@@ -334,6 +339,10 @@ public class PlayerController : MonoBehaviour
             {
                 gunObject.SetActive(false);
             }
+            /*else if(playergunActive)
+            {
+                gunObject[1].SetActive(false);
+            }*/
             else if(playeraxeActice)
             {
                 axeobject.SetActive(false);
@@ -351,6 +360,12 @@ public class PlayerController : MonoBehaviour
                 gunObject.SetActive(true);
                
             }
+            /*else if(playergunActive)
+            {
+                SetGunMode(true);
+                gunObject[1].SetActive(true);
+               
+            }*/
             else if(playeraxeActice)
             {
                 SetAxeMode(true);

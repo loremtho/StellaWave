@@ -35,9 +35,6 @@ public class WeaponChanger : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 hasGun = true;
-                
-                
-              
             }
             else
             {
@@ -47,6 +44,37 @@ public class WeaponChanger : MonoBehaviour
         else
         {
             Debug.LogError("SciFi Assault 오브젝트를 찾을 수 없습니다.");
+        }
+
+    }
+
+    public void GunB()
+    {
+        Transform playerWeapon = player.transform.FindDeepChild("Sci fi SMG");
+        if (playerWeapon != null)
+        {
+            
+            GameObject WeaponObject = playerWeapon.gameObject;
+            if (!WeaponObject.activeSelf)
+            {
+                DeactivateCurrentWeapon();
+                Gun.GunMounting();
+                theWM.SetCurrentWeaponType("SMG");
+                WeaponObject.SetActive(true);
+                Debug.Log("Sci fi SMG 오브젝트를 활성화했습니다.");
+                WeaponSelectionUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                hasGun = true;
+            }
+            else
+            {
+                Debug.Log("Sci fi SMG 오브젝트는 이미 활성화되어 있습니다.");
+            }
+        } 
+        else
+        {
+            Debug.LogError("Sci fi SMG 오브젝트를 찾을 수 없습니다.");
         }
 
     }
@@ -89,6 +117,12 @@ public class WeaponChanger : MonoBehaviour
     {
     // 현재 무기를 찾아서 비활성화
         Transform currentWeapon = player.transform.FindDeepChild("SciFi Assault");
+        if (currentWeapon != null)
+        {
+            currentWeapon.gameObject.SetActive(false);
+        }
+
+        currentWeapon = player.transform.FindDeepChild("Sci fi SMG");
         if (currentWeapon != null)
         {
             currentWeapon.gameObject.SetActive(false);
