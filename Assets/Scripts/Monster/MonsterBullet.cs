@@ -16,7 +16,7 @@ public class MonsterBullet : MonoBehaviour
     public MeshRenderer[] meshs;
     public MeshRenderer objectMeshRenderer; // 객체의 매쉬 렌더러
     public ParticleSystem existingEffect; // 현재 이펙트
-    public ParticleSystem newEffect; // 새로운 이펙트
+    public GameObject newEffect; // 새로운 이펙트
 
     private bool navgate = true;
 
@@ -61,14 +61,14 @@ public class MonsterBullet : MonoBehaviour
             }
 
         }
-        if(currentHp == 0)
+        if(currentHp <= 0)
         {
             objectMeshRenderer.enabled = false;
             existingEffect.Stop();
             newEffect.gameObject.SetActive(true);
             navgate = false;
             nav.enabled = false;
-            newEffect.Play();
+            newEffect.SetActive(true);
             StartCoroutine(DestroyMissileAfterDelay(3));
 
         }

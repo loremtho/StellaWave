@@ -10,7 +10,10 @@ public class BossAtt : Boss
     public Transform missilePortB;
     public GameObject childChildObject;
     private Animator childChildAnimator;
+
+    public GameObject missileeffect;
     Vector3 lookvec;
+
 
     Vector3 tauntVec;
     public bool isLook;
@@ -33,6 +36,7 @@ public class BossAtt : Boss
     // Update is called once per frame
     void Update()
     {
+        
         if(isDead)
         {
             StopAllCoroutines();
@@ -75,6 +79,7 @@ public class BossAtt : Boss
 
     IEnumerator MissileShot() //패턴 추가 시 늘리기
     {
+        missileeffect.SetActive(true);
         anim.SetTrigger("isAttack"); //임시 
         //childChildAnimator.SetTrigger("Open");
         yield return new WaitForSeconds(0.2f);
@@ -94,6 +99,8 @@ public class BossAtt : Boss
 
         yield return new WaitForSeconds(2f);
 
+        missileeffect.SetActive(false);
+
         StartCoroutine(Think());
     }
 
@@ -103,7 +110,7 @@ public class BossAtt : Boss
 
         isLook = false;
         nav.isStopped = false;
-        boxCollider.enabled = false;
+        //boxCollider.enabled = false;
             
         anim.SetTrigger("isShot");
         yield return new WaitForSeconds(1.5f);
@@ -115,7 +122,7 @@ public class BossAtt : Boss
         yield return new WaitForSeconds(1f);
         isLook = true;
         nav.isStopped = true;
-        boxCollider.enabled = true;
+        //boxCollider.enabled = true;
 
         StartCoroutine(Think());
     }

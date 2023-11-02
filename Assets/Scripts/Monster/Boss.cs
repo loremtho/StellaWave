@@ -74,6 +74,7 @@ public class Boss : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        currentHp = Hp;
     }
 
 
@@ -85,13 +86,11 @@ public class Boss : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
         meshs = GetComponentsInChildren<MeshRenderer>();
-
+         
+      
+        if(enemyType != Type.C)
         Invoke("ChaseStart", 2);
-        currentHp = 100;
-        currentHp = Hp;
   
-        Invoke("ChaseStart", 2);
-
     }
 
     void ChaseStart()
@@ -104,7 +103,8 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
-        if(nav.enabled)
+     
+        if(nav.enabled && enemyType !=Type.C)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -209,6 +209,7 @@ public class Boss : MonoBehaviour
     {
         currentHp -= damage;
         isChase = false;
+        Debug.Log(currentHp);
 
         foreach(MeshRenderer mesh in meshs)
         {
@@ -226,10 +227,9 @@ public class Boss : MonoBehaviour
        
         //player.AddHitScore(20);
         gunController.hitreaction();
-        if (currentHp <= 0)
+        if (currentHp < 0)
         {
             Die();
-            isDead = true;
         }
 
         anim.SetTrigger("Hit");
@@ -250,7 +250,7 @@ public class Boss : MonoBehaviour
 
     private void Die()
     {
-    
+        isDead = true;
         isChase = false;
         isAttack = false;
         nav.enabled = false;

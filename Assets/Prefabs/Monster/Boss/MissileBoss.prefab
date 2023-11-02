@@ -79,6 +79,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  Hp: 400
+  meshs: []
+  objectMeshRenderer: {fileID: 0}
+  existingEffect: {fileID: 0}
+  newEffect: {fileID: 0}
+  statusController: {fileID: 0}
 --- !u!195 &727795764096234378
 NavMeshAgent:
   m_ObjectHideFlags: 0
