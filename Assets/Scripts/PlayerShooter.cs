@@ -16,7 +16,7 @@ public class PlayerShooter : MonoBehaviour
 
     public CloseWeapon axe; //사용할 도끼
     public Transform axePivot;
-    public Transform[] gunPivot; //총 배치의 기준점
+    public Transform gunPivot; //총 배치의 기준점
     
     public Transform leftHandMount; //왼손 위치
     public Transform rightHandMount;  //오른손 위치
@@ -60,8 +60,7 @@ public class PlayerShooter : MonoBehaviour
     private void OnAnimatorIK(int layerIndex) 
     {
         
-        gunPivot[0].position = rightHandMount.position;
-        gunPivot[1].position = rightHandMount.position;
+        gunPivot.position = rightHandMount.position;
         axePivot.position = AxeHandMount.position;
         
         //Vector3 offset = new Vector3(-0.1f, -0.13f, 0.3f); // 원하는 내리기 위치 (여기서는 -0.1f만큼 아래로 이동)
@@ -75,14 +74,13 @@ public class PlayerShooter : MonoBehaviour
         //playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand,leftHandMount.position);
         //playerAnimator.SetIKRotation(AvatarIKGoal.LeftHand,leftHandMount.rotation);
 
-        //오른쪽
-        playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand,1.0f);
-        playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand,1.0f);
-
 
         if(playerController.playergun)
         {
             playerAnimator.SetIKPosition(AvatarIKGoal.RightHand,rightHandMount.position);
+            playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand,1.0f);
+            playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand,1.0f);
+
         }
 
        

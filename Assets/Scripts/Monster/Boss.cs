@@ -12,6 +12,8 @@ public class Boss : MonoBehaviour
    
     public Transform target;
 
+    public GameObject lasertw;
+
     public ParticleSystem muzzleFlashs;
 
     public BoxCollider meleeArea;
@@ -255,6 +257,7 @@ public class Boss : MonoBehaviour
         isAttack = false;
         nav.enabled = false;
         boxCollider.enabled = false;
+        lasertw.SetActive(false);
         anim.SetTrigger("Die");
         //SoundManager.instance.PlaySE(monsterDie);
         StartCoroutine(Diecheck(10));

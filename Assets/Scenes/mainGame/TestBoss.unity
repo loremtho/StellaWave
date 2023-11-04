@@ -974,6 +974,26 @@ PrefabInstance:
       propertyPath: images_Gauge.Array.data[2]
       value: 
       objectReference: {fileID: 1007632704}
+    - target: {fileID: 971991036, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1093
+      objectReference: {fileID: 0}
+    - target: {fileID: 971991036, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2895
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486368881, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+      propertyPath: gunObject
+      value: 
+      objectReference: {fileID: 1586917797}
+    - target: {fileID: 1675389018, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+      propertyPath: gunPivot.Array.data[0]
+      value: 
+      objectReference: {fileID: 1586917798}
+    - target: {fileID: 1440372957361304772, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5894107324013682038, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
       propertyPath: muzzleFlash
       value: 
@@ -57166,6 +57186,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5840cb50eb0813d4c8d0f5c62d323724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1586917797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1440372957361304772, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+  m_PrefabInstance: {fileID: 61646787}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1586917798 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1780869355687980670, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+  m_PrefabInstance: {fileID: 61646787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1588492604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4238282506874222, guid: 930a01c40d671714eae56ef9f099e7ef, type: 3}
