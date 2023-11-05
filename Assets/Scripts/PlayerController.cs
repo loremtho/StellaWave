@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryCrrouch();
         Move();
-        if(!Inventory.inventoryActivated)
+        if(!Inventory.inventoryActivated && !CraftManual.isCraftActivated)
         {
             CameraRotation();
             CharacterRotation();
@@ -170,11 +170,6 @@ public class PlayerController : MonoBehaviour
             // 오브젝트가 활성화되면 GunMode로 변경
             SetGunMode(true);
         }
-        /*else if (gunObject[1].activeSelf)
-        {
-            // 오브젝트가 활성화되면 GunMode로 변경
-            SetGunMode(true);
-        }*/
         else if(axeobject.activeSelf)
         {
             SetAxeMode(true);
@@ -552,7 +547,6 @@ public class PlayerController : MonoBehaviour
         float _yRotation = Input.GetAxis("Mouse X");
         Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity;
         myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
-
     }
 
     private void CameraRotation() //카메라 시점 설정

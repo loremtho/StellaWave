@@ -11,15 +11,15 @@ public class Craft
     public string craftDesc; //���� 
     public string[] craftNeedItem; //�ʿ��� ������
     public int[] craftNeedItemCount; //�ʿ��� �������� ����.
-    public GameObject go_Prefad; //���� ��ġ�� ������
-    public GameObject go_PreviewPrefad; // �̸����� ������
+    public GameObject go_Prefab; //���� ��ġ�� ������
+    public GameObject go_PreviewPrefab; // �̸����� ������
 }
 
 public class CraftManual : MonoBehaviour
 {
 
     //���º���
-    private bool isActivated = false;
+    public static bool isCraftActivated = false;
     private bool isPreviewActivated = false;
 
     [SerializeField]
@@ -168,8 +168,8 @@ public class CraftManual : MonoBehaviour
         }
      
 
-        go_Preview = Instantiate(craft_SelectedTab[selectedSlotNumber].go_PreviewPrefad, tf_Player.position + tf_Player.forward, Quaternion.identity);
-        go_Prefab = craft_SelectedTab[selectedSlotNumber].go_Prefad;
+        go_Preview = Instantiate(craft_SelectedTab[selectedSlotNumber].go_PreviewPrefab, tf_Player.position + tf_Player.forward, Quaternion.identity);
+        go_Prefab = craft_SelectedTab[selectedSlotNumber].go_Prefab;
         isPreviewActivated  = true;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -236,7 +236,7 @@ public class CraftManual : MonoBehaviour
             UseIngredient();
             Instantiate(go_Prefab, go_Preview.transform.position,go_Preview.transform.rotation);
             Destroy(go_Preview);
-            isActivated = false;
+            isCraftActivated = false;
             isPreviewActivated= false;
             go_Preview= null;
             go_Prefab= null;
@@ -276,7 +276,7 @@ public class CraftManual : MonoBehaviour
         }
         
 
-        isActivated= false;
+        isCraftActivated= false;
         isPreviewActivated= false;
         go_Preview= null;
         go_Prefab = null;
@@ -289,7 +289,7 @@ public class CraftManual : MonoBehaviour
 
     private void Window()
     {
-        if(!isActivated)
+        if(!isCraftActivated)
         {
             OpenWindow();
         }
@@ -303,7 +303,7 @@ public class CraftManual : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        isActivated= true;
+        isCraftActivated= true;
         go_BaseUI.SetActive(true);
     }
 
@@ -311,7 +311,9 @@ public class CraftManual : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        isActivated= false;
+        isCraftActivated= false;
         go_BaseUI.SetActive(false);
     }
+
+    
 }
