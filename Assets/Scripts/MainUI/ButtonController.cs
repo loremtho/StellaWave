@@ -54,9 +54,9 @@ public class ButtonController : MonoBehaviour
 
     public void inWeaponSelect()
     {
+        WeaponSelectionUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        WeaponSelectionUI.SetActive(true);
     }
 
     public void outWeaponSelect()

@@ -207,7 +207,7 @@ MonoBehaviour:
   baseCamp: {fileID: 1335664312}
   gunController: {fileID: 401050322}
   weaponchanger: {fileID: 17621721}
-  buttonController: {fileID: 1892445539}
+  buttonController: {fileID: 0}
   statusController: {fileID: 1675389013}
   bgm: 
 --- !u!4 &17621720
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892445539}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: outWeaponSelect
         m_Mode: 1
@@ -816,7 +816,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892445539}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: outEnding
         m_Mode: 1
@@ -40253,6 +40253,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1892445539, guid: 96d190d64c76b314daa06def34108171, type: 3}
+      propertyPath: EndingUI
+      value: 
+      objectReference: {fileID: 251979583}
+    - target: {fileID: 1892445539, guid: 96d190d64c76b314daa06def34108171, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 17621719}
+    - target: {fileID: 1892445539, guid: 96d190d64c76b314daa06def34108171, type: 3}
+      propertyPath: WeaponSelectionUI
+      value: 
+      objectReference: {fileID: 1149841197}
     - target: {fileID: 1898507268, guid: 96d190d64c76b314daa06def34108171, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -45267,7 +45279,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892445539}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: HomeBtn
         m_Mode: 1
@@ -57888,7 +57900,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1892445539}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonController, Assembly-CSharp
         m_MethodName: RestartBtn
         m_Mode: 1
@@ -62610,27 +62622,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4264496438681202, guid: 8ffcca5c10244ba4f9a82d033eebca97, type: 3}
   m_PrefabInstance: {fileID: 1986608715}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1892445538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8409655465599349749, guid: 96d190d64c76b314daa06def34108171, type: 3}
-  m_PrefabInstance: {fileID: 804396600}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1892445539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892445538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cfc97ab9d8de9d419641c3f97fb0a8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShopUI: {fileID: 0}
-  WeaponSelectionUI: {fileID: 1149841197}
-  EndingUI: {fileID: 251979583}
-  gameManager: {fileID: 17621719}
 --- !u!1 &1893155164
 GameObject:
   m_ObjectHideFlags: 0
