@@ -52377,8 +52377,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 1.3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.1683197, y: 2, z: 1.3958634}
+  m_Center: {x: 0.032061767, y: 0, z: 0.047931146}
 --- !u!54 &1262345135
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -52463,7 +52463,7 @@ MonoBehaviour:
   missilePortA: {fileID: 2110558299}
   missilePortB: {fileID: 862250618}
   childChildObject: {fileID: 28441679}
-  throwForce: 0
+  throwForce: 40
   StraighmissilePortA: {fileID: 28441681}
   StraighmissilePortB: {fileID: 1013898442}
   missileeffect: {fileID: 2005749347}

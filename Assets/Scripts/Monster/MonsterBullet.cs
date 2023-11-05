@@ -87,7 +87,7 @@ public class MonsterBullet : MonoBehaviour
     {
         if (other.CompareTag("Player")) // 플레이어 태그 확인
         {
-            statusController.DecreaseHP(20);
+            statusController.DecreaseHP(100);
             TakeDamage(Hp);
         }
     }

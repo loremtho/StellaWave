@@ -72,22 +72,25 @@ public class BossAtt : Boss
               case 1:
               //유도 미사일
               StartCoroutine(MissileShot());
+              
 
             break;
               case 2:
               case 3:
                //기본
-                StartCoroutine(Taunt());
+              StartCoroutine(Taunt());
+               
                 
 
             break;
              case 4:
-             case 5:
              //순간이동
-               StartCoroutine(Dive());
+              StartCoroutine(Dive());
+             
                
                
             break;
+             case 5:
              case 6:
              case 7:
               // 직선 미사일
@@ -110,6 +113,8 @@ public class BossAtt : Boss
         bossMissileA.target =target;
         MonsterBullet monsterBullet = instantMissileA.GetComponent<MonsterBullet>();
         monsterBullet.statusController = statusController;
+
+         //미사일 추가//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
          yield return new WaitForSeconds(0.3f);
         GameObject instantMissileB = Instantiate(missile, missilePortB.position, missilePortB.rotation);
@@ -180,18 +185,20 @@ public class BossAtt : Boss
     IEnumerator StraightMissileShot() //직선 미사일
     {
         GameObject straighA = Instantiate(StraightMissile, StraighmissilePortA.position, StraighmissilePortA.rotation);
-         // 플레이어 방향 벡터 계산
-        Vector3 throwDirectionA = (target.position - StraightMissile.transform.position).normalized;
-
-        // 플레이어 방향으로 힘을 적용.
-        Rigidbody rbA = straighA.GetComponent<Rigidbody>();
+        Vector3 throwDirectionA = (target.position - transform.position).normalized;   // 플레이어 방향 벡터 계산
+        float yOffsetA = -0.05f; // A원하는 y축 오프셋 값
+        throwDirectionA += new Vector3(0f, yOffsetA, 0f);
+        throwDirectionA.Normalize();
+        Rigidbody rbA = straighA.GetComponent<Rigidbody>();// 플레이어 방향으로 힘을 적용.
         rbA.AddForce(throwDirectionA * throwForce, ForceMode.Impulse);
 
-        GameObject straighB = Instantiate(StraightMissile, StraighmissilePortA.position, StraighmissilePortA.rotation);
-         // 플레이어 방향 벡터 계산
-        Vector3 throwDirectionB = (target.position - StraightMissile.transform.position).normalized;
+        //미사일 추가//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        // 플레이어 방향으로 힘을 적용.
+        GameObject straighB = Instantiate(StraightMissile, StraighmissilePortB.position, StraighmissilePortB.rotation);
+        Vector3 throwDirectionB = (target.position - transform.position).normalized;
+        float yOffsetB = -0.05f;
+        throwDirectionB += new Vector3(0f, yOffsetB, 0f);
+        throwDirectionB.Normalize();
         Rigidbody rbB = straighB.GetComponent<Rigidbody>();
         rbB.AddForce(throwDirectionB * throwForce, ForceMode.Impulse);
     

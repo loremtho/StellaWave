@@ -234,8 +234,8 @@ public class Boss : MonoBehaviour
             Die();
         }
 
-        anim.SetTrigger("Hit");
-        StartCoroutine(ResumeChaseAfterDelay(1f));
+        
+        
    
     }
 
