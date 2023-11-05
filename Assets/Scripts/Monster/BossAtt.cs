@@ -6,10 +6,16 @@ using UnityEngine.AI;
 public class BossAtt : Boss
 {
     public GameObject missile;
+    public GameObject StraightMissile;
     public Transform missilePortA;
     public Transform missilePortB;
     public GameObject childChildObject;
     private Animator childChildAnimator;
+
+    public float throwForce = 10f; // 직선 미사일 속도
+
+    public Transform StraighmissilePortA;
+    public Transform StraighmissilePortB;
 
     public GameObject missileeffect;
     Vector3 lookvec;
@@ -58,21 +64,37 @@ public class BossAtt : Boss
     {
         yield return new WaitForSeconds(0.1f);
 
-        int ranAction = Random.Range(0,4);
+        int ranAction = Random.Range(0,7);
         switch(ranAction)
         {
            
               case 0:
               case 1:
-              //미사일
+              //유도 미사일
               StartCoroutine(MissileShot());
 
             break;
               case 2:
               case 3:
+               //기본
                 StartCoroutine(Taunt());
+                
 
             break;
+             case 4:
+             case 5:
+             //순간이동
+               StartCoroutine(Dive());
+               
+               
+            break;
+             case 6:
+             case 7:
+              // 직선 미사일
+             StartCoroutine(StraightMissileShot());
+             
+
+             break;
         }
 
     }
@@ -127,14 +149,54 @@ public class BossAtt : Boss
         StartCoroutine(Think());
     }
 
+      IEnumerator Dive() //패턴 추가 시 늘리기
+    {
+         Vector3 teleportPosition = target.position + Vector3.forward *10f; // 단위만큼 이동
+        isLook = false;
+        nav.isStopped = false;
+        boxCollider.enabled = false;
+        nav.Warp(teleportPosition);
+         
+        isLook = true; 
+
+        MissileShot(); //근접 공격시 변경
+
+        //anim.SetTrigger("isShot");
+        yield return new WaitForSeconds(1.5f);
+        meleeArea.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+        meleeArea.enabled = false;
+
+        yield return new WaitForSeconds(1f);
+        isLook = true;
+        nav.isStopped = true;
+        //boxCollider.enabled = true;
+
+        StartCoroutine(Think());
+    }
+
+
     IEnumerator StraightMissileShot() //직선 미사일
     {
+        GameObject straighA = Instantiate(StraightMissile, StraighmissilePortA.position, StraighmissilePortA.rotation);
+         // 플레이어 방향 벡터 계산
+        Vector3 throwDirectionA = (target.position - StraightMissile.transform.position).normalized;
+
+        // 플레이어 방향으로 힘을 적용.
+        Rigidbody rbA = straighA.GetComponent<Rigidbody>();
+        rbA.AddForce(throwDirectionA * throwForce, ForceMode.Impulse);
+
+        GameObject straighB = Instantiate(StraightMissile, StraighmissilePortA.position, StraighmissilePortA.rotation);
+         // 플레이어 방향 벡터 계산
+        Vector3 throwDirectionB = (target.position - StraightMissile.transform.position).normalized;
+
+        // 플레이어 방향으로 힘을 적용.
+        Rigidbody rbB = straighB.GetComponent<Rigidbody>();
+        rbB.AddForce(throwDirectionB * throwForce, ForceMode.Impulse);
     
-        
 
         yield return new WaitForSeconds(2f);
-
-        missileeffect.SetActive(false);
 
         StartCoroutine(Think());
     }

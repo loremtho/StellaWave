@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 727795763909926196}
   - component: {fileID: 727795764096234380}
   - component: {fileID: 727795764096234377}
-  - component: {fileID: 727795764096234379}
   - component: {fileID: 727795764096234378}
   m_Layer: 0
-  m_Name: MissileBoss
+  m_Name: StraightMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,25 +65,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &727795764096234379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727795763910082836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c6c7dfa3423d0641a2fc4e7169e0935, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  Hp: 400
-  meshs: []
-  objectMeshRenderer: {fileID: 0}
-  existingEffect: {fileID: 0}
-  newEffect: {fileID: 0}
-  statusController: {fileID: 0}
 --- !u!195 &727795764096234378
 NavMeshAgent:
   m_ObjectHideFlags: 0
