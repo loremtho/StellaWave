@@ -19,6 +19,7 @@ public class WeaponChanger : MonoBehaviour
     
     public void GunA()
     {
+        
         Transform playerWeapon = player.transform.FindDeepChild("SciFi Assault");
         if (playerWeapon != null)
         {
@@ -50,6 +51,7 @@ public class WeaponChanger : MonoBehaviour
 
     public void GunB()
     {
+
         Transform playerWeapon = player.transform.FindDeepChild("Sci fi SMG");
         if (playerWeapon != null)
         {
@@ -96,6 +98,15 @@ public class WeaponChanger : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
 
+                Transform swordWeapon = player.transform.FindDeepChild("Sword");
+                if (swordWeapon != null)
+                {
+                    GameObject SwordObject = swordWeapon.gameObject;
+                    SwordObject.SetActive(true);
+                    Debug.Log("Sword 오브젝트를 활성화했습니다.");
+                }
+
+
                 if(hasGun)
                 {
                     hasGun = false;
@@ -130,6 +141,12 @@ public class WeaponChanger : MonoBehaviour
     
         // 또는 Axe의 경우
         currentWeapon = player.transform.FindDeepChild("Axe");
+        if (currentWeapon != null)
+        {
+            currentWeapon.gameObject.SetActive(false);
+        }
+
+        currentWeapon = player.transform.FindDeepChild("Sword");
         if (currentWeapon != null)
         {
             currentWeapon.gameObject.SetActive(false);

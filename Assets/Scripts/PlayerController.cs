@@ -103,6 +103,11 @@ public class PlayerController : MonoBehaviour
     public int hitscore = 0;
     public int killcount = 0;
 
+    float timeBetweenClicks = 1f; // 연속 공격 시간
+    float lastClickTime = 0f;
+
+    private float earlyspeed;
+
     
 
     public void AddScore(int points) //플레이어 점수 추가
@@ -133,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
         //초기화
         applySpeed = walkSpeed;
+        earlyspeed = applySpeed;
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
     }
@@ -158,7 +164,7 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryCrrouch();
         Move();
-        if(!Inventory.inventoryActivated && !CraftManual.isCraftActivated)
+        if(!Inventory.inventoryActivated)
         {
             CameraRotation();
             CharacterRotation();
@@ -195,6 +201,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     private void SetAxeMode(bool enableAxeMode)
     {
         isInAxeMode = enableAxeMode;
@@ -208,17 +215,19 @@ public class PlayerController : MonoBehaviour
             playergunActive = false;
             Playeranim.SetBool("Gunmode", false);
             //도끼 idle 애니메이션 쓸거면 추가
-            if(Input.GetButton("Fire1"))
-            {  
-                if(!axeSwingInProgress && Input.GetButtonDown("Fire1") && axeobject.activeSelf)  //등록한 도끼만 사용
-                {
-                   Playeranim.SetTrigger("Axemode_Swing");
-                   SetDefaultMode(true);
-                   axeSwingInProgress = true;
+            if(!axeSwingInProgress && axeobject.activeSelf)
+            {
+                if(Input.GetButton("Fire1"))
+                {  
+                 
+                    myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                    Playeranim.SetTrigger("Axemode_Swing");
+                    SetDefaultMode(true);
+                    axeSwingInProgress = true;
+                   
+                    StartCoroutine(DisableAxeSwing());
                 }
-                axeSwingInProgress = false; //2번 재생 방지
 
-          
             }
         }
         else
@@ -228,6 +237,18 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private IEnumerator DisableAxeSwing()
+    {
+        
+        yield return new WaitForSeconds(1.5f); // 대기
+        myRigid.constraints = RigidbodyConstraints.None;
+        myRigid.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+
+        yield return new WaitForSeconds(1.0f); // 대기
+        axeSwingInProgress = false; // 후에 false로 설정
+    }
+
 
 
     private void SetGunMode(bool enableGunMode)  //총모드
@@ -547,6 +568,7 @@ public class PlayerController : MonoBehaviour
         float _yRotation = Input.GetAxis("Mouse X");
         Vector3 _characterRotationY = new Vector3(0f, _yRotation, 0f) * lookSensitivity;
         myRigid.MoveRotation(myRigid.rotation * Quaternion.Euler(_characterRotationY));
+
     }
 
     private void CameraRotation() //카메라 시점 설정
