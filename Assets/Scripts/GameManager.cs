@@ -61,9 +61,12 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemies;
     public List<int> enemyList;
 
+    public middleboss middleboss;
+
     public int enemyCntA;
     public int enemyCntB;
     public int enemyCntC;
+    public int enemyCntD;
 
     //배터리 스폰 관리*******************
 
@@ -141,12 +144,23 @@ public class GameManager : MonoBehaviour
 
     IEnumerator InBattle()
     {
-        //if(stage % 5 ==0) 나중에 이런식으로 다 덮어서 보스 소환도 고려
-
-        for(int index = 0; index < stage; index++)
+        if(stagecount % 5 ==0)
         {
-            int ran = Random.Range(0 ,2); //존 개수 몬스터 늘릴시 갯수 수정
-            enemyList.Add(ran);
+            enemyCntD++;
+            GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
+            Enemy enemy = instantEnemy.GetComponent<Enemy>();
+            enemy.target = player.transform;
+            middleboss = instantEnemy.GetComponent<middleboss>();
+            enemy.gameManager = this;
+            enemy.statusController = statusController;
+            enemy.gunController = gunController;
+        }
+        else
+        {
+            for(int index = 0; index < stage; index++)
+            {
+                int ran = Random.Range(0 ,2); //존 개수 몬스터 늘릴시 갯수 수정
+                enemyList.Add(ran);
 
             switch (ran) {
                 case 0:
@@ -160,34 +174,36 @@ public class GameManager : MonoBehaviour
                 enemyCntC++;
                 break;
      
+                }
+
+
+            }
+            while(enemyList.Count > 0)
+            {
+                int ranZone = Random.Range(0, 4); //몬스터 늘릴시 갯수 수정
+                GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZone[ranZone].position, enemyZone[ranZone].rotation);
+                Enemy enemy = instantEnemy.GetComponent<Enemy>();
+                enemy.target = player.transform;
+                enemy.gameManager = this;
+                enemy.statusController = statusController;
+                enemy.gunController = gunController;
+          
+                enemyList.RemoveAt(0);
+            
+                yield return new WaitForSeconds(1);
+            } 
+
+            while(enemyCntA + enemyCntB + enemyCntC + enemyCntD> 0)
+            {
+                yield return null;
             }
 
+            yield return new WaitForSeconds(2f);
+
+            StageEnd();
 
         }
-        while(enemyList.Count > 0)
-        {
-            int ranZone = Random.Range(0, 4); //몬스터 늘릴시 갯수 수정
-            GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZone[ranZone].position, enemyZone[ranZone].rotation);
-            Enemy enemy = instantEnemy.GetComponent<Enemy>();
-            enemy.target = player.transform;
-            enemy.gameManager = this;
-            enemy.statusController = statusController;
-            enemy.gunController = gunController;
-        
-            enemyList.RemoveAt(0);
-            
-            yield return new WaitForSeconds(1);
-        } 
 
-        while(enemyCntA + enemyCntB + enemyCntC > 0)
-        {
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(2f);
-
-        StageEnd();
-       
     }
 
     void Update()

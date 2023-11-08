@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 7641545640960189762}
   - component: {fileID: 7641545640960189761}
   - component: {fileID: 7641545640960189760}
-  - component: {fileID: 7641545640960189887}
+  - component: {fileID: 4656802763741943109}
   m_Layer: 19
   m_Name: Enemy D
   m_TagString: Monster
@@ -157,7 +157,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7641545640960189887
+--- !u!114 &4656802763741943109
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,11 +166,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7641545640960189886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81766463b523f7343ae738d1d4dc848e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7209b1399f7dc8e4c916c9b7c98cc093, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 1
+  enemyType: 3
   target: {fileID: 0}
+  rigid: {fileID: 0}
+  boxCollider: {fileID: 0}
+  meshs: []
   muzzleFlashs: {fileID: 0}
   bloodHit: {fileID: 7641545641089038585}
   bloodDie: {fileID: 7641545641122920420}
@@ -180,11 +183,14 @@ MonoBehaviour:
   isChase: 0
   gameManager: {fileID: 0}
   statusController: {fileID: 0}
-  Hp: 250
+  nav: {fileID: 0}
+  Hp: 3000
   monsterAtt: MonsterAtt
   monsterDie: MonsterDie
   monsterBlood: MonsterBlood
   gunController: {fileID: 0}
+  isDead: 0
+  isLook: 0
 --- !u!1 &7641545641089038585
 GameObject:
   m_ObjectHideFlags: 0

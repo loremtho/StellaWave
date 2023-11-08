@@ -7,13 +7,15 @@ using UnityEngine.VFX;
 
 public class Enemy : MonoBehaviour 
 {
-    public enum Type {A, B, C};
+    public enum Type {A, B, C, D};
     public Type enemyType;
    
     public Transform target;
     NavMeshAgent ai;
-    Rigidbody rigid;
-    BoxCollider boxCollider;
+    public Rigidbody rigid;
+    public BoxCollider boxCollider;
+
+    public MeshRenderer[] meshs;
 
     public ParticleSystem muzzleFlashs;
     public GameObject bloodHit;
@@ -34,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     public StatusController statusController;
 
-    NavMeshAgent nav;
+    public NavMeshAgent nav;
 
    
     [SerializeField]
@@ -54,6 +56,7 @@ public class Enemy : MonoBehaviour
     private string monsterBlood;
 
     public GunController gunController;
+    public bool isDead = false;
 
 
     void FreezeVelocity()
@@ -89,11 +92,11 @@ public class Enemy : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
 
+        if(enemyType != Type.D)
         Invoke("ChaseStart", 2);
+
        
         currentHp = Hp;
-  
-        Invoke("ChaseStart", 2);
 
     }
 
@@ -106,7 +109,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(nav.enabled)
+        if(nav.enabled && enemyType != Type.D)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -120,36 +123,37 @@ public class Enemy : MonoBehaviour
 
     void Targerting()
     {
-        float targetRadius = 1.5f;
-        float targetRange = 3f;
+        if(enemyType != Type.D)
+        {
+            float targetRadius = 1.5f;
+            float targetRange = 3f;
 
-        switch (enemyType){
-            case Type.A :
-            targetRadius = 1.5f;
-            targetRange = 3f;
-            break;
+            switch (enemyType){
+                case Type.A :
+                    targetRadius = 1.5f;
+                    targetRange = 3f;
+                    break;
             case Type.B :
-            targetRadius = 1.5f;
-            targetRange = 3f;
-            break;
+                    targetRadius = 1.5f;
+                    targetRange = 3f;
+                    break;
             case Type.C:
             
-            break;
+                    break;
+            }
+            RaycastHit[] rayHits =
+            Physics.SphereCastAll(transform.position,
+            targetRadius,
+            transform.forward,
+            targetRange,
+            LayerMask.GetMask("Player"));
+
+            if(rayHits.Length > 0 && !isAttack)
+            {
+                StartCoroutine(Attack());
+            }
+
         }
-
-        RaycastHit[] rayHits =
-        Physics.SphereCastAll(transform.position,
-        targetRadius,
-        transform.forward,
-        targetRange,
-        LayerMask.GetMask("Player"));
-
-        if(rayHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(Attack());
-        }
-
-
 
     }
 
@@ -221,10 +225,13 @@ public class Enemy : MonoBehaviour
                 gameManager.enemyCntA--;
                 break;
                 case Type.B:
-                gameManager.enemyCntA--;
+                gameManager.enemyCntB--;
                 break;
                 case Type.C:
-                gameManager.enemyCntA--;
+                gameManager.enemyCntC--;
+                break;
+                case Type.D:
+                gameManager.enemyCntD--;
                 break;
             }
             Die();
@@ -263,8 +270,12 @@ public class Enemy : MonoBehaviour
      private IEnumerator Diecheck(int dietime)
     {
         yield return new WaitForSeconds(dietime);
+        
+        if(enemyType != Type.D)
         Destroy(gameObject);
     }
+
+    
 
 
 
