@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 1
+  isLook: 0
   target: {fileID: 0}
   rigid: {fileID: 0}
   boxCollider: {fileID: 0}

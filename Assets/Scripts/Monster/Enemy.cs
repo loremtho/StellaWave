@@ -9,9 +9,13 @@ public class Enemy : MonoBehaviour
 {
     public enum Type {A, B, C, D};
     public Type enemyType;
+
+    private Vector3 lookvec;
+    private Vector3 tauntVec;
+    public bool isLook;
    
     public Transform target;
-    NavMeshAgent ai;
+   
     public Rigidbody rigid;
     public BoxCollider boxCollider;
 
@@ -89,13 +93,11 @@ public class Enemy : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         boxCollider = GetComponent<BoxCollider>();
-        ai = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
 
         //if(enemyType != Type.D)
-        Invoke("ChaseStart", 2);
-
+        Invoke("ChaseStart", 1);
        
         currentHp = Hp;
 
@@ -111,20 +113,28 @@ public class Enemy : MonoBehaviour
     void Update()
     {
        
-         nav.SetDestination(target.position);
+        nav.SetDestination(target.position);
         nav.isStopped = !isChase;
-        
+        /*
         if(isDie)
         {
             StartCoroutine(Diecheck(2));
+        }
+        */
+
+         if(isLook)
+        {
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input. GetAxisRaw("Vertical");
+            lookvec = new Vector3(h, 0, v )* 5f;
+            transform.LookAt(target.position);
         }
 
     }
 
     void Targerting()
     {
-        if(enemyType != Type.D)
-        {
+       
             float targetRadius = 1.5f;
             float targetRange = 3f;
 
@@ -137,8 +147,9 @@ public class Enemy : MonoBehaviour
                     targetRadius = 1.5f;
                     targetRange = 3f;
                     break;
-            case Type.C:
-            
+            case Type.D:
+                    targetRadius = 1.5f;
+                    targetRange = 3f;
                     break;
             }
             RaycastHit[] rayHits =
@@ -153,7 +164,7 @@ public class Enemy : MonoBehaviour
                 StartCoroutine(Attack());
             }
 
-        }
+        
 
     }
 
@@ -161,6 +172,7 @@ public class Enemy : MonoBehaviour
     {
         isChase = false;
         isAttack = true;
+        isLook = true;
         anim.SetBool("isAttack", true);
         SoundManager.instance.PlaySE(monsterAtt);
 
@@ -195,6 +207,7 @@ public class Enemy : MonoBehaviour
 
         isChase = true;
         isAttack = false;
+        isLook = false;
         anim.SetBool("isAttack", false);
         
     }
@@ -216,6 +229,20 @@ public class Enemy : MonoBehaviour
         gunController.hitreaction();
         bloodHit.SetActive(true);
         SoundManager.instance.PlaySE(monsterBlood);
+
+         foreach(MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.red;
+        }
+
+        if(currentHp >0)
+        {
+            foreach(MeshRenderer mesh in meshs)
+            {
+                mesh.material.color = Color.white;
+            }
+
+        }
 
         // 체력이 0 이하로 떨어지면 몬스터 등록수를 -한후  파괴
         if (currentHp <= 0)
@@ -244,9 +271,9 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator ResumeChaseAfterDelay(float delay)
     {
-        anim.SetTrigger("Hit");
         yield return new WaitForSeconds(delay);
         isChase = true;
+        bloodHit.SetActive(false);
     }
 
 
@@ -265,13 +292,13 @@ public class Enemy : MonoBehaviour
         bloodDie.SetActive(true);
         player.AddScore(20);
         player.AddKillcount(1);
+        StartCoroutine(Diecheck(2));
     }
 
      private IEnumerator Diecheck(int dietime)
     {
         yield return new WaitForSeconds(dietime);
         
-        //if(enemyType != Type.D)
         Destroy(gameObject);
     }
 
