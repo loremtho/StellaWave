@@ -80,6 +80,7 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
+        currentHp = Hp;
     }
 
 
@@ -92,7 +93,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
 
-        if(enemyType != Type.D)
+        //if(enemyType != Type.D)
         Invoke("ChaseStart", 2);
 
        
@@ -109,11 +110,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(nav.enabled && enemyType != Type.D)
-        {
-            nav.SetDestination(target.position);
-            nav.isStopped = !isChase;
-        }
+       
+         nav.SetDestination(target.position);
+        nav.isStopped = !isChase;
+        
         if(isDie)
         {
             StartCoroutine(Diecheck(2));
@@ -271,7 +271,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(dietime);
         
-        if(enemyType != Type.D)
+        //if(enemyType != Type.D)
         Destroy(gameObject);
     }
 

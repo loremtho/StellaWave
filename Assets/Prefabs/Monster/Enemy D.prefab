@@ -183,14 +183,14 @@ MonoBehaviour:
   isChase: 0
   gameManager: {fileID: 0}
   statusController: {fileID: 0}
-  nav: {fileID: 0}
+  nav: {fileID: 7641545640960189760}
   Hp: 3000
   monsterAtt: MonsterAtt
   monsterDie: MonsterDie
   monsterBlood: MonsterBlood
   gunController: {fileID: 0}
   isDead: 0
-  isLook: 0
+  isLook: 1
 --- !u!1 &7641545641089038585
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,7 +647,8 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6760140725492310701, guid: 79461db0be0f4f84296235dc77e83a75, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 79461db0be0f4f84296235dc77e83a75, type: 3}
 --- !u!4 &7032960208240775965 stripped
 Transform:

@@ -8,8 +8,6 @@ public class middleboss : Enemy
 
   
     Vector3 lookvec;
-
-
     Vector3 tauntVec;
     public bool isLook;
 
@@ -22,16 +20,18 @@ public class middleboss : Enemy
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
         meshs = GetComponentsInChildren<MeshRenderer>();
-
-        nav.isStopped = true;
-        StartCoroutine(Think());
+        
+        Invoke("ChaseStart", 2);
+        
+        //nav.isStopped = true;
+        //StartCoroutine(Think());
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
         if(isDead)
         {
             StopAllCoroutines();
