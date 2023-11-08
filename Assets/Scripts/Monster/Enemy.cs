@@ -102,7 +102,6 @@ public class Enemy : MonoBehaviour
         isChase = true;
         anim.SetBool("isWalk", true);
 
-
     }
 
     void Update()
@@ -131,7 +130,7 @@ public class Enemy : MonoBehaviour
             break;
             case Type.B :
             targetRadius = 1.5f;
-            targetRange = 6f;
+            targetRange = 3f;
             break;
             case Type.C:
             
@@ -174,7 +173,17 @@ public class Enemy : MonoBehaviour
 
             break;
             case Type.B:
+            yield return new WaitForSeconds(0.2f);
+            meleeArea.enabled = true;
+
+            yield return new WaitForSeconds(0.5f);
+            meleeArea.enabled = false;
+
+            yield return new WaitForSeconds(0.5f);
+            isChase = false;
+
             break;
+
             case Type.C:
             break;
         }
