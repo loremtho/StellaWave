@@ -147,6 +147,10 @@ public class Enemy : MonoBehaviour
                     targetRadius = 1.5f;
                     targetRange = 3f;
                     break;
+            case Type.C:
+                    targetRadius = 1.5f;
+                    targetRange = 3f;
+                    break;
             case Type.D:
                     targetRadius = 1.5f;
                     targetRange = 3f;
@@ -186,8 +190,8 @@ public class Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
             isChase = false;
-
             break;
+            
             case Type.B:
             yield return new WaitForSeconds(0.2f);
             meleeArea.enabled = true;
@@ -197,10 +201,28 @@ public class Enemy : MonoBehaviour
 
             yield return new WaitForSeconds(0.5f);
             isChase = false;
-
             break;
 
             case Type.C:
+             yield return new WaitForSeconds(0.2f);
+            meleeArea.enabled = true;
+
+            yield return new WaitForSeconds(0.5f);
+            meleeArea.enabled = false;
+
+            yield return new WaitForSeconds(0.5f);
+            isChase = false;
+            break;
+
+            case Type.D:
+            yield return new WaitForSeconds(0.2f);
+            meleeArea.enabled = true;
+
+            yield return new WaitForSeconds(0.5f);
+            meleeArea.enabled = false;
+
+            yield return new WaitForSeconds(0.5f);
+            isChase = false;
             break;
         }
     

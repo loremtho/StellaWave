@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
         }
         for(int index = 0; index < stage; index++)
         {
-            int ran = Random.Range(0 ,2); //존 개수 몬스터 늘릴시 갯수 수정
+            int ran = Random.Range(0 ,3); //존 개수 몬스터 늘릴시 갯수 수정
             enemyList.Add(ran);
 
             switch (ran) {
@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour
                 enemyCntB++;
                 break;
                 case 2:
+                enemyCntC++;
                 break;
      
             }
