@@ -134,8 +134,9 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.3.test
+  bundleVersion: 0.4.test
   preloadedAssets:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -157,7 +158,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.DefaultCompany.
-    Standalone: com.DefaultCompany.StellaWave
+    Standalone: com.WaterDragon.StellaWave
     iPhone: com.DefaultCompany.
   buildNumber:
     Standalone: 0
