@@ -24,7 +24,7 @@ public class DataJson : MonoBehaviour
 {
     public static DataJson instance;
     public CoinData coinData;
-    private const string coinDataPath = "Asset/coinData.json";
+    private const string coinDataPath = "Assets/coinData.json";
 
     [ContextMenu("To Json Data")]
     void SaveCoinDataToJson()
@@ -78,6 +78,7 @@ public class DataJson : MonoBehaviour
     {
         string jsonData = JsonUtility.ToJson(coinData,true);
         File.WriteAllText(coinDataPath, jsonData);
+        Debug.Log("데이터가 저장되었습니다.");
     }
 
     public void ClearStage()
