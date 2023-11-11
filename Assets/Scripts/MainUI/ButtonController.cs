@@ -66,9 +66,14 @@ public class ButtonController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    public void SelectionGun()
+    public void SelectionGunA()
     {
         weaponchanger.GunA();
+        WeaponSelectionUI.SetActive(false);
+    }
+    public void SelectionGunB()
+    {
+        weaponchanger.GunB();
         WeaponSelectionUI.SetActive(false);
     }
 

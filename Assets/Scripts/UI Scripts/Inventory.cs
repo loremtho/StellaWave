@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
     private Slot[] slots; //인벤토리 슬롯들.
     private Slot[] quickslots; // 퀵슬롯들
     private bool isNotPut;
+    private WeaponChanger weaponChanger;
 
     public Slot[] GetSlots() {return slots;}
 
@@ -109,13 +110,12 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < _slots.Length; i++)
         {
-            if (_slots[i].item == null )
+            if (_slots[i].item == null)
             {
                 _slots[i].AddItem(_item, _count);
                 isNotPut = false;
                 return;
             }
-
         }
 
         isNotPut = true;
