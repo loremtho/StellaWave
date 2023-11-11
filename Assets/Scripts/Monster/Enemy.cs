@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using Redcode.Pools;
 using UnityEngine.VFX;
+using Unity.Mathematics;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour 
 {
@@ -62,6 +64,18 @@ public class Enemy : MonoBehaviour
     public GunController gunController;
     public bool isDead = false;
 
+    /////////////////////////////////////
+ 
+
+    [Header("체력")]
+    [SerializeField] Transform hpbar;
+    [SerializeField] Camera cam;
+
+    [SerializeField] private Slider healthSlider;
+
+    ///////////////////////////////////
+
+
 
     void FreezeVelocity()
     {
@@ -85,6 +99,9 @@ public class Enemy : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         currentHp = Hp;
+        
+        cam = GameObject.Find("Camera").GetComponent<Camera>();
+
     }
 
 
@@ -95,6 +112,8 @@ public class Enemy : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
+       
+
 
         //if(enemyType != Type.D)
         Invoke("ChaseStart", 1);
@@ -114,6 +133,7 @@ public class Enemy : MonoBehaviour
     {
        
         nav.SetDestination(target.position);
+        if(nav != null)
         nav.isStopped = !isChase;
         /*
         if(isDie)
@@ -129,6 +149,10 @@ public class Enemy : MonoBehaviour
             lookvec = new Vector3(h, 0, v )* 5f;
             transform.LookAt(target.position);
         }
+
+        Quaternion q_hp = Quaternion.LookRotation(hpbar.position - cam.transform.position);
+        Vector3 hp_angle = Quaternion.RotateTowards(hpbar.rotation, q_hp, 200).eulerAngles;
+        hpbar.rotation = Quaternion.Euler(0, hp_angle.y, 0);
 
     }
 
@@ -242,6 +266,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void UpdateHealth()
+    {
+        float healthPercentage = (float)currentHp / (float)Hp; // 체력 비율 계산
+        healthSlider.value = healthPercentage; // 슬라이더 업데이트
+    }
+
 
     public void TakeDamage(int damage)
     {
@@ -251,8 +281,9 @@ public class Enemy : MonoBehaviour
         gunController.hitreaction();
         bloodHit.SetActive(true);
         SoundManager.instance.PlaySE(monsterBlood);
+        UpdateHealth();
 
-         foreach(MeshRenderer mesh in meshs)
+        foreach(MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.red;
         }
