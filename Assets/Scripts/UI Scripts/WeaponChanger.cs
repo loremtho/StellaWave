@@ -12,6 +12,7 @@ public class WeaponChanger : MonoBehaviour
 
     public GunController Gun;
     public AxeController Axe;
+    private Inventory inventory; // 새로 추가
 
     public bool hasGun = false;
 
@@ -35,6 +36,10 @@ public class WeaponChanger : MonoBehaviour
                 WeaponSelectionUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                if(WeaponObject != null)
+                {
+                    inventory.Acquireltem(WeaponObject.GetComponent<ItemPickUp>().item); // 새로 추가함
+                }
                 hasGun = true;
             }
             else
