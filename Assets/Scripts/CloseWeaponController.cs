@@ -26,7 +26,7 @@ public abstract class CloseWeaponController : MonoBehaviour
 
 
 
-    protected void TryAttack()
+    public void TryAttack()
     {
         if(!Inventory.inventoryActivated)
         {

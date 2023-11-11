@@ -215,17 +215,19 @@ public class PlayerController : MonoBehaviour
             playergunActive = false;
             Playeranim.SetBool("Gunmode", false);
             //도끼 idle 애니메이션 쓸거면 추가
-            if(!axeSwingInProgress && axeobject.activeSelf)
+            if(!axeSwingInProgress && axeobject.activeSelf && isGround)
             {
+                
                 if(Input.GetButton("Fire1"))
                 {  
                  
-                    myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+                    myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | (myRigid.constraints & RigidbodyConstraints.FreezeRotation);
                     Playeranim.SetTrigger("Axemode_Swing");
                     SetDefaultMode(true);
                     axeSwingInProgress = true;
                    
                     StartCoroutine(DisableAxeSwing());
+                    
                 }
 
             }
@@ -240,13 +242,12 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisableAxeSwing()
     {
-        
-        yield return new WaitForSeconds(1.5f); // 대기
-        myRigid.constraints = RigidbodyConstraints.None;
-        myRigid.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX;
+        yield return new WaitForSeconds(1.8f); // 대기
+        myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
-        yield return new WaitForSeconds(1.0f); // 대기
+        yield return new WaitForSeconds(0.5f); // 대기
         axeSwingInProgress = false; // 후에 false로 설정
+        
     }
 
 
