@@ -11,7 +11,7 @@ public class QuickSlotController : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Image[] img_CoolTime; //퀵슬롯 쿨타임
     [SerializeField] private Transform tf_parent; //퀵슬롯의 부모 객체.
 
-    [SerializeField] private Transform tf_ItemPos; //아이템이 위치할 손 끝
+    //[SerializeField] private Transform tf_ItemPos; //아이템이 위치할 손 끝
     public static GameObject go_HandItem; // 손에 든 아이템
 
     //쿨타임 내용
@@ -32,8 +32,11 @@ public class QuickSlotController : MonoBehaviour
     [SerializeField]
     private WeaponManager theWeaponManager;
     private Animator anim;
+    [SerializeField]
     private ItemEffectDatabase itemEffectDatabase;
+    [SerializeField]
     private Item item;
+    private Slot slot;
 
     // Start is called before the first frame update
     void Start()
@@ -157,20 +160,24 @@ public class QuickSlotController : MonoBehaviour
             else if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Used)
             {
                 //ChangeHand(quickSlots[selectedSlot].item);
-                itemEffectDatabase.UseItem(item);
+                if(item != null)
+                {
+                    itemEffectDatabase.UseItem(item);
+                    quickSlots[selectedSlot].SetSlotCount(-1);
+                }
             }
             else
             {
-                ChangeHand();
+                //ChangeHand();
             }
         }
         else
         {
-            ChangeHand();
+            //ChangeHand();
         }
     }
 
-    private void ChangeHand(Item _item = null)
+    /*private void ChangeHand(Item _item = null)
     {
         StartCoroutine(theWeaponManager.ChangeWeaponCoroutine("HAND", "맨손"));
 
@@ -191,7 +198,7 @@ public class QuickSlotController : MonoBehaviour
         go_HandItem.tag = "Untagged";
         go_HandItem.layer = 9; //무기 레이어 사용
         go_HandItem.transform.SetParent(tf_ItemPos);
-    }
+    }*/
 
     public void EatItem()
     {
