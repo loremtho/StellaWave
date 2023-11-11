@@ -262,7 +262,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6645060584541019230}
   - component: {fileID: 6844635796655833926}
-  - component: {fileID: 6683915443192312792}
   - component: {fileID: 8114580439724017388}
   m_Layer: 0
   m_Name: BaseCamp
@@ -321,20 +320,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6662177435460690442}
   m_Enabled: 1
---- !u!64 &6683915443192312792
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6639030421120009092}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 51bc2f46a3d07d7408cc673acb5bccec, type: 3}
 --- !u!114 &8114580439724017388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,9 +335,9 @@ MonoBehaviour:
   BaseHPSlider: {fileID: 0}
   BaseHpTxt: {fileID: 0}
   MaxHP: 1000
-  BaseDecreaseTime: 5
-  CurBaseDecreaseTime: 1
+  CurHP: 0
   decreaseInterval: 5
+  DecreValue: 0
 --- !u!1 &6639093655455992854
 GameObject:
   m_ObjectHideFlags: 0

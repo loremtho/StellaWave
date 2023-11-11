@@ -17,6 +17,8 @@ public class GunController : MonoBehaviour
     private Boss boss;
     private  MonsterBullet monsterBullet;
 
+    public PlayerController player;
+
     private float currentFireRate;
 
     //상태변수
@@ -167,6 +169,7 @@ public class GunController : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(currentGun.damage);
+            enemy.target = player.transform;
         }
         else if(boss != null)
         {

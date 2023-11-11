@@ -40,8 +40,6 @@ public class Enemy : MonoBehaviour
 
     public GameManager gameManager;
 
-    public StatusController statusController;
-
     public NavMeshAgent nav;
 
    
@@ -61,7 +59,11 @@ public class Enemy : MonoBehaviour
     
     private string monsterBlood;
 
+    public StatusController statusController;
+
     public GunController gunController;
+
+
     public bool isDead = false;
 
     /////////////////////////////////////
@@ -112,6 +114,7 @@ public class Enemy : MonoBehaviour
         boxCollider = GetComponent<BoxCollider>();
         anim = GetComponentInChildren<Animator>();
         nav = GetComponent<NavMeshAgent>();
+        meshs = GetComponentsInChildren<MeshRenderer>();
        
 
 
@@ -131,10 +134,15 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-       
-        nav.SetDestination(target.position);
-        if(nav != null)
-        nav.isStopped = !isChase;
+        
+        if(nav.enabled)
+        {
+            nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+        }
+
+
+      
         /*
         if(isDie)
         {
@@ -264,6 +272,11 @@ public class Enemy : MonoBehaviour
         {
             statusController.DecreaseHP(100);
         }
+
+        if(other.CompareTag("BaseCamp"))
+        {
+            TakeDamage(currentHp);
+        }
     }
 
     public void UpdateHealth()
@@ -335,10 +348,10 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        nav.enabled = false;
         isDie = true;
         isChase = false;
         isAttack = false;
-        nav.enabled = false;
         boxCollider.enabled = false;
         anim.SetTrigger("Die");
         SoundManager.instance.PlaySE(monsterDie);
