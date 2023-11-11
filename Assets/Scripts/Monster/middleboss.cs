@@ -20,7 +20,7 @@ public class middleboss : Enemy
     // Update is called once per frame
     void Update()
     {
-        nav.SetDestination(target.position);
+       // nav.SetDestination(target.position);
        
         if(isDead)
         {

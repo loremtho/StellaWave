@@ -63,8 +63,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemies;
     public List<int> enemyList;
 
-    public middleboss middleboss;
-
     public int enemyCntA;
     public int enemyCntB;
     public int enemyCntC;
@@ -82,6 +80,8 @@ public class GameManager : MonoBehaviour
     public PlayerController player;
     private WeaponManager theWM;
     public BaseCamp baseCamp;
+
+    public Transform baseCamps;
 
     public GunController gunController;
 
@@ -153,14 +153,15 @@ public class GameManager : MonoBehaviour
 
             for(int i =0; i< bosscount; i++)
             {
-                //enemyCntD++; 중간보스는 일단 카운트x
+
+                enemyCntD++;
                 GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
                 Enemy enemy = instantEnemy.GetComponent<Enemy>();
-                enemy.target = player.transform;
-                middleboss = instantEnemy.GetComponent<middleboss>();
+                enemy.target = baseCamps.transform;
                 enemy.gameManager = this;
                 enemy.statusController = statusController;
                 enemy.gunController = gunController;
+           
 
             }
         
@@ -190,10 +191,11 @@ public class GameManager : MonoBehaviour
             int ranZone = Random.Range(0, 4); //몬스터 늘릴시 갯수 수정
             GameObject instantEnemy = Instantiate(enemies[enemyList[0]], enemyZone[ranZone].position, enemyZone[ranZone].rotation);
             Enemy enemy = instantEnemy.GetComponent<Enemy>();
-            enemy.target = player.transform;
+            enemy.target = baseCamps.transform;
             enemy.gameManager = this;
             enemy.statusController = statusController;
             enemy.gunController = gunController;
+          
           
             enemyList.RemoveAt(0);
             

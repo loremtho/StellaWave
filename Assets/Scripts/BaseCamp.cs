@@ -84,15 +84,15 @@ public class BaseCamp : MonoBehaviour
         gameManager.isBattle = false;
     }
 
-    /*
+    
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.CompareTag("Enemy"))
+        if(other.CompareTag("Monster"))
         {
-            BaseDamage(50f);
+            BaseDamage(100f);
         }
     }
-    */
+    
 
     public void BaseDamage(float Damage)
     {
