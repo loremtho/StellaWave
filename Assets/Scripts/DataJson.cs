@@ -57,8 +57,7 @@ public class DataJson : MonoBehaviour
 
     private void Start()
     {
-        //LoadData();
-        print(coinDataPath);
+        LoadData();
     }
 
     public void LoadData()
