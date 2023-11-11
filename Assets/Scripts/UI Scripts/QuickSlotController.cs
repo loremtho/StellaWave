@@ -32,6 +32,8 @@ public class QuickSlotController : MonoBehaviour
     [SerializeField]
     private WeaponManager theWeaponManager;
     private Animator anim;
+    private ItemEffectDatabase itemEffectDatabase;
+    private Item item;
 
     // Start is called before the first frame update
     void Start()
@@ -154,7 +156,8 @@ public class QuickSlotController : MonoBehaviour
             }
             else if(quickSlots[selectedSlot].item.itemType == Item.ItemType.Used)
             {
-                ChangeHand(quickSlots[selectedSlot].item);
+                //ChangeHand(quickSlots[selectedSlot].item);
+                itemEffectDatabase.UseItem(item);
             }
             else
             {

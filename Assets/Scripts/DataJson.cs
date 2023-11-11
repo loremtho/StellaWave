@@ -14,40 +14,78 @@ using System.IO;
 //3. 불러온 데이터를 사용
 
 [System.Serializable]
-public class StellaData
+public class CoinData
 {
-    public int StellaCoin;
-    public string Something;
-    public int Something2;
+    public int Coin;
+    public int Medal;
 }
 
 public class DataJson : MonoBehaviour
 {
     public static DataJson instance;
-    StellaData stellaData = new StellaData();
+    public CoinData coinData;
+    private const string coinDataPath = "Assets/coinData.json";
 
-    string path;
-    string filename = "save";
+    [ContextMenu("To Json Data")]
+    void SaveCoinDataToJson()
+    {
+        string jsonData = JsonUtility.ToJson(coinData,true);
+        //string path = Path.Combine(Application.dataPath, "coinData.json");
+        File.WriteAllText(coinDataPath, jsonData);
+    }
 
-    private void Awake() //싱글톤
+    [ContextMenu("From Json Data")]
+    void LoadCoinDataFromJson()
+    {
+        //string path = Path.Combine(Application.dataPath, "coinData.json");
+        string jsonData = File.ReadAllText(coinDataPath);
+        coinData = JsonUtility.FromJson<CoinData>(jsonData);
+    }
+
+    private void Awake() 
     {
         if(instance == null)
         {
             instance = this;
-        }    
-        else if(instance != null)
+        }
+        else if(instance != this)
         {
             Destroy(instance.gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-
-        path = Application.persistentDataPath + "/";
     }
 
-    private void Start() {
-        string data  = JsonUtility.ToJson(stellaData);
+    private void Start()
+    {
+        LoadData();
+    }
 
-        File.WriteAllText(path + filename, data);
+    public void LoadData()
+    {
+        if(File.Exists(coinDataPath))
+        {
+            string jsonData = File.ReadAllText(coinDataPath);
+            coinData = JsonUtility.FromJson<CoinData>(jsonData);
+        }
+        else //파일이 없을 경우 초기화
+        {   
+            coinData = new CoinData();
+            SaveData();
+        }
+    }
+
+    public void SaveData()
+    {
+        string jsonData = JsonUtility.ToJson(coinData,true);
+        File.WriteAllText(coinDataPath, jsonData);
+        Debug.Log("데이터가 저장되었습니다.");
+    }
+
+    public void ClearStage()
+    {
+        coinData.Coin += 200;
+        SaveData();
+        Debug.Log("스테이지 클리어! 코인 : " + coinData.Coin);
     }
 }
 
