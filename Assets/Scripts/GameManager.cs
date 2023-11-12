@@ -278,6 +278,8 @@ public class GameManager : MonoBehaviour
         if(stagecount == 6) 
         {
             buttonController.inEnding();
+            StartZone.SetActive(false);
+
         }
    
     }
