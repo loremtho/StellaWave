@@ -222,15 +222,16 @@ MonoBehaviour:
   anim: {fileID: 2799247705008336252}
   isChase: 0
   gameManager: {fileID: 0}
-  statusController: {fileID: 0}
   nav: {fileID: 0}
   Hp: 250
   monsterAtt: MonsterAtt
   monsterDie: MonsterDie
   monsterBlood: MonsterBlood
+  statusController: {fileID: 0}
   gunController: {fileID: 0}
   isDead: 0
   hpbar: {fileID: 680120169}
+  hpslider: {fileID: 680120168}
   cam: {fileID: 0}
   healthSlider: {fileID: 1243779517}
 --- !u!1 &5256287375934151459
@@ -364,6 +365,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3048936524980899526, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3048936524980899527, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -450,11 +455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3048936526457762317, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3048936526457762317, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3048936526564560915, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
       propertyPath: m_TargetGraphic
@@ -462,6 +467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
+--- !u!1 &680120168 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3048936524980899526, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}
+  m_PrefabInstance: {fileID: 3048936525660848558}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &680120169 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3048936524980899527, guid: f9c8a843eb75a404d88a4f2e9ee3602b, type: 3}

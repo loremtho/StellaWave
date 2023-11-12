@@ -169,7 +169,7 @@ public class GunController : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(currentGun.damage);
-            enemy.target = player.transform;
+            
         }
         else if(boss != null)
         {

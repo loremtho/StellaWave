@@ -71,6 +71,7 @@ public class Enemy : MonoBehaviour
 
     [Header("체력")]
     [SerializeField] Transform hpbar;
+    public GameObject hpslider;
     [SerializeField] Camera cam;
 
     [SerializeField] private Slider healthSlider;
@@ -288,6 +289,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        hpslider.SetActive(true);
         currentHp -= damage;
         isChase = false;
         player.AddHitScore(20);
@@ -295,6 +297,7 @@ public class Enemy : MonoBehaviour
         bloodHit.SetActive(true);
         SoundManager.instance.PlaySE(monsterBlood);
         UpdateHealth();
+        target = player.transform;
 
         foreach(MeshRenderer mesh in meshs)
         {
