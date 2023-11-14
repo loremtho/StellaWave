@@ -230,6 +230,22 @@ public class PlayerController : MonoBehaviour
                     
                 }
 
+                if(hitscore == 0)
+                {
+                    if(Input.GetKey(KeyCode.Q))
+                    {
+                        myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | (myRigid.constraints & RigidbodyConstraints.FreezeRotation);
+                        //이펙트 + 애니메이션 적용  
+                        Playeranim.SetTrigger("sword_skills");
+                        StartCoroutine(DisableAxeSkillSwing());
+
+                        axeSwingInProgress = true;
+
+
+
+                    }
+                }
+
             }
         }
         else
@@ -243,6 +259,16 @@ public class PlayerController : MonoBehaviour
     private IEnumerator DisableAxeSwing()
     {
         yield return new WaitForSeconds(1.8f); // 대기
+        myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
+
+        yield return new WaitForSeconds(0.5f); // 대기
+        axeSwingInProgress = false; // 후에 false로 설정
+        
+    }
+
+    private IEnumerator DisableAxeSkillSwing()
+    {
+        yield return new WaitForSeconds(3f); // 대기
         myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
         yield return new WaitForSeconds(0.5f); // 대기
@@ -420,7 +446,7 @@ public class PlayerController : MonoBehaviour
         } 
 
         Playeranim.SetTrigger("Jump");   
-        theStatusController.DecreaseStamina(100);
+        theStatusController.DecreaseStamina(0);
         myRigid.velocity = transform.up * jumpForce;
 
     
@@ -445,7 +471,7 @@ public class PlayerController : MonoBehaviour
             Playeranim.SetBool("Player_Run", true);
           
         }
-        theStatusController.DecreaseStamina(10);
+        theStatusController.DecreaseStamina(0);
         applySpeed = runSpeed;
        
         }

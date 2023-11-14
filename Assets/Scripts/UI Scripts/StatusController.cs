@@ -88,7 +88,7 @@ public class StatusController : MonoBehaviour
     {
         currentHp = hp;
         currentDp = dp;
-        currentSp = sp;
+        //currentSp = sp;
         /*currentHungry = hungry;
         currentThirsty = thirsty;
         currentSatisfy= satisfy;*/
@@ -99,8 +99,8 @@ public class StatusController : MonoBehaviour
     {
         //Hungry();
         //Thirsty();
-        SPRechargeTime();
-        SPRecover();
+        //SPRechargeTime();
+        //SPRecover();
         GaugeUpdate();
         //BarValue();
     }
@@ -177,11 +177,11 @@ public class StatusController : MonoBehaviour
     {
         
         images_Gauge[HP].fillAmount = (float)currentHp / hp;
-        images_Gauge[SP].fillAmount = (float)currentSp / sp;
+       // images_Gauge[SP].fillAmount = (float)currentSp / sp;
         images_Gauge[DP].fillAmount = (float)currentDp / dp;
         hpvalue.text = currentHp.ToString();
         dpvalue.text = currentDp.ToString();
-        spvalue.text = currentSp.ToString();
+       // spvalue.text = currentSp.ToString();
         /*images_Gauge[HUNGRY].fillAmount = (float)currentHungry / hungry;
         images_Gauge[THIRSTY].fillAmount = (float)currentThirsty / thirsty;
         images_Gauge[SATISFY].fillAmount = (float)currentSatisfy / satisfy;*/
