@@ -43,7 +43,7 @@ public class AxeController : CloseWeaponController
                 {
                     hitlnfo.transform.GetComponent<Battery>().Mining();
                 }
-                else if(hitlnfo.transform.tag == "Twig")
+                else if(hitlnfo.transform.tag == "Battery")
                 {
                     hitlnfo.transform.GetComponent<Twig>().Damage(this.transform);                   
                 }

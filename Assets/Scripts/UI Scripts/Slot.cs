@@ -28,6 +28,7 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     private RectTransform quickSlotBaseRect; //퀵슬롯의 영역.
 
     private InputNumber theInputNumber;
+    private WeaponChanger weaponChanger;
     
 
 
