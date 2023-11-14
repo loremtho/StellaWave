@@ -36,10 +36,12 @@ public class WeaponChanger : MonoBehaviour
                 WeaponSelectionUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-                if(WeaponObject != null)
+                /*
+                if(WeaponObject != null) 오류 발생
                 {
                     inventory.Acquireltem(WeaponObject.GetComponent<ItemPickUp>().item); // 새로 추가함
                 }
+                */
                 hasGun = true;
             }
             else
@@ -91,6 +93,7 @@ public class WeaponChanger : MonoBehaviour
         Transform playerWeapon = player.transform.FindDeepChild("Axe");
         if (playerWeapon != null)
         {
+           
             GameObject WeaponObject = playerWeapon.gameObject;
             if (!WeaponObject.activeSelf)
             {
@@ -143,6 +146,7 @@ public class WeaponChanger : MonoBehaviour
         {
             currentWeapon.gameObject.SetActive(false);
         }
+        
     
         // 또는 Axe의 경우
         currentWeapon = player.transform.FindDeepChild("Axe");

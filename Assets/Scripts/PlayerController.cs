@@ -4,6 +4,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -108,6 +109,13 @@ public class PlayerController : MonoBehaviour
 
     private float earlyspeed;
 
+    public int needskillpoint;
+
+    public GameObject swordskilleffect;
+
+    [SerializeField] private Slider SkillSlider;
+
+
     
 
     public void AddScore(int points) //플레이어 점수 추가
@@ -117,12 +125,21 @@ public class PlayerController : MonoBehaviour
 
     public void AddHitScore(int points) //플레이어 점수 추가
     {
-        hitscore += points;
+        if(hitscore != needskillpoint)
+        {
+            hitscore += points;
+        }
     }
     
        public void AddKillcount(int points) //플레이어 점수 추가
     {
         killcount += points;
+    }
+
+    public void SkillUpdate()
+    {
+        float SkillPercentage = (float)hitscore/(float)needskillpoint ; // 비율 계산
+        SkillSlider.value = SkillPercentage;
     }
     
 
@@ -141,6 +158,8 @@ public class PlayerController : MonoBehaviour
         earlyspeed = applySpeed;
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
+        hitscore = 0;
+     
     }
     
     void FreezeRotation()
@@ -164,6 +183,7 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryCrrouch();
         Move();
+        SkillUpdate();
         if(!Inventory.inventoryActivated)
         {
             CameraRotation();
@@ -230,14 +250,16 @@ public class PlayerController : MonoBehaviour
                     
                 }
 
-                if(hitscore == 0)
+                if(hitscore == 100)
                 {
                     if(Input.GetKey(KeyCode.Q))
                     {
                         myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | (myRigid.constraints & RigidbodyConstraints.FreezeRotation);
                         //이펙트 + 애니메이션 적용  
                         Playeranim.SetTrigger("sword_skills");
+                        swordskilleffect.SetActive(true);
                         StartCoroutine(DisableAxeSkillSwing());
+                        hitscore = 0;
 
                         axeSwingInProgress = true;
 
@@ -272,6 +294,7 @@ public class PlayerController : MonoBehaviour
         myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
         yield return new WaitForSeconds(0.5f); // 대기
+        swordskilleffect.SetActive(false);
         axeSwingInProgress = false; // 후에 false로 설정
         
     }

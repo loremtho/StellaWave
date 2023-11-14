@@ -102,7 +102,6 @@ public class Enemy : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         currentHp = Hp;
-        
         cam = GameObject.Find("Camera").GetComponent<Camera>();
 
     }
@@ -292,7 +291,7 @@ public class Enemy : MonoBehaviour
         hpslider.SetActive(true);
         currentHp -= damage;
         isChase = false;
-        player.AddHitScore(20);
+        player.AddHitScore(1);
         gunController.hitreaction();
         bloodHit.SetActive(true);
         SoundManager.instance.PlaySE(monsterBlood);
