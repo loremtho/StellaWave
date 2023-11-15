@@ -229,7 +229,8 @@ public class Boss : MonoBehaviour
        
         //player.AddHitScore(20);
         gunController.hitreaction();
-        if (currentHp < 0)
+
+        if (currentHp <= 0)
         {
             Die();
         }
