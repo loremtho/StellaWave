@@ -183,7 +183,12 @@ public class PlayerController : MonoBehaviour
         TryRun();
         TryCrrouch();
         Move();
-        SkillUpdate();
+        if(SkillSlider != null)
+        {
+            SkillUpdate();
+
+        }
+       
         if(!Inventory.inventoryActivated)
         {
             CameraRotation();

@@ -154,12 +154,12 @@ public class BossAtt : Boss
         StartCoroutine(Think());
     }
 
-      IEnumerator Dive() //패턴 추가 시 늘리기
+      IEnumerator Dive() //플레이어 근처 순간이동
     {
          Vector3 teleportPosition = target.position + Vector3.forward *10f; // 단위만큼 이동
         isLook = false;
         nav.isStopped = false;
-        boxCollider.enabled = false;
+        //boxCollider.enabled = false;
         nav.Warp(teleportPosition);
          
         isLook = true; 
