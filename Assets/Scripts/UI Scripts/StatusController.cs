@@ -99,8 +99,8 @@ public class StatusController : MonoBehaviour
     {
         //Hungry();
         //Thirsty();
-        //SPRechargeTime();
-        //SPRecover();
+        SPRechargeTime();
+        SPRecover();
         GaugeUpdate();
         //BarValue();
     }

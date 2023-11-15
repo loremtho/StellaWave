@@ -29,6 +29,7 @@ public class WeaponChanger : MonoBehaviour
             if (!WeaponObject.activeSelf)
             {
                 DeactivateCurrentWeapon();
+
                 Gun.GunMounting();
                 theWM.SetCurrentWeaponType("Rifle");
                 WeaponObject.SetActive(true);
@@ -139,6 +140,8 @@ public class WeaponChanger : MonoBehaviour
         if (currentWeapon != null)
         {
             currentWeapon.gameObject.SetActive(false);
+            Debug.Log("SciFi Assault deactivated");
+
         }
 
         currentWeapon = player.transform.FindDeepChild("Sci fi SMG");
@@ -153,6 +156,7 @@ public class WeaponChanger : MonoBehaviour
         if (currentWeapon != null)
         {
             currentWeapon.gameObject.SetActive(false);
+            Debug.Log("SciFi Assault deactivated");
         }
 
         currentWeapon = player.transform.FindDeepChild("Sword");
@@ -160,7 +164,8 @@ public class WeaponChanger : MonoBehaviour
         {
             currentWeapon.gameObject.SetActive(false);
         }
+    }
 } 
 
     
-}
+

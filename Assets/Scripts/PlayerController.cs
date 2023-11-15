@@ -186,7 +186,6 @@ public class PlayerController : MonoBehaviour
         if(SkillSlider != null)
         {
             SkillUpdate();
-
         }
        
         if(!Inventory.inventoryActivated)
@@ -255,7 +254,7 @@ public class PlayerController : MonoBehaviour
                     
                 }
 
-                if(hitscore == 100)
+                if(hitscore == needskillpoint)
                 {
                     if(Input.GetKey(KeyCode.Q))
                     {
@@ -267,8 +266,6 @@ public class PlayerController : MonoBehaviour
                         hitscore = 0;
 
                         axeSwingInProgress = true;
-
-
 
                     }
                 }
