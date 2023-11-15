@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 12d230e5a6c611849a1700defa0f5f9c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: a5bbc267349c7ab4492aa7f2f49f9dfe, type: 2}
 --- !u!1001 &315557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10096,7 +10096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlePrefab: {fileID: 5239836718748980335, guid: 310e4f1ff7f044646b678e64660fc6d2, type: 3}
   towerName: 123
-  range: 10000
+  range: 50
   damage: 100
   rateOfAccurasy: 1
   rateOfFire: 2
@@ -99579,7 +99579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_LocalRotation.x
@@ -99587,7 +99587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_LocalRotation.z
@@ -99599,7 +99599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
