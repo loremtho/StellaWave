@@ -307,10 +307,10 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisableAxeSkillSwing()
     {
-        yield return new WaitForSeconds(3f); // 대기
+        yield return new WaitForSeconds(2.4f); // 대기
         myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
-        yield return new WaitForSeconds(0.5f); // 대기
+        yield return new WaitForSeconds(0.1f); // 대기
         swordskilleffect.SetActive(false);
         swordslasheffect.SetActive(false);
 
