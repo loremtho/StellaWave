@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     public Transform gunPivot; //총 배치의 기준점
     public Transform axePivot; //도끼 배치의 기준점
-    public Transform pelvisTransform; //플레이어 상체
+   
     //public Transform rightHandMount;  //오른손 위치
     //스피드 조정
     [SerializeField]    
@@ -626,7 +626,7 @@ public class PlayerController : MonoBehaviour
 
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
 
-        pelvisTransform.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
+      
         gunPivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         axePivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         //gunPivot.position = rightHandMount.position;
