@@ -74,16 +74,13 @@ public class PlayerShooter : MonoBehaviour
         //playerAnimator.SetIKPosition(AvatarIKGoal.LeftHand,leftHandMount.position);
         //playerAnimator.SetIKRotation(AvatarIKGoal.LeftHand,leftHandMount.rotation);
 
-
         if(playerController.playergun)
         {
             playerAnimator.SetIKPosition(AvatarIKGoal.RightHand,rightHandMount.position);
-            playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand,1.0f);
-            playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand,1.0f);
+            //playerAnimator.SetIKPositionWeight(AvatarIKGoal.RightHand,1.0f);
+            //playerAnimator.SetIKRotationWeight(AvatarIKGoal.RightHand,1.0f);
 
         }
-
-       
        
      
         //playerAnimator.SetIKRotation(AvatarIKGoal.RightHand,rightHandMount.rotation);

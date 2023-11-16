@@ -38,7 +38,7 @@ public class ButtonController : MonoBehaviour
 
     public void inGame()
     {
-        LoadingSceneManager.LoadScene("TestScene");
+        LoadingSceneManager.LoadScene("Stage1");
     }
 
     public void inShop()
@@ -107,7 +107,7 @@ public class ButtonController : MonoBehaviour
 
     public void RestartBtn()
     {
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Stage1");
     }
     
 }
