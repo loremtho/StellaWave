@@ -77,6 +77,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Slider healthSlider;
 
     ///////////////////////////////////
+    
+    private bool hasBeenHit = false;
 
 
 
@@ -277,6 +279,21 @@ public class Enemy : MonoBehaviour
         {
             TakeDamage(currentHp);
         }
+
+        if(other.CompareTag("Skill") && !hasBeenHit)
+        {
+            hasBeenHit = true;
+            TakeDamage(player.SwordslasheDamege);
+            StartCoroutine(ResetHitStatusAfterDelay(0.5f));
+        }
+    }
+
+    IEnumerator ResetHitStatusAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 피격 상태 초기화
+        hasBeenHit = false;
     }
 
     public void UpdateHealth()

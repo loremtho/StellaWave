@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 {
     public Transform gunPivot; //총 배치의 기준점
     public Transform axePivot; //도끼 배치의 기준점
+    public Transform pelvisTransform; //플레이어 상체
     //public Transform rightHandMount;  //오른손 위치
     //스피드 조정
     [SerializeField]    
@@ -100,6 +101,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject axeobject; //도끼 활성화 확인
 
+    public GameObject swordobject; // 검 활성화 확인
+
     public int score = 0;
     public int hitscore = 0;
     public int killcount = 0;
@@ -120,6 +123,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Slider SkillSlider;
 
     public Transform effectTransform; //슬레쉬 이펙트 초기 위치
+
+    public int SwordslasheDamege;
 
 
     public void AddScore(int points) //플레이어 점수 추가
@@ -308,6 +313,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f); // 대기
         swordskilleffect.SetActive(false);
         swordslasheffect.SetActive(false);
+
         axeSwingInProgress = false; // 후에 false로 설정
         
     }
@@ -326,8 +332,41 @@ public class PlayerController : MonoBehaviour
             playeraxe = false;
             playeraxeActice = false;
 
+            if(!axeSwingInProgress && isGround)
+            {
+                if(hitscore == needskillpoint)
+                {
+                    if(Input.GetKey(KeyCode.Q))
+                    {
+                        gunObject.SetActive(false);
+                        swordobject.SetActive(true);
+
+                        myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | (myRigid.constraints & RigidbodyConstraints.FreezeRotation);
+                          //이펙트 + 애니메이션 적용  
+                        Playeranim.SetTrigger("sword_skills");
+                        swordskilleffect.SetActive(true);
+    
+                        Vector3 playerCameraForward = effectTransform.forward;
+                        swordslasheffect.transform.position = effectTransform.position;
+                        swordslasheffect.transform.forward = playerCameraForward;
+                        swordslasheffect.SetActive(true);
+                        swordslasheffect.GetComponent<Rigidbody>().velocity = transform.forward * slasheeffectSpeed;
+                        Playeranim.SetBool("Idle", true);
+
+                        StartCoroutine(DisableGunSkillSwing());
+                        hitscore = 0;
+                        axeSwingInProgress = true;
+
+                    }
+                }
+
+
+            }
             Playeranim.SetBool("Gunmode", true);
             Playeranim.SetBool("Idle", false);
+
+
+
         }
         else
         {
@@ -335,6 +374,22 @@ public class PlayerController : MonoBehaviour
              
         }
     }
+
+     private IEnumerator DisableGunSkillSwing() //검스킬 후처리
+    {
+        
+        yield return new WaitForSeconds(2.4f); // 대기
+        swordobject.SetActive(false);
+        myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
+        yield return new WaitForSeconds(0.5f); // 대기
+       
+        swordskilleffect.SetActive(false);
+        swordslasheffect.SetActive(false);
+        gunObject.SetActive(true);
+        Playeranim.SetBool("Gunmode", true);
+        axeSwingInProgress = false; // 후에 false로 설정
+    }
+
 
     private void SetDefaultMode(bool enableDefaultMode) //기본 모드
     {
@@ -408,7 +463,7 @@ public class PlayerController : MonoBehaviour
      
     }
 
-    private void TryRun() //달리기 시도
+    public void TryRun() //달리기 시도
     {
         if(Input.GetKey(KeyCode.LeftShift) && theStatusController.GetCurrentSP() > 0)
         {
@@ -418,10 +473,6 @@ public class PlayerController : MonoBehaviour
             {
                 gunObject.SetActive(false);
             }
-            /*else if(playergunActive)
-            {
-                gunObject[1].SetActive(false);
-            }*/
             else if(playeraxeActice)
             {
                 axeobject.SetActive(false);
@@ -439,12 +490,6 @@ public class PlayerController : MonoBehaviour
                 gunObject.SetActive(true);
                
             }
-            /*else if(playergunActive)
-            {
-                SetGunMode(true);
-                gunObject[1].SetActive(true);
-               
-            }*/
             else if(playeraxeActice)
             {
                 SetAxeMode(true);
@@ -525,69 +570,6 @@ public class PlayerController : MonoBehaviour
         }
      
     }
-
-/*
-    private void Move() //플레이어 이동
-    {
-        if(playergun)
-        {
-            Playeranim.SetBool("Gunmode_walk" , true);
-        }
-        else
-        {
-            Playeranim.SetBool("Walk" , true);
-        }
-      
-        float _moveDirX = Input.GetAxisRaw("Horizontal");
-        float _moveDirZ = Input.GetAxisRaw("Vertical");
-
-        Vector3 _moveHorizontal = transform.right* _moveDirX; 
-        Vector3 _moveVertical = transform.forward* _moveDirZ;
-
-        Vector3 _velocity = (_moveHorizontal + _moveVertical).normalized *applySpeed; 
-
-        myRigid.MovePosition(transform.position + _velocity * Time.deltaTime);
-    } 
-     private void MoveCheck()
-    {
-        if (!isRun && !isCrouch && isGround)
-        {
-            if (Vector3.Distance(lastPos, transform.position) >= 0.01f)
-            {
-                isWalk = true;
-                if(isGround)
-                {
-                   
-                }
-            
-            }
-            else
-            {
-                isWalk = false;
-           
-                 
-            }
-
-            if(!isWalk && isGround)
-            {
-                if(playergun)
-                 {
-                    Playeranim.SetBool("Gunmode_walk" , false);
-                }
-                else
-                {
-                    Playeranim.SetBool("Walk" , false);
-                }
-             }
-             
-
-            theCrosshair.WalkingAnimation(isWalk);
-            lastPos = transform.position;
-        }
-       
-    }
-*/
-
     private void Move() //신규 이동
     {
         float _moveDirX = Input.GetAxisRaw("Horizontal");
@@ -644,9 +626,12 @@ public class PlayerController : MonoBehaviour
 
         theCamera.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
 
+        pelvisTransform.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         gunPivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         axePivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         //gunPivot.position = rightHandMount.position;
+
+        Playeranim.SetFloat("CameraRotationX", currentCameraRotationX);
     }
 
     public void damageprocess()

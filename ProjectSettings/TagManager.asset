@@ -19,6 +19,7 @@ TagManager:
   - CinemachineTarget
   - EnemyBullet
   - Attack
+  - Skill
   layers:
   - Default
   - TransparentFX
@@ -41,7 +42,7 @@ TagManager:
   - Invisible
   - Monster
   - EnemyBullet
-  - 
+  - Skill
   - 
   - 
   - 
