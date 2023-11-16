@@ -113,10 +113,14 @@ public class PlayerController : MonoBehaviour
 
     public GameObject swordskilleffect;
 
+    public GameObject swordslasheffect;
+
+    public float slasheeffectSpeed;
+
     [SerializeField] private Slider SkillSlider;
 
+    public Transform playerTransform; //슬레쉬 이펙트 초기 위치
 
-    
 
     public void AddScore(int points) //플레이어 점수 추가
     {
@@ -262,9 +266,15 @@ public class PlayerController : MonoBehaviour
                         //이펙트 + 애니메이션 적용  
                         Playeranim.SetTrigger("sword_skills");
                         swordskilleffect.SetActive(true);
+    
+                        Vector3 playerCameraForward = theCamera.transform.forward;
+                        swordslasheffect.transform.position = playerTransform.position;
+                        swordslasheffect.transform.forward = playerCameraForward;
+                        swordslasheffect.SetActive(true);
+                        swordslasheffect.GetComponent<Rigidbody>().velocity = transform.forward * slasheeffectSpeed;
+
                         StartCoroutine(DisableAxeSkillSwing());
                         hitscore = 0;
-
                         axeSwingInProgress = true;
 
                     }
@@ -297,6 +307,8 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f); // 대기
         swordskilleffect.SetActive(false);
+
+        swordslasheffect.SetActive(false);
         axeSwingInProgress = false; // 후에 false로 설정
         
     }
@@ -623,7 +635,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void CameraRotation() //카메라 시점 설정
+    public void CameraRotation() //카메라 시점 설정
     {
         float _xRotation = Input.GetAxisRaw("Mouse Y");
         float _cameraRotationX = _xRotation * lookSensitivity;
