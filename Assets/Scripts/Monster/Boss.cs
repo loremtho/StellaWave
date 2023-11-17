@@ -257,8 +257,13 @@ public class Boss : MonoBehaviour
         isChase = false;
         isAttack = false;
         nav.enabled = false;
+
+        
         boxCollider.enabled = false;
-        lasertw.SetActive(false);
+        if(lasertw != null)
+        {
+            lasertw.SetActive(false);
+        }
         anim.SetTrigger("Die");
         //SoundManager.instance.PlaySE(monsterDie);
         StartCoroutine(Diecheck(10));
