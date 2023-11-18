@@ -63,6 +63,8 @@ public class CraftManual : MonoBehaviour
     //�ʿ��� ������Ʈ
     private Inventory theInventory;
 
+     private QuickSlotController theQuickSlot;
+
     private void Start()
     {
         theInventory = FindObjectOfType<Inventory>();
