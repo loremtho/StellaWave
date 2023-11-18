@@ -631,7 +631,7 @@ public class PlayerController : MonoBehaviour
         axePivot.rotation = Quaternion.Euler(currentCameraRotationX, transform.eulerAngles.y, 0f);
         //gunPivot.position = rightHandMount.position;
 
-        Playeranim.SetFloat("CameraRotationX", currentCameraRotationX);
+        //Playeranim.SetFloat("CameraRotationX", currentCameraRotationX);
     }
 
     public void damageprocess()
