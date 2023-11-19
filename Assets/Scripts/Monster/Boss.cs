@@ -61,6 +61,8 @@ public class Boss : MonoBehaviour
 
     [SerializeField] private Slider healthSlider;
 
+    private bool hasBeenHit = false;
+
 
     void FreezeVelocity()
     {
@@ -215,8 +217,28 @@ public class Boss : MonoBehaviour
     {
         if (other.CompareTag("Player") && isAttack) // 플레이어 태그와 공격 중인지 확인
         {
-            statusController.DecreaseHP(20);
+            statusController.DecreaseHP(100);
         }
+
+        if(other.CompareTag("BaseCamp"))
+        {
+            TakeDamage(currentHp);
+        }
+
+        if(other.CompareTag("Skill") && !hasBeenHit)
+        {
+            hasBeenHit = true;
+            TakeDamage(player.SwordslasheDamege);
+            StartCoroutine(ResetHitStatusAfterDelay(0.5f));
+        }
+    }
+
+    IEnumerator ResetHitStatusAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 피격 상태 초기화
+        hasBeenHit = false;
     }
 
 
@@ -227,7 +249,7 @@ public class Boss : MonoBehaviour
         Debug.Log(currentHp);
         UpdateHealth();
 
-        foreach(MeshRenderer mesh in meshs)
+        /*foreach(MeshRenderer mesh in meshs)
         {
             mesh.material.color = Color.red;
         }
@@ -239,8 +261,7 @@ public class Boss : MonoBehaviour
                 mesh.material.color = Color.white;
             }
 
-        }
-       
+        }*/
         //player.AddHitScore(20);
         gunController.hitreaction();
 
@@ -248,10 +269,6 @@ public class Boss : MonoBehaviour
         {
             Die();
         }
-
-        
-        
-   
     }
 
     private IEnumerator ResumeChaseAfterDelay(float delay)
