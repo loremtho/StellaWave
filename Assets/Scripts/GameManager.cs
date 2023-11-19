@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public static class TransformExtensions //플레이어 자식 오브젝트 탐색 클래스
@@ -48,10 +49,10 @@ public class GameManager : MonoBehaviour
     float timer;
     //클리어 캔버스 UI*****************
 
-    public Text LastscoreTxt;
-    public Text LastplayTimeTxt;
-    public Text LasthitscoreTxt;
-    public Text LastkillcountTxt;
+    public TextMeshProUGUI LastscoreTxt;
+    public TextMeshProUGUI LastplayTimeTxt;
+    public TextMeshProUGUI LasthitscoreTxt;
+    public TextMeshProUGUI LastkillcountTxt;
     public float LastplayTime;
 
     //********************************
