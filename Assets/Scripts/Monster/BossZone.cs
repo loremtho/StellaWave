@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class BossZone : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene("BossStage1");
