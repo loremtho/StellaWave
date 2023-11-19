@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Redcode.Pools;
 using Unity.Mathematics;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour 
 {
@@ -53,6 +54,12 @@ public class Boss : MonoBehaviour
     public MeshRenderer[] meshs;
 
     public bool isDead = false;
+
+    [Header("체력")]
+    [SerializeField] Transform hpbar;
+    public GameObject hpslider;
+
+    [SerializeField] private Slider healthSlider;
 
 
     void FreezeVelocity()
@@ -112,6 +119,12 @@ public class Boss : MonoBehaviour
             nav.isStopped = !isChase;
         }
 
+    }
+
+    public void UpdateHealth()
+    {
+        float healthPercentage = (float)currentHp / (float)Hp; // 체력 비율 계산
+        healthSlider.value = healthPercentage; // 슬라이더 업데이트
     }
 
     void Targerting()
@@ -212,6 +225,7 @@ public class Boss : MonoBehaviour
         currentHp -= damage;
         isChase = false;
         Debug.Log(currentHp);
+        UpdateHealth();
 
         foreach(MeshRenderer mesh in meshs)
         {
