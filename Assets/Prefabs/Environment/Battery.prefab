@@ -67,7 +67,7 @@ MonoBehaviour:
   healingAmount: 20
   go_batt: {fileID: 4502482271190339752}
   go_effect_prefabs: {fileID: 6363311530332480479, guid: ebbd252e1459b99489d70b192572b3fc, type: 3}
-  go_battery_item_prefab: {fileID: 7945449302663561696, guid: 84ca12ca49e6def46bb06a781e7da8d9, type: 3}
+  go_battery_item_prefab: {fileID: 7390268276008785902, guid: 1af702199690e9b438999caecd22a184, type: 3}
   count: 5
   strike_Sound: axe_strike
   destroy_Sound: Rock_destroy
