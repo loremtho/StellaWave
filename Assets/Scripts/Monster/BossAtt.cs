@@ -156,7 +156,7 @@ public class BossAtt : Boss
 
       IEnumerator Dive() //플레이어 근처 순간이동
     {
-         Vector3 teleportPosition = target.position + Vector3.forward *10f; // 단위만큼 이동
+         Vector3 teleportPosition = target.position + Vector3.forward *10f + Vector3.up * 8f; // 단위만큼 이동
         isLook = false;
         nav.isStopped = false;
         //boxCollider.enabled = false;
