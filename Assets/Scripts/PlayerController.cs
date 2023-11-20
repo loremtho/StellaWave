@@ -126,6 +126,9 @@ public class PlayerController : MonoBehaviour
 
     public int SwordslasheDamege;
 
+    public CraftManual craftManual;
+
+
 
     public void AddScore(int points) //플레이어 점수 추가
     {
@@ -248,7 +251,7 @@ public class PlayerController : MonoBehaviour
             playergunActive = false;
             Playeranim.SetBool("Gunmode", false);
             //도끼 idle 애니메이션 쓸거면 추가
-            if(!axeSwingInProgress && axeobject.activeSelf && isGround)
+            if(!axeSwingInProgress && axeobject.activeSelf && isGround &&!craftManual.Stopattak)
             {
                 
                 if(Input.GetButton("Fire1"))
