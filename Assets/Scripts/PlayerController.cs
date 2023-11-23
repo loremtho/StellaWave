@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
         IsGround();
         TryJump();
         TryRun();
-        TryCrrouch();
+        //TryCrrouch();
         Move();
         if(SkillSlider != null)
         {
