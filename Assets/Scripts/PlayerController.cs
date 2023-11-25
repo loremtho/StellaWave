@@ -30,6 +30,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
+    [SerializeField]
+    
+    private string Skillsound;
+
+    [SerializeField]
+    private string Skillvoicesound;
+
+
 
     //상태 변수
     private bool isWalk = false;
@@ -289,7 +297,8 @@ public class PlayerController : MonoBehaviour
                         //이펙트 + 애니메이션 적용  
                         Playeranim.SetTrigger("sword_skills");
                         swordskilleffect.SetActive(true);
-    
+                        SoundManager.instance.PlaySE(Skillsound);
+                        SoundManager.instance.PlaySE(Skillvoicesound);
                         Vector3 playerCameraForward = effectTransform.forward;
                         swordslasheffect.transform.position = effectTransform.position;
                         swordslasheffect.transform.forward = playerCameraForward;
@@ -351,7 +360,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisableAxeSkillSwing()
     {
-        yield return new WaitForSeconds(2.4f); // 대기
+        yield return new WaitForSeconds(2.6f); // 대기
         myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
         yield return new WaitForSeconds(0.1f); // 대기
@@ -389,7 +398,8 @@ public class PlayerController : MonoBehaviour
                           //이펙트 + 애니메이션 적용  
                         Playeranim.SetTrigger("sword_skills");
                         swordskilleffect.SetActive(true);
-    
+                        SoundManager.instance.PlaySE(Skillsound);
+                        SoundManager.instance.PlaySE(Skillvoicesound);
                         Vector3 playerCameraForward = effectTransform.forward;
                         swordslasheffect.transform.position = effectTransform.position;
                         swordslasheffect.transform.forward = playerCameraForward;
