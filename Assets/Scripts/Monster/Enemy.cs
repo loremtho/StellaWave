@@ -80,6 +80,8 @@ public class Enemy : MonoBehaviour
     
     private bool hasBeenHit = false;
 
+    private bool hasnomarHit = false;
+
 
 
     void FreezeVelocity()
@@ -286,6 +288,13 @@ public class Enemy : MonoBehaviour
             TakeDamage(player.SwordslasheDamege);
             StartCoroutine(ResetHitStatusAfterDelay(0.5f));
         }
+
+          if(other.CompareTag("Sword") && !hasnomarHit)
+        {
+            hasnomarHit = true;
+            TakeDamage(player.SwordDamege);
+            StartCoroutine(ResetHitStatusAfternomarDelay(0.4f));
+        }
     }
 
     IEnumerator ResetHitStatusAfterDelay(float delay)
@@ -294,6 +303,14 @@ public class Enemy : MonoBehaviour
 
         // 피격 상태 초기화
         hasBeenHit = false;
+    }
+
+      IEnumerator ResetHitStatusAfternomarDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 피격 상태 초기화
+        hasnomarHit = false;
     }
 
     public void UpdateHealth()

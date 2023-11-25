@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -29,6 +30,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float jumpForce;
 
+    [SerializeField]
+    
+    private string Skillsound;
+
+    [SerializeField]
+    private string Skillvoicesound;
+
+
 
     //상태 변수
     private bool isWalk = false;
@@ -49,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     public bool playeraxe = false; //도끼 모드
     private bool axeSwingInProgress = false; //도끼가 나가는 중인지 판단
+
+    private bool axeSwingcombo = false;
 
     private bool playergunActive = false; //달리거나 총이 순간 필요없을때 사용
 
@@ -112,11 +123,16 @@ public class PlayerController : MonoBehaviour
 
     private float earlyspeed;
 
+    /// ////////////////////////근접
     public int needskillpoint;
 
     public GameObject swordskilleffect;
 
     public GameObject swordslasheffect;
+    
+    public GameObject swordeffect;
+
+    public GameObject swordcomboeffect;
 
     public float slasheeffectSpeed;
 
@@ -125,6 +141,14 @@ public class PlayerController : MonoBehaviour
     public Transform effectTransform; //슬레쉬 이펙트 초기 위치
 
     public int SwordslasheDamege;
+    public int SwordDamege;
+
+    /// ///////////////////////
+   
+
+
+    public CraftManual craftManual;
+
 
 
     public void AddScore(int points) //플레이어 점수 추가
@@ -190,7 +214,7 @@ public class PlayerController : MonoBehaviour
         IsGround();
         TryJump();
         TryRun();
-        TryCrrouch();
+        //TryCrrouch();
         Move();
         if(SkillSlider != null)
         {
@@ -248,7 +272,7 @@ public class PlayerController : MonoBehaviour
             playergunActive = false;
             Playeranim.SetBool("Gunmode", false);
             //도끼 idle 애니메이션 쓸거면 추가
-            if(!axeSwingInProgress && axeobject.activeSelf && isGround)
+            if(!axeSwingInProgress && axeobject.activeSelf && isGround &&!craftManual.Stopattak)
             {
                 
                 if(Input.GetButton("Fire1"))
@@ -257,7 +281,9 @@ public class PlayerController : MonoBehaviour
                     myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | (myRigid.constraints & RigidbodyConstraints.FreezeRotation);
                     Playeranim.SetTrigger("Axemode_Swing");
                     SetDefaultMode(true);
+                    swordeffect.SetActive(true);
                     axeSwingInProgress = true;
+                    axeSwingcombo = true;
                    
                     StartCoroutine(DisableAxeSwing());
                     
@@ -271,7 +297,8 @@ public class PlayerController : MonoBehaviour
                         //이펙트 + 애니메이션 적용  
                         Playeranim.SetTrigger("sword_skills");
                         swordskilleffect.SetActive(true);
-    
+                        SoundManager.instance.PlaySE(Skillsound);
+                        SoundManager.instance.PlaySE(Skillvoicesound);
                         Vector3 playerCameraForward = effectTransform.forward;
                         swordslasheffect.transform.position = effectTransform.position;
                         swordslasheffect.transform.forward = playerCameraForward;
@@ -297,17 +324,43 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DisableAxeSwing()
     {
-        yield return new WaitForSeconds(1.8f); // 대기
-        myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
+        yield return new WaitForSeconds(0.2f);
+        swordeffect.SetActive(false);
 
-        yield return new WaitForSeconds(0.5f); // 대기
+        yield return new WaitForSeconds(0.45f); // 대기
+
+        if(Input.GetButton("Fire1") && axeSwingcombo)
+        {  
+            myRigid.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | (myRigid.constraints & RigidbodyConstraints.FreezeRotation);
+            Playeranim.SetTrigger("Axemode_Swing2");
+            SetDefaultMode(true);
+            axeSwingInProgress = true;
+            axeSwingcombo = false;
+
+            yield return new WaitForSeconds(0.1f);
+            swordcomboeffect.SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+            swordcomboeffect.SetActive(false);
+        }
+
+        if(axeSwingcombo)
+        {
+            yield return new WaitForSeconds(0.65f);
+            myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
+            axeSwingInProgress = false; // 후에 false로 설정
+            yield break;
+        }
+
+        yield return new WaitForSeconds(1f);
+        myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
         axeSwingInProgress = false; // 후에 false로 설정
         
     }
 
+
     private IEnumerator DisableAxeSkillSwing()
     {
-        yield return new WaitForSeconds(2.4f); // 대기
+        yield return new WaitForSeconds(2.6f); // 대기
         myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ);
 
         yield return new WaitForSeconds(0.1f); // 대기
@@ -345,7 +398,8 @@ public class PlayerController : MonoBehaviour
                           //이펙트 + 애니메이션 적용  
                         Playeranim.SetTrigger("sword_skills");
                         swordskilleffect.SetActive(true);
-    
+                        SoundManager.instance.PlaySE(Skillsound);
+                        SoundManager.instance.PlaySE(Skillvoicesound);
                         Vector3 playerCameraForward = effectTransform.forward;
                         swordslasheffect.transform.position = effectTransform.position;
                         swordslasheffect.transform.forward = playerCameraForward;

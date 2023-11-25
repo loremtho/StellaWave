@@ -63,7 +63,9 @@ public class CraftManual : MonoBehaviour
     //�ʿ��� ������Ʈ
     private Inventory theInventory;
 
-     private QuickSlotController theQuickSlot;
+    private QuickSlotController theQuickSlot;
+
+    public bool Stopattak = false;
 
     private void Start()
     {
@@ -212,7 +214,8 @@ public class CraftManual : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Tab) && !isPreviewActivated)
         {
             Window();
-
+            Stopattak = true;
+            
         }
 
         if(isPreviewActivated)
@@ -228,6 +231,7 @@ public class CraftManual : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Cancel();
+            Stopattak = false;
         }
     }
 
@@ -242,6 +246,7 @@ public class CraftManual : MonoBehaviour
             isPreviewActivated= false;
             go_Preview= null;
             go_Prefab= null;
+            Stopattak = false;
         }
     }
 

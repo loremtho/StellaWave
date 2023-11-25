@@ -94,6 +94,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private string bgm;
 
+    [SerializeField]
+    private string StageStartSound;
+
     void Awake()
     {
         enemyList = new List<int>();
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour
         theWM = FindObjectOfType<WeaponManager>();
         baseCamp = GetComponent<BaseCamp>();
 
-        SoundManager.instance.PlaySE(bgm);
+        SoundManager.instance.PlayBGM(bgm);
         
         //weaponchanger.GunA(); //플레이어 무기 타입 결정 임시
         
@@ -116,7 +119,7 @@ public class GameManager : MonoBehaviour
     public void StageStart() //스테이지 시작시 원하는 오브젝트 비활성화 
     {
         StartZone.SetActive(false);
-
+        SoundManager.instance.PlaySE(StageStartSound);
         foreach(Transform zone in enemyZone) //게임 시작시 스폰 활성
         zone.gameObject.SetActive(true);
         BatteryRespawner(); // 게임 시작시 배터리 스폰시킴

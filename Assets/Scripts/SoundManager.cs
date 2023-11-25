@@ -73,6 +73,21 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    public void PlayBGM(string _name) // 배경음악 재생 함수
+    {
+        for (int i = 0; i < bgmSound.Length; i++)
+        {
+            if (_name == bgmSound[i].name)
+            {
+                audioSourceBgm.clip = bgmSound[i].clip;
+                audioSourceBgm.Play();
+                return;
+            }
+    }
+    Debug.Log(_name + " 배경음악이 SoundManager에 등록되지 않았습니다.");
+}
+
+
     public void StopSE(string _name)
     {
         for (int i = 0; i < audioSourcesEffects.Length; i++)
