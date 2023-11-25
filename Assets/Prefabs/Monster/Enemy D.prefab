@@ -185,15 +185,16 @@ MonoBehaviour:
   anim: {fileID: 7641545640960189763}
   isChase: 0
   gameManager: {fileID: 0}
-  statusController: {fileID: 0}
   nav: {fileID: 7641545640960189760}
   Hp: 3000
   monsterAtt: MonsterAtt
   monsterDie: MonsterDie
   monsterBlood: MonsterBlood
+  statusController: {fileID: 0}
   gunController: {fileID: 0}
   isDead: 0
   hpbar: {fileID: 8102625530621194350}
+  hpslider: {fileID: 0}
   cam: {fileID: 0}
   healthSlider: {fileID: 8102625532254138042}
 --- !u!1 &7641545641089038585
@@ -286,7 +287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7641545641729387104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.29646927, y: 3.402941, z: 0.20000008}
+  m_LocalPosition: {x: -0.29646927, y: 50, z: 0.20000008}
   m_LocalScale: {x: 3.07, y: 0.038375, z: 3.07}
   m_ConstrainProportionsScale: 1
   m_Children: []

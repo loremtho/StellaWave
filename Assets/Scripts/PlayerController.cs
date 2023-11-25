@@ -150,7 +150,6 @@ public class PlayerController : MonoBehaviour
     public CraftManual craftManual;
 
 
-
     public void AddScore(int points) //플레이어 점수 추가
     {
         score += points;
@@ -192,6 +191,8 @@ public class PlayerController : MonoBehaviour
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
         hitscore = 0;
+
+        bool isAnimEnd = CamManager.isAnimEnd;
      
     }
     
@@ -215,7 +216,7 @@ public class PlayerController : MonoBehaviour
         TryJump();
         TryRun();
         //TryCrrouch();
-        Move();
+        //Move();
         if(SkillSlider != null)
         {
             SkillUpdate();
@@ -686,6 +687,7 @@ public class PlayerController : MonoBehaviour
         //gunPivot.position = rightHandMount.position;
 
         //Playeranim.SetFloat("CameraRotationX", currentCameraRotationX);
+        
     }
 
     public void damageprocess()
