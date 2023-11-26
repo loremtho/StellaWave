@@ -37,11 +37,12 @@ public class GameManager : MonoBehaviour
 
     //인게임 UI***********************
     public int stage = 20; //난이도 설정
-    public Text stageTxt;
-    public Text scoreTxt;
-    public Text playTimeTxt;
-    public Text hitscoreTxt;
-    public Text killcountTxt;
+
+    public TextMeshProUGUI stageTxtTMP;
+    public TextMeshProUGUI scoreTxtTMP;
+    public TextMeshProUGUI playTimeTxtTMP;
+    public TextMeshProUGUI hitscoreTxtTMP;
+    public TextMeshProUGUI killcountTxtTMP;
     public float playTime;
     public int stagecount = 1; //현재 스테이지
 
@@ -54,6 +55,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI LasthitscoreTxt;
     public TextMeshProUGUI LastkillcountTxt;
     public float LastplayTime;
+
+    //일시정지 캔버스 UI****************
+
+    public TextMeshProUGUI pauseStageTxt;
+    public TextMeshProUGUI pausescoreTxt;
+    public TextMeshProUGUI pauseplayTimeTxt;
+    public TextMeshProUGUI pausehitscoreTxt;
+    public TextMeshProUGUI pausekillcountTxt;
+    public float pauseplayTime;
 
     //********************************
    
@@ -105,8 +115,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
         theWM = FindObjectOfType<WeaponManager>();
         baseCamp = GetComponent<BaseCamp>();
 
@@ -250,18 +258,18 @@ public class GameManager : MonoBehaviour
 
     void LateUpdate() 
     {
-        stageTxt.text = "Wave " + stagecount + " / 5";
+        stageTxtTMP.text = "Wave " + stagecount + " / 5";
 
-        scoreTxt.text = string.Format("Score : {0:n0}",player.score);
+        scoreTxtTMP.text = string.Format("Score : {0:n0}",player.score);
 
-        hitscoreTxt.text = string.Format("Hit : {0:n0}",player.hitscore);
+        hitscoreTxtTMP.text = string.Format("Hit : {0:n0}",player.hitscore);
 
-        killcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
+        killcountTxtTMP.text = string.Format("Kill : {0:n0}",player.killcount);
 
         int hour = (int)(playTime / 3600);
         int min = (int)((playTime - hour * 3600) /60);
         int second = (int)(playTime % 60);
-        playTimeTxt.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
+        playTimeTxtTMP.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
    
     }
 
@@ -273,6 +281,21 @@ public class GameManager : MonoBehaviour
 
         LastkillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
 
+    }
+    public void PauseUI()
+    {
+        pauseStageTxt.text = "Wave " + stagecount + " / 5";
+        
+        pausescoreTxt.text = string.Format("Score : {0:n0}",player.score);
+
+        pausehitscoreTxt.text = string.Format("Hit : {0:n0}",player.hitscore);
+
+        pausekillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
+
+        int hour = (int)(playTime / 3600);
+        int min = (int)((playTime - hour * 3600) /60);
+        int second = (int)(playTime % 60);
+        pauseplayTimeTxt.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
     }
 
     public void StageCheck()// 스테이지 상태 체크 함수

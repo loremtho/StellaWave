@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private bool isCrouch = false;
     private bool isGround = true;
     public bool aim = true;
+    public bool MouseRotation = false;
 
     
 
@@ -148,6 +149,8 @@ public class PlayerController : MonoBehaviour
 
 
     public CraftManual craftManual;
+    public CamManager camManager;
+    public ButtonController buttonController;
 
 
     public void AddScore(int points) //플레이어 점수 추가
@@ -191,8 +194,6 @@ public class PlayerController : MonoBehaviour
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
         hitscore = 0;
-
-        bool isAnimEnd = CamManager.isAnimEnd;
      
     }
     
@@ -216,16 +217,20 @@ public class PlayerController : MonoBehaviour
         TryJump();
         TryRun();
         //TryCrrouch();
-        //Move();
+        Move();
         if(SkillSlider != null)
         {
             SkillUpdate();
         }
-       
-        if(!Inventory.inventoryActivated)
+        if(!Inventory.inventoryActivated && camManager.isAnimEnd && !buttonController.isPause)
         {
             CameraRotation();
             CharacterRotation();
+        }
+
+        if(!camManager.isAnimEnd)
+        {
+            this.transform.position = new Vector3(-131.28f, 1.035501f, -31.306f);
         }
         //MoveCheck();
 
@@ -443,6 +448,11 @@ public class PlayerController : MonoBehaviour
         gunObject.SetActive(true);
         Playeranim.SetBool("Gunmode", true);
         axeSwingInProgress = false; // 후에 false로 설정
+    }
+
+    public void playerRigidOff()
+    {
+        myRigid.constraints &= ~(RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationY);
     }
 
 

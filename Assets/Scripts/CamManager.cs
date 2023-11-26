@@ -6,15 +6,18 @@ using UnityEngine.InputSystem;
 using Cinemachine.Editor;
 public class CamManager : MonoBehaviour
 {
-    public static bool isAnimEnd = false;
+    public bool isAnimEnd = false;
     public CinemachineVirtualCamera Cam;
     private float OrgFOVCine;
 
     private bool isAim = false; //정조준 여부
     public Animator animator;
     public GameObject crosshair;
+    public GameObject Startzone;
+    public GameObject Bosszone;
+    public GameObject storytxt;
 
-    private void Awake() 
+    void Start()
     {
         animator = GetComponent<Animator>();
 
@@ -22,9 +25,7 @@ public class CamManager : MonoBehaviour
         {
             animator.Play("CutScene");
         }
-    }
-    void Start()
-    {
+
         OrgFOVCine = Cam.m_Lens.FieldOfView;
     }
 
@@ -53,7 +54,12 @@ public class CamManager : MonoBehaviour
 
     public void EndAnimationFuction()
     {
-        //isAnimEnd = true;
-        crosshair.gameObject.SetActive(true);
+        isAnimEnd = true;
+        crosshair.SetActive(true);
+        Startzone.SetActive(true);
+        Bosszone.SetActive(true);
+        storytxt.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
