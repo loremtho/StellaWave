@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
-using Cinemachine.Editor;
 public class CamManager : MonoBehaviour
 {
     public bool isAnimEnd = false;

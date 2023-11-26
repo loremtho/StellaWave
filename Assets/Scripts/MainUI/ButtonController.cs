@@ -44,7 +44,7 @@ public class ButtonController : MonoBehaviour
             inEnding();
         }
 
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             SoundManager.instance.PlaySE(BtnSound);
             TogglePause();
