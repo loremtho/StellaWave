@@ -27,6 +27,7 @@ public class ButtonController : MonoBehaviour
     void Start()
     {
         StartCoroutine(BtnAppear());
+        StartCoroutine(storyImage());
     }
 
     // Update is called once per frame
@@ -178,6 +179,15 @@ public class ButtonController : MonoBehaviour
         if(SkipBtn != null)
         {
             SkipBtn.SetActive(true);
+        }
+    }
+
+    IEnumerator storyImage()
+    {
+        yield return new WaitForSeconds(3f);
+        if(StoryImage != null)
+        {
+            StoryImage.SetActive(true);
         }
     }
     
