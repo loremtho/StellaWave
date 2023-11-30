@@ -629,6 +629,7 @@ MonoBehaviour:
   buttonController: {fileID: 804396602}
   statusController: {fileID: 1675389013}
   bgm: 
+  StageStartSound: 
 --- !u!4 &17621720
 Transform:
   m_ObjectHideFlags: 0
@@ -17014,6 +17015,10 @@ PrefabInstance:
       propertyPath: hpslider
       value: 
       objectReference: {fileID: 1314676244}
+    - target: {fileID: 617425208, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+      propertyPath: throwForce
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 617425208, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: gameManager
       value: 

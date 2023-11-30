@@ -156,7 +156,7 @@ public class BossAtt : Boss
 
       IEnumerator Dive() //플레이어 근처 순간이동
     {
-         Vector3 teleportPosition = target.position + Vector3.forward *10f + Vector3.up * 8f; // 단위만큼 이동
+         Vector3 teleportPosition = target.position + Vector3.forward *20f + Vector3.up * 8f; // 단위만큼 이동
         isLook = false;
         nav.isStopped = false;
         //boxCollider.enabled = false;
@@ -186,7 +186,7 @@ public class BossAtt : Boss
     {
         GameObject straighA = Instantiate(StraightMissile, StraighmissilePortA.position, StraighmissilePortA.rotation);
         Vector3 throwDirectionA = (target.position - transform.position).normalized;   // 플레이어 방향 벡터 계산
-        float yOffsetA = -0.05f; // A원하는 y축 오프셋 값
+        float yOffsetA = -0.02f; // A원하는 y축 오프셋 값
         throwDirectionA += new Vector3(0f, yOffsetA, 0f);
         throwDirectionA.Normalize();
         Rigidbody rbA = straighA.GetComponent<Rigidbody>();// 플레이어 방향으로 힘을 적용.
@@ -196,7 +196,7 @@ public class BossAtt : Boss
 
         GameObject straighB = Instantiate(StraightMissile, StraighmissilePortB.position, StraighmissilePortB.rotation);
         Vector3 throwDirectionB = (target.position - transform.position).normalized;
-        float yOffsetB = -0.05f;
+        float yOffsetB = -0.02f;
         throwDirectionB += new Vector3(0f, yOffsetB, 0f);
         throwDirectionB.Normalize();
         Rigidbody rbB = straighB.GetComponent<Rigidbody>();

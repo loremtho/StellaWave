@@ -228,6 +228,11 @@ public class StatusController : MonoBehaviour
         }
     }
 
+    IEnumerable delay()
+    {
+        yield return new WaitForSeconds(0.4f); 
+    }
+
     public void IncreaseSP(int _count)
     {
         if (currentSp + _count < SP)

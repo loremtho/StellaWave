@@ -691,6 +691,12 @@ public class PlayerController : MonoBehaviour
     public void damageprocess()
     {
         Playeranim.SetTrigger("Hit");
+        StartCoroutine(afterhit());
+    }
+
+    private IEnumerator afterhit()
+    {
+        yield return new WaitForSeconds(0.2f);
     }
 
 
