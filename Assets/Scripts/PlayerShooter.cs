@@ -8,12 +8,6 @@ public class PlayerShooter : MonoBehaviour
     //알맞은 애니메이션 재생 IK사용해 캐릭터 양손이 총으로 오게 조정
 
     public Gun gun; //사용할총
-
-    public Camera camera; //카메라
-    private  float OrgFOV; //원래 FOV 값
-
-    private bool isAim = false; //정조준 여부
-
     public CloseWeapon axe; //사용할 도끼
     public Transform axePivot;
     public Transform gunPivot; //총 배치의 기준점
@@ -38,13 +32,11 @@ public class PlayerShooter : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         playerAnimator = GetComponent<Animator>();
-        OrgFOV = camera.fieldOfView;
-
     }
 
     void Update()
     {
-        OnAim();
+
     }
 
     private void OnEnable()
@@ -90,20 +82,4 @@ public class PlayerShooter : MonoBehaviour
         
     }
 
-    private void OnAim()
-    {
-        if(Input.GetButtonDown("Fire2"))
-        {
-            isAim = !isAim;
-
-            if(isAim)
-            {
-                camera.fieldOfView = 30f;
-            }
-            else
-            {
-                camera.fieldOfView = OrgFOV;
-            }
-        }
-    }
 }
