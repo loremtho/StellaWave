@@ -541,6 +541,7 @@ public class PlayerController : MonoBehaviour
             else if(playeraxeActice)
             {
                 axeobject.SetActive(false);
+                swordobject.SetActive(false);
             }
             
 
@@ -559,6 +560,7 @@ public class PlayerController : MonoBehaviour
             {
                 SetAxeMode(true);
                 axeobject.SetActive(true);
+                swordobject.SetActive(true);
                
             }
 
@@ -704,11 +706,54 @@ public class PlayerController : MonoBehaviour
     {
         Playeranim.SetTrigger("Hit");
         StartCoroutine(afterhit());
+        
     }
 
     private IEnumerator afterhit()
     {
-        yield return new WaitForSeconds(0.2f);
+          if(playergunActive)
+            {
+                gunObject.SetActive(false);
+            }
+            else if(playeraxeActice)
+            {
+                axeobject.SetActive(false);
+                swordobject.SetActive(false);
+            }
+        yield return new WaitForSeconds(2f);
+
+           if(playergunActive)
+            {
+                SetGunMode(true);
+                gunObject.SetActive(true);
+               
+            }
+            else if(playeraxeActice)
+            {
+                SetAxeMode(true);
+                axeobject.SetActive(true);
+                swordobject.SetActive(true);
+               
+            }
+
+
+    }
+
+    public void PlayerDie()
+    {
+        StartCoroutine(Playerdie());
+    }
+
+    private IEnumerator Playerdie()
+    {
+        myRigid.constraints = RigidbodyConstraints.FreezePositionX |
+                            RigidbodyConstraints.FreezePositionY |
+                            RigidbodyConstraints.FreezePositionZ;
+        capsuleCollider.enabled = false;
+        Playeranim.SetTrigger("Die");
+        yield return new WaitForSeconds(5f);
+        Time.timeScale = 0f;
+
     }
 
 

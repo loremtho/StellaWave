@@ -224,14 +224,11 @@ public class StatusController : MonoBehaviour
 
         if(currentHp <= 0)
         {
-            //게임 오버 시키자
+            playerController.PlayerDie();
         }
     }
 
-    IEnumerable delay()
-    {
-        yield return new WaitForSeconds(0.4f); 
-    }
+   
 
     public void IncreaseSP(int _count)
     {

@@ -286,6 +286,7 @@ public class Enemy : MonoBehaviour
         {
             hasBeenHit = true;
             TakeDamage(player.SwordslasheDamege);
+            player.AddHitScore(-1);
             StartCoroutine(ResetHitStatusAfterDelay(0.5f));
         }
 
