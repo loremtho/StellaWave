@@ -82,6 +82,10 @@ public class StatusController : MonoBehaviour
 
     private const int HP = 0, DP = 1, SP = 2, HUNGRY = 3, THIRSTY = 4, SATISFY = 5;
 
+    private bool hasBeenHit;
+
+    
+
 
 
     void Start()
@@ -343,7 +347,23 @@ public class StatusController : MonoBehaviour
         {
             DecreaseHP(50);
         }
+         
+        if(other.CompareTag("laser") && !hasBeenHit)
+        {
+            hasBeenHit = true;
+            DecreaseHP(50);
+            StartCoroutine(ResetHitStatusAfterDelay(1f));
+        }
     }
+
+     IEnumerator ResetHitStatusAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 피격 상태 초기화
+        hasBeenHit = false;
+    }
+
 
 
 }
