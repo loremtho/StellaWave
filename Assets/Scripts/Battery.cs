@@ -37,6 +37,8 @@ public class Battery : MonoBehaviour
     private string destroy_Sound;
     private GameManager gameManager;
 
+    private Vector3 YOffSet = new Vector3(0f, 1f, 0f);
+
     private void Start() {
         gameManager = FindObjectOfType<GameManager>();
     }
@@ -62,7 +64,7 @@ public class Battery : MonoBehaviour
 
         for (int i = 0; i <= count; i++)
         {
-            Instantiate(go_battery_item_prefab, go_batt.transform.position, Quaternion.identity);
+            Instantiate(go_battery_item_prefab, go_batt.transform.position + YOffSet, Quaternion.identity);
         }
         Destroy(go_batt);
         this.gameObject.SetActive(false);
