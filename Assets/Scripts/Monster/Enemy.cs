@@ -82,6 +82,8 @@ public class Enemy : MonoBehaviour
 
     private bool hasnomarHit = false;
 
+    private bool hasboomHit = false;
+
 
 
     void FreezeVelocity()
@@ -290,11 +292,18 @@ public class Enemy : MonoBehaviour
             StartCoroutine(ResetHitStatusAfterDelay(0.5f));
         }
 
-          if(other.CompareTag("Sword") && !hasnomarHit)
+        if(other.CompareTag("Sword") && !hasnomarHit)
         {
             hasnomarHit = true;
             TakeDamage(player.SwordDamege);
             StartCoroutine(ResetHitStatusAfternomarDelay(0.4f));
+        }
+
+        if(other.CompareTag("Explosion") && !hasboomHit)
+        {
+            hasnomarHit = true;
+            TakeDamage(200);
+            StartCoroutine(ResetHitStatusAfterboomDelay(0.5f));
         }
     }
 
@@ -313,6 +322,15 @@ public class Enemy : MonoBehaviour
         // 피격 상태 초기화
         hasnomarHit = false;
     }
+
+       IEnumerator ResetHitStatusAfterboomDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 피격 상태 초기화
+        hasboomHit = false;
+    }
+
 
     public void UpdateHealth()
     {

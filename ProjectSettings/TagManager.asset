@@ -22,6 +22,7 @@ TagManager:
   - Skill
   - Sword
   - laser
+  - Explosion
   layers:
   - Default
   - TransparentFX

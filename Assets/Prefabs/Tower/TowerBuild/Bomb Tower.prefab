@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerName: BasicDefenseTower
   range: 25
-  damage: 250
+  damage: 0
   rateOfAccurasy: 0.1
   rateOfFire: 0.6
   viewAngle: 50
