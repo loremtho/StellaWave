@@ -167,7 +167,7 @@ public class GameManager : MonoBehaviour
             {
 
                 enemyCntD++;
-                GameObject instantEnemy = Instantiate(enemies[2], enemyZone[0].position, enemyZone[0].rotation);
+                GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
                 Enemy enemy = instantEnemy.GetComponent<Enemy>();
                 enemy.target = baseCamps.transform;
                 enemy.gameManager = this;
