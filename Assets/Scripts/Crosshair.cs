@@ -41,7 +41,7 @@ public class Crosshair : MonoBehaviour
     {
         if(!GameManager.isWater)
         {
-            animator.SetBool("Running", _flag);
+           // animator.SetBool("Running", _flag);
         }
     }
 
