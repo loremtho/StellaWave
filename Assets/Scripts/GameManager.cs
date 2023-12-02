@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
         enemyList = new List<int>();
     }
 
@@ -335,7 +336,6 @@ public class GameManager : MonoBehaviour
     private void BatteryRespawner() //배터리 프리팹을 스폰시킴
     {
         int allSpawnPoint = battery_trans.Length;
-        //int BeSpawned = 0;
 
         if(emptySpawnPoints.Count == 0 || emptySpawnPoints.Count == battery_trans.Length)
         {
@@ -355,10 +355,6 @@ public class GameManager : MonoBehaviour
                 var prefabInstance = Instantiate(Battery_prefab, spawnPoint.position, spawnPoint.rotation);
                 Battery_prefab_Ins.Add(prefabInstance);
                 BeSpawned++;
-                /*if(BeSpawned >= allSpawnPoint)
-                {
-                    return;
-                }*/
                 if(BeSpawned >= emptySpawnPoints.Count)
                 {   
                     emptySpawnPoints.Clear();
