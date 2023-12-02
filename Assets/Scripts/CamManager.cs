@@ -22,7 +22,7 @@ public class CamManager : MonoBehaviour
 
         if(animator != null && isAnimEnd)
         {
-            animator.Play("CutScene");
+            animator.SetTrigger("CutSceneStart");
         }
 
         OrgFOVCine = Cam.m_Lens.FieldOfView;
@@ -55,9 +55,18 @@ public class CamManager : MonoBehaviour
     {
         isAnimEnd = true;
         crosshair.SetActive(true);
-        Startzone.SetActive(true);
-        Bosszone.SetActive(true);
-        storytxt.SetActive(false);
+        if(Startzone != null)
+        {
+            Startzone.SetActive(true);
+        }
+        if(Bosszone != null)
+        {
+            Bosszone.SetActive(true);
+        }
+        if(storytxt != null)
+        {
+            storytxt.SetActive(false);
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
