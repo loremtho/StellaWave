@@ -339,7 +339,7 @@ public class StatusController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Attack"))
+        if(other.CompareTag("laser"))
         {
             DecreaseHP(50);
         }

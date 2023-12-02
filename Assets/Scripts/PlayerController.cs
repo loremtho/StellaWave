@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -151,6 +152,7 @@ public class PlayerController : MonoBehaviour
     public CraftManual craftManual;
     public CamManager camManager;
     public ButtonController buttonController;
+    private string CurrentSceneName;
 
 
     public void AddScore(int points) //플레이어 점수 추가
@@ -194,6 +196,8 @@ public class PlayerController : MonoBehaviour
         originPosY = theCamera.transform.localPosition.y;
         applyCrouchPosY = originPosY;
         hitscore = 0;
+
+        string CurrentSceneName = SceneManager.GetActiveScene().name; // 현재 씬 이름 받아오기
      
     }
     
@@ -230,7 +234,12 @@ public class PlayerController : MonoBehaviour
 
         if(!camManager.isAnimEnd)
         {
-            this.transform.position = new Vector3(-131.28f, 1.035501f, -31.306f);
+            if(CurrentSceneName == "Stage1") //스테이지 1 일때만 이 위치에 고정
+            {
+                this.transform.position = new Vector3(-131.28f, 1.035501f, -31.306f);
+            }
+            else
+            return;
         }
         //MoveCheck();
 
@@ -706,7 +715,6 @@ public class PlayerController : MonoBehaviour
     {
         Playeranim.SetTrigger("Hit");
         StartCoroutine(afterhit());
-        
     }
 
     private IEnumerator afterhit()

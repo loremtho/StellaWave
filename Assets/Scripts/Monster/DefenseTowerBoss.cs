@@ -5,25 +5,26 @@ using UnityEngine;
 public class DefenseTowerBoss : MonoBehaviour
 {
      public GameObject particlePrefab; // 파티클 오브젝트 프리팹
-    [SerializeField] private string towerName; //���Ÿ���� �̸�
-    [SerializeField] private float range; //���Ÿ���� ���� �Ÿ�.
-    [SerializeField] private int damage; //���ݷ�
-    [SerializeField] private float rateOfAccurasy; //��Ȯ��
-    [SerializeField] private float rateOfFire; //����ӵ�
-    private float currentRateOfFire; //����ӵ� ���
+    [SerializeField] private string towerName; //타워 이름
+    [SerializeField] private float range; //공격 거리
+    [SerializeField] private int damage; //데미지
+    [SerializeField] private float rateOfAccurasy; //공격 정확도
+    [SerializeField] private float rateOfFire; //발사속도
+    private float currentRateOfFire; //현재 발사속도
     [SerializeField] private float viewAngle; //�þ߰�
     [SerializeField] private float spinSpeed; //���� ȸ�� �ӵ�.
     [SerializeField] private LayerMask layerMask; //�����̴� ��� Ÿ������ ����(�÷��̾�)
     [SerializeField] private Transform tf_TopGun; //���Ÿ���� ��ž.
-    [SerializeField] private ParticleSystem particle_MuzzleFlash; //�ѱ� ����.
+    [SerializeField] private ParticleSystem particle_MuzzleFlash; 
     [SerializeField] private GameObject go_HitEffect_Prefab; //���� ����Ʈ.
 
-    private RaycastHit hitInfo; //���� �浿 ��ü�� ���� ����
+    private RaycastHit hitInfo; //레이캐스트 맞은 곳 정보 가져오기
     private Animator anim; 
     private AudioSource theAudio;
 
     private bool isFindTarget = false; //�� Ÿ�� �߽߰� true
     private bool isAttack = false; //�ѱ� ����� �� ������ ��ġ�� �� true
+
 
     private Transform tf_Target; //���� ������ Ÿ��
 
@@ -143,13 +144,13 @@ public class DefenseTowerBoss : MonoBehaviour
             theAudio.Play();
 
             // 일정 시간이 지난 후 파티클 오브젝트 파괴
-            Destroy(particleObject, 2.0f);
+            Destroy(particleObject, 2.0f);  
         }
     }
 
     IEnumerable waitfire()
     {
-           yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2f);
     }
     
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 public class ButtonController : MonoBehaviour
 {
@@ -16,12 +17,15 @@ public class ButtonController : MonoBehaviour
     public GameObject PauseUI;
     public GameObject StoryImage;
     public GameObject SkipBtn;
+    public CinemachineVirtualCamera CineCam = null;
 
     public bool isPause = false;
     [SerializeField]
     private string BtnSound;
 
     public GameManager gameManager;
+    public Animator animator;
+    private string animName = "CutScene";
 
     // Start is called before the first frame update
     void Start()
@@ -35,19 +39,19 @@ public class ButtonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            SoundManager.instance.PlaySE(BtnSound);
+            //SoundManager.instance.PlaySE(BtnSound);
             inWeaponSelect();
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            SoundManager.instance.PlaySE(BtnSound);
+            //SoundManager.instance.PlaySE(BtnSound);
             inEnding();
         }
 
         if(Input.GetKeyDown(KeyCode.F))
         {
-            SoundManager.instance.PlaySE(BtnSound);
+            //SoundManager.instance.PlaySE(BtnSound);
             TogglePause();
         }   
     }
@@ -103,7 +107,7 @@ public class ButtonController : MonoBehaviour
 
     public void inWeaponSelect()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         WeaponSelectionUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -118,20 +122,20 @@ public class ButtonController : MonoBehaviour
 
     public void SelectionGun()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         weaponchanger.GunA();
         WeaponSelectionUI.SetActive(false);
     }
     public void SelectionGunB()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         weaponchanger.GunB();
         WeaponSelectionUI.SetActive(false);
     }
 
     public void SelectionAxe()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         weaponchanger.AxeA();
         WeaponSelectionUI .SetActive(false);
     }
@@ -153,29 +157,29 @@ public class ButtonController : MonoBehaviour
 
     public void HomeBtn()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLobby");
     }
 
     public void RestartBtn()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         Time.timeScale = 1f;
         string curScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(curScene);
-        //SceneManager.LoadScene("Stage1");
     }
 
     public void SkipButton()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         StoryImage.SetActive(false);
+        StopCutScene(animator, animName, 100f);
     }
 
     IEnumerator BtnAppear()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
         if(SkipBtn != null)
         {
             SkipBtn.SetActive(true);
@@ -189,6 +193,23 @@ public class ButtonController : MonoBehaviour
         {
             StoryImage.SetActive(true);
         }
+    }
+
+    void StopCutScene(Animator anim, string Name, float Speed)
+    {
+        int animHash = Animator.StringToHash(Name);
+
+        //애니메이션 정보 가져오기
+        AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+
+        while(!stateInfo.IsName(Name))
+        {
+            anim.Play(animHash, -1, 0f);
+            anim.Update(0f);
+            stateInfo = anim.GetCurrentAnimatorStateInfo(0);
+        }
+
+        anim.speed = 100f;
     }
     
 }

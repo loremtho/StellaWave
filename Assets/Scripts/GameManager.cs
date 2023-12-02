@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
         theWM = FindObjectOfType<WeaponManager>();
         baseCamp = GetComponent<BaseCamp>();
 
-        SoundManager.instance.PlayBGM(bgm);
+        //SoundManager.instance.PlayBGM(bgm); 
         
         //weaponchanger.GunA(); //플레이어 무기 타입 결정 임시
         
