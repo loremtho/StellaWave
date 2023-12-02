@@ -2323,7 +2323,7 @@ PrefabInstance:
       objectReference: {fileID: 1035475685}
     - target: {fileID: 223423292, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5205806
+      value: 0.5221968
       objectReference: {fileID: 0}
     - target: {fileID: 223423292, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2421,6 +2421,10 @@ PrefabInstance:
       propertyPath: buttonController
       value: 
       objectReference: {fileID: 804396602}
+    - target: {fileID: 363401283, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
+      propertyPath: defenseTowerBoss
+      value: 
+      objectReference: {fileID: 329184868}
     - target: {fileID: 363401283, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
       propertyPath: swordskilleffect
       value: 
@@ -8506,6 +8510,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4783276170063092, guid: 83fd37d6779e2cc4d9c8f2a7f489f316, type: 3}
   m_PrefabInstance: {fileID: 328189261}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &329184868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 772995279, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+  m_PrefabInstance: {fileID: 550792507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc544249dc9d2e6419d13eb86fa76418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &330017557
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15574,10 +15589,26 @@ PrefabInstance:
       propertyPath: statusController
       value: 
       objectReference: {fileID: 1675389013}
+    - target: {fileID: 772995279, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+      propertyPath: damage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 772995279, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+      propertyPath: rateOfFire
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1014070441, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1675389010}
+    - target: {fileID: 1433735404, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1433735404, guid: a613577a2e997b94fab966097b159fdb, type: 3}
+      propertyPath: m_TagString
+      value: laser
+      objectReference: {fileID: 0}
     - target: {fileID: 3142764025215042500, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -24042,6 +24073,10 @@ PrefabInstance:
       propertyPath: itemEffectDatabase
       value: 
       objectReference: {fileID: 1753986240}
+    - target: {fileID: 8409655464213221422, guid: 96d190d64c76b314daa06def34108171, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8409655464419856866, guid: 96d190d64c76b314daa06def34108171, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -47616,14 +47651,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722378627}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 23.1, y: 298.6, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 0}
 --- !u!114 &1722378630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52612,7 +52647,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891410311}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 65.993, y: 1.78, z: -0.17941922}
+  m_LocalPosition: {x: 65.993, y: 1.78, z: -0.17780298}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

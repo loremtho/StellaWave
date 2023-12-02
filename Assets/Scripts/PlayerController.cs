@@ -715,7 +715,6 @@ public class PlayerController : MonoBehaviour
     {
         Playeranim.SetTrigger("Hit");
         StartCoroutine(afterhit());
-        
     }
 
     private IEnumerator afterhit()

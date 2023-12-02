@@ -35,7 +35,7 @@ public class BossAtt : Boss
         meshs = GetComponentsInChildren<MeshRenderer>();
 
         nav.isStopped = true;
-        StartCoroutine(Think());
+        StartCoroutine(CutSceneWait());
         
     }
 
@@ -58,6 +58,12 @@ public class BossAtt : Boss
         }
         else
         nav.SetDestination(tauntVec);
+    }
+
+    IEnumerator CutSceneWait()
+    {
+        yield return new WaitForSeconds(6f);
+        StartCoroutine(Think());
     }
 
     IEnumerator Think()

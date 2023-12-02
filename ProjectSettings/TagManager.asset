@@ -21,6 +21,7 @@ TagManager:
   - Attack
   - Skill
   - Sword
+  - laser
   layers:
   - Default
   - TransparentFX
