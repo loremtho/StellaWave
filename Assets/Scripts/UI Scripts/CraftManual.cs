@@ -60,7 +60,6 @@ public class CraftManual : MonoBehaviour
     [SerializeField]
     private Text[] text_SlotNeedItem;
 
-    //�ʿ��� ������Ʈ
     private Inventory theInventory;
 
     private QuickSlotController theQuickSlot;
@@ -83,10 +82,10 @@ public class CraftManual : MonoBehaviour
         switch(tabNumber)
         {
             case 0:
-                TabSlotSetting(craft_fire); //�Ҽ���
+                TabSlotSetting(craft_fire); 
                 break;
             case 1:
-                TabSlotSetting(craft_build); //���༼��
+                TabSlotSetting(craft_build); 
                 break;
        
         }
@@ -207,6 +206,12 @@ public class CraftManual : MonoBehaviour
 
     }
 
+      IEnumerator stop()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Stopattak = false;
+    }
+
 
 
     void Update()
@@ -215,7 +220,6 @@ public class CraftManual : MonoBehaviour
         {
             Window();
             Stopattak = true;
-            
         }
 
         if(isPreviewActivated)
@@ -235,6 +239,7 @@ public class CraftManual : MonoBehaviour
         }
     }
 
+
     private void Build()
     {
         if(isPreviewActivated && go_Preview.GetComponent<PreviewObject>().isBuildable())
@@ -246,7 +251,8 @@ public class CraftManual : MonoBehaviour
             isPreviewActivated= false;
             go_Preview= null;
             go_Prefab= null;
-            Stopattak = false;
+
+            StartCoroutine(stop());
         }
     }
 
@@ -299,10 +305,12 @@ public class CraftManual : MonoBehaviour
         if(!isCraftActivated)
         {
             OpenWindow();
+           
         }
         else
         {
             CloseWindow();
+           
         }
     }
 
