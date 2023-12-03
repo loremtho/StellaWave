@@ -728,7 +728,7 @@ public class PlayerController : MonoBehaviour
                 axeobject.SetActive(false);
                 swordobject.SetActive(false);
             }
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
            if(playergunActive)
             {
