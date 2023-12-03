@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour
         theWM = FindObjectOfType<WeaponManager>();
         baseCamp = GetComponent<BaseCamp>();
         BatteryRespawner(); // 게임 시작시 배터리 스폰시킴
-        //SoundManager.instance.PlayBGM(bgm); 
+        SoundManager.instance.PlayBGM(bgm); 
         
         //weaponchanger.GunA(); //플레이어 무기 타입 결정 임시
         

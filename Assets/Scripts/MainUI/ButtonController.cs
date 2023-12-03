@@ -39,7 +39,7 @@ public class ButtonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            //SoundManager.instance.PlaySE(BtnSound);
+            SoundManager.instance.PlaySE(BtnSound);
             inWeaponSelect();
         }
 
@@ -112,7 +112,7 @@ public class ButtonController : MonoBehaviour
 
     public void inWeaponSelect()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         WeaponSelectionUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
