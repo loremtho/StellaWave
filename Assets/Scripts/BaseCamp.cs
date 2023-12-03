@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class BaseCamp : MonoBehaviour
 {
@@ -18,9 +19,11 @@ public class BaseCamp : MonoBehaviour
     private float DecreValue;
 
     private GameManager gameManager;
+    public CinemachineVirtualCamera FailCam = null;
 
     private void Start() 
     {
+        FailCam.Priority = 9;
         CurHP = MaxHP;
         BaseHPSlider.value = (float) CurHP / (float) MaxHP;
         BaseHpTxt.text = CurHP.ToString();
@@ -71,6 +74,7 @@ public class BaseCamp : MonoBehaviour
         }
         else
         {
+            FailCam.Priority = 15;
             Debug.Log("베이스캠프 체력이 0이 되었습니다");
         }
     }
@@ -102,6 +106,7 @@ public class BaseCamp : MonoBehaviour
         if(CurHP <= 0)
         {
             this.gameObject.SetActive(false);
+            FailCam.Priority = 15;
             Debug.Log("베이스캠프가 파괴되었습니다!!");
         }
         else

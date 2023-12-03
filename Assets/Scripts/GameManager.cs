@@ -65,6 +65,15 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pausekillcountTxt;
     public float pauseplayTime;
 
+    //실패 캔버스 UI****************
+
+    public TextMeshProUGUI failStageTxt;
+    public TextMeshProUGUI failscoreTxt;
+    public TextMeshProUGUI failplayTimeTxt;
+    public TextMeshProUGUI failhitscoreTxt;
+    public TextMeshProUGUI failkillcountTxt;
+    public float failplayTime;
+
     //********************************
    
     public GameObject StartZone; //스테이지 게임 시작존 관리
@@ -84,6 +93,7 @@ public class GameManager : MonoBehaviour
     public GameObject Battery_prefab;
     public Transform[] battery_trans;
     private List<GameObject> Battery_prefab_Ins = new List<GameObject>();
+    private List<int> emptySpawnPoints = new List<int>();
 
     //*********************************
     
@@ -109,6 +119,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
         enemyList = new List<int>();
     }
 
@@ -117,8 +128,8 @@ public class GameManager : MonoBehaviour
     {
         theWM = FindObjectOfType<WeaponManager>();
         baseCamp = GetComponent<BaseCamp>();
-
-        //SoundManager.instance.PlayBGM(bgm); 
+        BatteryRespawner(); // 게임 시작시 배터리 스폰시킴
+        SoundManager.instance.PlayBGM(bgm); 
         
         //weaponchanger.GunA(); //플레이어 무기 타입 결정 임시
         
@@ -130,7 +141,6 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlaySE(StageStartSound);
         foreach(Transform zone in enemyZone) //게임 시작시 스폰 활성
         zone.gameObject.SetActive(true);
-        BatteryRespawner(); // 게임 시작시 배터리 스폰시킴
         isBattle = true;
         StartCoroutine(InBattle());
 
@@ -144,11 +154,7 @@ public class GameManager : MonoBehaviour
 
         foreach(Transform zone in enemyZone) //게임 시작시 스폰 비활성
         zone.gameObject.SetActive(false);
-        foreach(var prefabInstance in Battery_prefab_Ins) // 스테이지 종료 시 생성한 배터리 프리펩 전부 파괴
-        {
-            Destroy(prefabInstance);
-        }
-        Battery_prefab_Ins.Clear(); // 리스트 비워서 중복 파괴 방지
+        BatteryRespawner();
         isBattle = false;
         //baseCamp.EndDecreaseBaseHP();
         stagecount++;
@@ -298,6 +304,22 @@ public class GameManager : MonoBehaviour
         pauseplayTimeTxt.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
     }
 
+    public void FailUI()
+    {
+        failStageTxt.text = "Wave " + stagecount + " / 5";
+        
+        failscoreTxt.text = string.Format("Score : {0:n0}",player.score);
+
+        failhitscoreTxt.text = string.Format("Hit : {0:n0}",player.hitscore);
+
+        failkillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
+
+        int hour = (int)(playTime / 3600);
+        int min = (int)((playTime - hour * 3600) /60);
+        int second = (int)(playTime % 60);
+        failplayTimeTxt.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
+    }
+
     public void StageCheck()// 스테이지 상태 체크 함수
     {
         // 아니면 스테이지가 6에 진입되면 바로 클리어 시켜버려도 됨
@@ -314,7 +336,18 @@ public class GameManager : MonoBehaviour
     private void BatteryRespawner() //배터리 프리팹을 스폰시킴
     {
         int allSpawnPoint = battery_trans.Length;
+
+        if(emptySpawnPoints.Count == 0 || emptySpawnPoints.Count == battery_trans.Length)
+        {
+            emptySpawnPoints.Clear();
+            for (int i = 0; i < battery_trans.Length; i++)
+            {
+                emptySpawnPoints.Add(i);
+            }
+        }
+
         int BeSpawned = 0;
+
         for(int index = 0; index < stage; index++) //스테이지 마다 스폰시킴
         {
             foreach (Transform spawnPoint in battery_trans) //배열로 선언된 위치에 스폰함
@@ -322,8 +355,9 @@ public class GameManager : MonoBehaviour
                 var prefabInstance = Instantiate(Battery_prefab, spawnPoint.position, spawnPoint.rotation);
                 Battery_prefab_Ins.Add(prefabInstance);
                 BeSpawned++;
-                if(BeSpawned >= allSpawnPoint)
-                {
+                if(BeSpawned >= emptySpawnPoints.Count)
+                {   
+                    emptySpawnPoints.Clear();
                     return;
                 }
             }
