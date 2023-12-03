@@ -21,6 +21,8 @@ public class BaseCamp : MonoBehaviour
     private GameManager gameManager;
     public CinemachineVirtualCamera FailCam = null;
 
+    public ParticleSystem Helingeffect;
+
     private void Start() 
     {
         FailCam.Priority = 9;
@@ -45,6 +47,13 @@ public class BaseCamp : MonoBehaviour
         BaseCurHP();
     }
 
+    IEnumerator Heling()
+    {
+        Helingeffect.Play();
+        yield return new WaitForSeconds(2f);
+        Helingeffect.Stop();
+    }
+
     private void BaseCurHP()
     {
         BaseHPSlider.value = (float) CurHP / (float) MaxHP;
@@ -53,14 +62,17 @@ public class BaseCamp : MonoBehaviour
 
     public void Heal(float healingAmount)
     {
+        
         CurHP = Mathf.Min(CurHP, MaxHP); // 최대 체력을 넘지 않도록 제한
         if(CurHP + healingAmount < MaxHP)
         {
             CurHP += healingAmount;
+           StartCoroutine(Heling());
         }
         else
         {
             CurHP = MaxHP;
+            StartCoroutine(Heling());
         }
 
     }
