@@ -18,6 +18,12 @@ public class BossAtt : Boss
     public Transform StraighmissilePortB;
 
     public GameObject missileeffect;
+    public ButtonController buttonController;
+    public GameObject Explosion0;
+    public GameObject Explosion1;
+    public GameObject Explosion2;
+    public GameObject Explosion3;
+    public GameObject ExplosionBig;
     Vector3 lookvec;
 
 
@@ -46,6 +52,7 @@ public class BossAtt : Boss
         if(isDead)
         {
             StopAllCoroutines();
+            StartCoroutine(DeadEffect());
             return;
         }
 
@@ -58,6 +65,25 @@ public class BossAtt : Boss
         }
         else
         nav.SetDestination(tauntVec);
+    }
+
+    IEnumerator DeadEffect()
+    {
+        Explosion0.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Explosion1.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Explosion2.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        Explosion3.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+        ExplosionBig.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        buttonController.inEnding();
+
+        yield return new WaitForSeconds(5f);
+        Time.timeScale = 0f;
     }
 
     IEnumerator CutSceneWait()

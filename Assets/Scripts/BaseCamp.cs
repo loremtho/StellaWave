@@ -64,7 +64,6 @@ public class BaseCamp : MonoBehaviour
         }
 
     }
-
     public void BaseDecrease(float amount)
     {
         if (CurHP > 0)
