@@ -29,19 +29,17 @@ public class ButtonController : MonoBehaviour
     public Animator animator;
     private string animName = "CutScene";
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(BtnAppear());
         StartCoroutine(storyImage());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            SoundManager.instance.PlaySE(BtnSound);
+            //SoundManager.instance.PlaySE(BtnSound);
             inWeaponSelect();
         }
 
@@ -114,7 +112,7 @@ public class ButtonController : MonoBehaviour
 
     public void inWeaponSelect()
     {
-        SoundManager.instance.PlaySE(BtnSound);
+        //SoundManager.instance.PlaySE(BtnSound);
         WeaponSelectionUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
