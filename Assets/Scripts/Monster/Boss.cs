@@ -63,6 +63,12 @@ public class Boss : MonoBehaviour
 
     private bool hasBeenHit = false;
 
+    public GameObject[] Dieeffect;
+
+    public GameObject Lastdieeffect;
+
+  
+
 
     void FreezeVelocity()
     {
@@ -289,6 +295,8 @@ public class Boss : MonoBehaviour
         isAttack = false;
         nav.enabled = false;
 
+        StopAllCoroutines();
+
         
         boxCollider.enabled = false;
         if(lasertw != null)
@@ -303,6 +311,15 @@ public class Boss : MonoBehaviour
 
      private IEnumerator Diecheck(int dietime)
     {
+        for (int i = 0; i < Dieeffect.Length; i++)
+        {
+            Dieeffect[i].SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+         yield return new WaitForSeconds(1f);
+         Lastdieeffect.SetActive(true);
+
 
         yield return new WaitForSeconds(dietime);
         Destroy(gameObject);
