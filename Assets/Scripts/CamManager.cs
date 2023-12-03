@@ -13,7 +13,6 @@ public class CamManager : MonoBehaviour
     public Animator animator;
     public GameObject crosshair;
     public GameObject Startzone;
-    public GameObject Bosszone;
     public GameObject storytxt;
 
     void Start()
@@ -58,10 +57,6 @@ public class CamManager : MonoBehaviour
         if(Startzone != null)
         {
             Startzone.SetActive(true);
-        }
-        if(Bosszone != null)
-        {
-            Bosszone.SetActive(true);
         }
         if(storytxt != null)
         {

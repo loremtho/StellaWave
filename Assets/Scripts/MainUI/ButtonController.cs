@@ -22,6 +22,8 @@ public class ButtonController : MonoBehaviour
     public bool isPause = false;
     [SerializeField]
     private string BtnSound;
+    [SerializeField]
+    private GameObject BossZone;
 
     public GameManager gameManager;
     public Animator animator;
@@ -39,21 +41,26 @@ public class ButtonController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            //SoundManager.instance.PlaySE(BtnSound);
+            SoundManager.instance.PlaySE(BtnSound);
             inWeaponSelect();
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            //SoundManager.instance.PlaySE(BtnSound);
+            SoundManager.instance.PlaySE(BtnSound);
             inEnding();
         }
 
         if(Input.GetKeyDown(KeyCode.F))
         {
-            //SoundManager.instance.PlaySE(BtnSound);
+            SoundManager.instance.PlaySE(BtnSound);
             TogglePause();
         }   
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            //버튼 사운드 넣기
+            BossZone.SetActive(true);
+        }
     }
 
     public void TogglePause()
@@ -107,7 +114,7 @@ public class ButtonController : MonoBehaviour
 
     public void inWeaponSelect()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         WeaponSelectionUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -122,20 +129,20 @@ public class ButtonController : MonoBehaviour
 
     public void SelectionGun()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         weaponchanger.GunA();
         WeaponSelectionUI.SetActive(false);
     }
     public void SelectionGunB()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         weaponchanger.GunB();
         WeaponSelectionUI.SetActive(false);
     }
 
     public void SelectionAxe()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         weaponchanger.AxeA();
         WeaponSelectionUI .SetActive(false);
     }
@@ -157,14 +164,14 @@ public class ButtonController : MonoBehaviour
 
     public void HomeBtn()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLobby");
     }
 
     public void RestartBtn()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         Time.timeScale = 1f;
         string curScene = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(curScene);
@@ -172,7 +179,7 @@ public class ButtonController : MonoBehaviour
 
     public void SkipButton()
     {
-        //SoundManager.instance.PlaySE(BtnSound);
+        SoundManager.instance.PlaySE(BtnSound);
         StoryImage.SetActive(false);
         StopCutScene(animator, animName, 100f);
     }
