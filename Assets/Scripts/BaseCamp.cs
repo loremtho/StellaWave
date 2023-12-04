@@ -22,6 +22,7 @@ public class BaseCamp : MonoBehaviour
     public CinemachineVirtualCamera FailCam = null;
 
     public ParticleSystem Helingeffect;
+    public GameObject FailUI;
 
     private void Start() 
     {
@@ -86,6 +87,7 @@ public class BaseCamp : MonoBehaviour
         else
         {
             FailCam.Priority = 15;
+            FailUI.SetActive(true);
             Debug.Log("베이스캠프 체력이 0이 되었습니다");
         }
     }
@@ -118,6 +120,7 @@ public class BaseCamp : MonoBehaviour
         {
             this.gameObject.SetActive(false);
             FailCam.Priority = 15;
+            FailUI.SetActive(true);
             Debug.Log("베이스캠프가 파괴되었습니다!!");
         }
         else
