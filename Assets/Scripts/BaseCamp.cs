@@ -99,7 +99,6 @@ public class BaseCamp : MonoBehaviour
         {
             FailCam.Priority = 15;
             StartCoroutine(Diecheck(1));
-        
             Debug.Log("베이스캠프 체력이 0이 되었습니다");
         }
     }
@@ -159,9 +158,15 @@ public class BaseCamp : MonoBehaviour
         Basecampbody.SetActive(false);
         loopeffect.SetActive(false);
 
-
         yield return new WaitForSeconds(dietime);
-      
+
+        FailUI.SetActive(true);
+        gameManager.FailUI();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        yield return new WaitForSeconds(5f);
+
+        Time.timeScale = 0f;
     }
 
     
