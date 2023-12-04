@@ -15,6 +15,8 @@ public class CamManager : MonoBehaviour
     public GameObject Startzone;
     public GameObject storytxt;
 
+    public GameObject weapontxt;
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -54,6 +56,7 @@ public class CamManager : MonoBehaviour
     {
         isAnimEnd = true;
         crosshair.SetActive(true);
+        weapontxt.SetActive(true);
         if(Startzone != null)
         {
             Startzone.SetActive(true);
