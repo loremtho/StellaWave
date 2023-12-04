@@ -23,6 +23,16 @@ public class BaseCamp : MonoBehaviour
 
     public ParticleSystem Helingeffect;
 
+    public GameObject[] baseDieeffect;
+
+    public GameObject baseLastdieeffect;
+
+    public GameObject baseLastdieeffect2;
+
+    public GameObject loopeffect;
+
+    public GameObject Basecampbody;
+
     private void Start() 
     {
         FailCam.Priority = 9;
@@ -86,6 +96,7 @@ public class BaseCamp : MonoBehaviour
         else
         {
             FailCam.Priority = 15;
+            StartCoroutine(Diecheck(1));
             Debug.Log("베이스캠프 체력이 0이 되었습니다");
         }
     }
@@ -116,14 +127,37 @@ public class BaseCamp : MonoBehaviour
 
         if(CurHP <= 0)
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
             FailCam.Priority = 15;
             Debug.Log("베이스캠프가 파괴되었습니다!!");
+
         }
         else
         {
             Debug.Log("베이스캠프 체력 : " + CurHP);
         }
+    }
+
+     private IEnumerator Diecheck(int dietime)
+    {
+        yield return new WaitForSeconds(1.5f);
+        for (int i = 0; i < baseDieeffect.Length; i++)
+        {
+            baseDieeffect[i].SetActive(true);
+            yield return new WaitForSeconds(0.3f);
+        }
+
+         yield return new WaitForSeconds(0.5f);
+         baseLastdieeffect2.SetActive(true);
+
+         yield return new WaitForSeconds(1f);
+        baseLastdieeffect.SetActive(true);
+        Basecampbody.SetActive(false);
+        loopeffect.SetActive(false);
+
+
+        yield return new WaitForSeconds(dietime);
+      
     }
 
     

@@ -74,6 +74,12 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI failkillcountTxt;
     public float failplayTime;
 
+    //키 설명 UI****************************
+
+    public GameObject waponui;
+
+    public GameObject wapontxt;
+
     //********************************
    
     public GameObject StartZone; //스테이지 게임 시작존 관리
@@ -232,8 +238,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+   
     void Update()
     {
+        if(waponui.activeSelf)
+        {
+            wapontxt.SetActive(false);
+        }
+
         if(isWater)
         {
             if(!flag)
@@ -257,8 +269,6 @@ public class GameManager : MonoBehaviour
         }
         StageCheck();
         return;
-
-   
     }
 
 
