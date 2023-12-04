@@ -33,6 +33,8 @@ public class BaseCamp : MonoBehaviour
 
     public GameObject Basecampbody;
 
+    public GameObject FailUI;
+
     private void Start() 
     {
         FailCam.Priority = 9;
