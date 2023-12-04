@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI stageTxtTMP;
     public TextMeshProUGUI scoreTxtTMP;
     public TextMeshProUGUI playTimeTxtTMP;
-    public TextMeshProUGUI hitscoreTxtTMP;
     public TextMeshProUGUI killcountTxtTMP;
     public float playTime;
     public int stagecount = 1; //현재 스테이지
@@ -52,7 +51,6 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI LastscoreTxt;
     public TextMeshProUGUI LastplayTimeTxt;
-    public TextMeshProUGUI LasthitscoreTxt;
     public TextMeshProUGUI LastkillcountTxt;
     public float LastplayTime;
 
@@ -61,7 +59,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pauseStageTxt;
     public TextMeshProUGUI pausescoreTxt;
     public TextMeshProUGUI pauseplayTimeTxt;
-    public TextMeshProUGUI pausehitscoreTxt;
     public TextMeshProUGUI pausekillcountTxt;
     public float pauseplayTime;
 
@@ -70,7 +67,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI failStageTxt;
     public TextMeshProUGUI failscoreTxt;
     public TextMeshProUGUI failplayTimeTxt;
-    public TextMeshProUGUI failhitscoreTxt;
     public TextMeshProUGUI failkillcountTxt;
     public float failplayTime;
 
@@ -278,8 +274,6 @@ public class GameManager : MonoBehaviour
 
         scoreTxtTMP.text = string.Format("Score : {0:n0}",player.score);
 
-        hitscoreTxtTMP.text = string.Format("Hit : {0:n0}",player.hitscore);
-
         killcountTxtTMP.text = string.Format("Kill : {0:n0}",player.killcount);
 
         int hour = (int)(playTime / 3600);
@@ -293,8 +287,6 @@ public class GameManager : MonoBehaviour
     {
         LastscoreTxt.text = string.Format("Score : {0:n0}",player.score);
 
-        LasthitscoreTxt.text = string.Format("Hit : {0:n0}",player.hitscore);
-
         LastkillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
 
     }
@@ -303,8 +295,6 @@ public class GameManager : MonoBehaviour
         pauseStageTxt.text = "Wave " + stagecount + " / 5";
         
         pausescoreTxt.text = string.Format("Score : {0:n0}",player.score);
-
-        pausehitscoreTxt.text = string.Format("Hit : {0:n0}",player.hitscore);
 
         pausekillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
 
@@ -319,8 +309,6 @@ public class GameManager : MonoBehaviour
         failStageTxt.text = "Wave " + stagecount + " / 5";
         
         failscoreTxt.text = string.Format("Score : {0:n0}",player.score);
-
-        failhitscoreTxt.text = string.Format("Hit : {0:n0}",player.hitscore);
 
         failkillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
 
