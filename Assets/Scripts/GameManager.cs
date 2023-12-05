@@ -227,7 +227,7 @@ public class GameManager : MonoBehaviour
             yield return null;
          }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         StageEnd();
 
