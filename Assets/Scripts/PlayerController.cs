@@ -145,6 +145,7 @@ public class PlayerController : MonoBehaviour
     public int SwordslasheDamege;
     public int SwordDamege;
 
+
     /// ///////////////////////
    
 
@@ -247,6 +248,7 @@ public class PlayerController : MonoBehaviour
         {
             // 오브젝트가 활성화되면 GunMode로 변경
             SetGunMode(true);
+            
         }
         else if(axeobject.activeSelf)
         {

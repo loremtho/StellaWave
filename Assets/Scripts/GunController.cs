@@ -49,6 +49,8 @@ public class GunController : MonoBehaviour
     public Rigidbody Bullet;
     public float BulletSpeed;
 
+    public CraftManual craftManual;
+
     public GameObject gunObject; //총 활성화 확인
 
     // Update is called once per frame
@@ -90,7 +92,7 @@ public class GunController : MonoBehaviour
 
     private void TryFire()
     {
-        if(Input.GetButton("Fire1") && currentFireRate <= 0 && !isReload)
+        if(Input.GetButton("Fire1") && currentFireRate <= 0 && !isReload && !craftManual.Stopattak)
         {
             
             if(gunObject.activeSelf)  //등록한 총만 발사 이후 수정필요 한개만 임시
