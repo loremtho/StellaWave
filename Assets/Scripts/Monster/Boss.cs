@@ -67,6 +67,8 @@ public class Boss : MonoBehaviour
 
     public GameObject Lastdieeffect;
 
+    public GameObject endingUi;
+
   
 
 
@@ -325,6 +327,11 @@ public class Boss : MonoBehaviour
 
         yield return new WaitForSeconds(dietime);
         Destroy(gameObject);
+        endingUi.SetActive(true);
+         
+
+
+
     }
 
 
