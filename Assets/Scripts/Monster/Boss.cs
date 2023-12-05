@@ -39,11 +39,11 @@ public class Boss : MonoBehaviour
 
     [SerializeField]
     
-    private string monsterAtt;
+    private string BoomS;
 
     [SerializeField]
     
-    private string monsterDie;
+    private string BoomL;
 
     public GunController gunController;
 
@@ -315,10 +315,12 @@ public class Boss : MonoBehaviour
         {
             Dieeffect[i].SetActive(true);
             yield return new WaitForSeconds(0.5f);
+             SoundManager.instance.PlaySE(BoomS);
         }
 
          yield return new WaitForSeconds(1f);
          Lastdieeffect.SetActive(true);
+         SoundManager.instance.PlaySE(BoomL);
 
 
         yield return new WaitForSeconds(dietime);

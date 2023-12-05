@@ -92,7 +92,7 @@ public class GunController : MonoBehaviour
 
     private void TryFire()
     {
-        if(Input.GetButton("Fire1") && currentFireRate <= 0 && !isReload && !craftManual.Stopattak)
+        if(Input.GetButton("Fire1") && currentFireRate <= 0 && !isReload)
         {
             
             if(gunObject.activeSelf)  //등록한 총만 발사 이후 수정필요 한개만 임시
