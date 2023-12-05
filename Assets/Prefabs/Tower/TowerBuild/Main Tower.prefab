@@ -309,7 +309,7 @@ MonoBehaviour:
   tf_TopGun: {fileID: 3795785418595944758}
   particle_MuzzleFlash: {fileID: 2399849285244270233}
   go_HitEffect_Prefab: {fileID: 6585116972127672233, guid: 1e6246b73320c68488b16f37c2559dfa, type: 3}
-  sound_Fire: {fileID: 8300000, guid: 73d4bbd32bf493b4984af6658ea5943e, type: 3}
+  sound_Fire: {fileID: 8300000, guid: fd65c28433735214fb576d99f8ada333, type: 3}
 --- !u!54 &910969424
 Rigidbody:
   m_ObjectHideFlags: 0
