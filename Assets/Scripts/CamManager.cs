@@ -59,7 +59,10 @@ public class CamManager : MonoBehaviour
         isAnimEnd = true;
         crosshair.SetActive(true);
         weapontxt.SetActive(true);
-        Taptxt.SetActive(true);
+        if(Taptxt != null)
+        {
+            Taptxt.SetActive(true);
+        }
         if(Startzone != null)
         {
             Startzone.SetActive(true);

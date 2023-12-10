@@ -119,8 +119,8 @@ public class GameManager : MonoBehaviour
 
     public ButtonController buttonController;
     public StatusController statusController;
-    public DataJson dataJson;
-    public StageDataJson stageDataJson;
+    private DataJson dataJson;
+    private StageDataJson stageDataJson;
     
 
     [SerializeField]
@@ -142,6 +142,8 @@ public class GameManager : MonoBehaviour
         baseCamp = GetComponent<BaseCamp>();
         BatteryRespawner(); // 게임 시작시 배터리 스폰시킴
         SoundManager.instance.PlayBGM(bgm); 
+        dataJson = FindObjectOfType<DataJson>();
+        stageDataJson = FindObjectOfType<StageDataJson>();
         isCoin = false;
         //weaponchanger.GunA(); //플레이어 무기 타입 결정 임시
         
@@ -345,6 +347,7 @@ public class GameManager : MonoBehaviour
             isCoin = true;
             buttonController.inEnding();
             StartZone.SetActive(false);
+            Bosszone.SetActive(true);
             dataJson.ClearStageGiveCoin();
             stageNumber++;
             stageDataJson.ClearStage(stageNumber);

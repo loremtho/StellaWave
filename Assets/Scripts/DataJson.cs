@@ -85,6 +85,20 @@ public class DataJson : MonoBehaviour
         SaveData();
         Debug.Log("스테이지 클리어! 코인 : " + coinData.Coin);
     }
+
+    public void ClearBossCoin()
+    {
+        coinData.Coin += 500;
+        SaveData();
+        Debug.Log("보스스테이지 클리어! 코인 : " + coinData.Coin);
+    }
+
+    public void ClearBossRushCoin()
+    {
+        coinData.Coin += 1000;
+        SaveData();
+        Debug.Log("보스러쉬 스테이지 클리어! 코인 : " + coinData.Coin);
+    }
 }
 
     

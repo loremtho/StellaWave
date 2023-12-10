@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using Unity.Mathematics;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Boss : MonoBehaviour 
 {
@@ -29,6 +31,7 @@ public class Boss : MonoBehaviour
     public GameManager gameManager;
 
     public StatusController statusController;
+    private DataJson dataJson;
 
    
     [SerializeField]
@@ -68,6 +71,8 @@ public class Boss : MonoBehaviour
 
     public GameObject endingUi;
 
+    public TextMeshProUGUI CoinText;
+
   
 
 
@@ -93,6 +98,7 @@ public class Boss : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         currentHp = Hp;
+        dataJson = FindObjectOfType<DataJson>();
     }
 
 
@@ -110,6 +116,7 @@ public class Boss : MonoBehaviour
         Invoke("ChaseStart", 2);
   
     }
+    
 
     void ChaseStart()
     {
@@ -129,6 +136,8 @@ public class Boss : MonoBehaviour
         }
 
     }
+
+        
 
     public void UpdateHealth()
     {
@@ -306,18 +315,27 @@ public class Boss : MonoBehaviour
             lasertw.SetActive(false);
         }
         anim.SetTrigger("Die");
+        Scene curScene = SceneManager.GetActiveScene();
+        if(curScene.name == "BossRush1")
+        {
+            dataJson.ClearBossRushCoin();
+        }
+        if(curScene.name == "BossStage1")
+        {
+            dataJson.ClearBossCoin();
+        }
         //SoundManager.instance.PlaySE(monsterDie);
         StartCoroutine(Diecheck(5));
        
     }
 
-     private IEnumerator Diecheck(int dietime)
+    private IEnumerator Diecheck(int dietime)
     {
         for (int i = 0; i < Dieeffect.Length; i++)
         {
             Dieeffect[i].SetActive(true);
             yield return new WaitForSeconds(0.8f);
-             SoundManager.instance.PlaySE(BoomS);
+            SoundManager.instance.PlaySE(BoomS);
         }
 
          yield return new WaitForSeconds(1f);
@@ -329,9 +347,11 @@ public class Boss : MonoBehaviour
         Destroy(gameObject);
 
         hpslider.SetActive(false);
+        CoinText.text = string.Format("Coin : {0:n0}", dataJson.coinData.Coin);
         endingUi.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
     }
  
 }
