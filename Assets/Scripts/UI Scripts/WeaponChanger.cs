@@ -16,6 +16,8 @@ public class WeaponChanger : MonoBehaviour
 
     public bool hasGun = false;
 
+    public PlayerController playerController;
+
     // Start is called before the first frame update
     
     public void GunA()
@@ -25,11 +27,12 @@ public class WeaponChanger : MonoBehaviour
         if (playerWeapon != null)
         {
             
+           
             GameObject WeaponObject = playerWeapon.gameObject;
             if (!WeaponObject.activeSelf)
             {
+                StartCoroutine(delaymode());
                 DeactivateCurrentWeapon();
-
                 Gun.GunMounting();
                 theWM.SetCurrentWeaponType("Rifle");
                 WeaponObject.SetActive(true);
@@ -56,6 +59,16 @@ public class WeaponChanger : MonoBehaviour
         }
 
     }
+    
+    private IEnumerator delaymode()
+    {
+
+       yield return new WaitForSeconds(0.5f);
+       playerController.axeSwingInProgress = false;
+        Gun.noFire = false;
+
+    }
+
 
     public void GunB()
     {
@@ -91,6 +104,7 @@ public class WeaponChanger : MonoBehaviour
 
     public void AxeA()
     {
+    
         Transform playerWeapon = player.transform.FindDeepChild("Axe");
         if (playerWeapon != null)
         {
@@ -98,6 +112,7 @@ public class WeaponChanger : MonoBehaviour
             GameObject WeaponObject = playerWeapon.gameObject;
             if (!WeaponObject.activeSelf)
             {
+                StartCoroutine(delaymode());
                 DeactivateCurrentWeapon();
                 Axe.AxeMounting();
                 theWM.SetCurrentWeaponType("AXE");

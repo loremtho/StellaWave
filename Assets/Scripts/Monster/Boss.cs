@@ -66,6 +66,8 @@ public class Boss : MonoBehaviour
 
     public GameObject Lastdieeffect;
 
+    public GameObject endingUi;
+
   
 
 
@@ -251,6 +253,7 @@ public class Boss : MonoBehaviour
     {
         currentHp -= damage;
         isChase = false;
+        player.AddHitScore(1);
         Debug.Log(currentHp);
         UpdateHealth();
 
@@ -304,7 +307,7 @@ public class Boss : MonoBehaviour
         }
         anim.SetTrigger("Die");
         //SoundManager.instance.PlaySE(monsterDie);
-        StartCoroutine(Diecheck(10));
+        StartCoroutine(Diecheck(5));
        
     }
 
@@ -313,7 +316,7 @@ public class Boss : MonoBehaviour
         for (int i = 0; i < Dieeffect.Length; i++)
         {
             Dieeffect[i].SetActive(true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.8f);
              SoundManager.instance.PlaySE(BoomS);
         }
 
@@ -324,10 +327,11 @@ public class Boss : MonoBehaviour
 
         yield return new WaitForSeconds(dietime);
         Destroy(gameObject);
+
+        hpslider.SetActive(false);
+        endingUi.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
-
-
-
-
  
 }

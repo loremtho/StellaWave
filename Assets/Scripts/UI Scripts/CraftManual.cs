@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,13 +6,13 @@ using UnityEngine.UI;
 [System.Serializable]
 public class Craft
 {
-    public string craftName; //�̸�
-    public Sprite craftImage; //�̹���
+    public string craftName; //�̸� 
+    public Sprite craftImage; //�̹��� 
     public string craftDesc; //���� 
-    public string[] craftNeedItem; //�ʿ��� ������
-    public int[] craftNeedItemCount; //�ʿ��� �������� ����.
-    public GameObject go_Prefab; //���� ��ġ�� ������
-    public GameObject go_PreviewPrefab; // �̸����� ������
+    public string[] craftNeedItem; //�ʿ��� ������ 
+    public int[] craftNeedItemCount; //�ʿ��� �������� ����. 
+    public GameObject go_Prefab; //���� ��ġ�� ������ 
+    public GameObject go_PreviewPrefab; // �̸����� ������ 
 }
 
 public class CraftManual : MonoBehaviour
@@ -23,7 +23,7 @@ public class CraftManual : MonoBehaviour
     private bool isPreviewActivated = false;
 
     [SerializeField]
-    private GameObject go_BaseUI; //�⺻ ���̽� UI
+    private GameObject go_BaseUI; 
 
     private int tabNumber = 0;
     private int page = 1;
@@ -31,17 +31,17 @@ public class CraftManual : MonoBehaviour
     private Craft[] craft_SelectedTab;
 
     [SerializeField]
-    private Craft[] craft_fire; //��ںҿ� ��.
+    private Craft[] craft_fire; 
     [SerializeField]
-    private Craft[] craft_build; //����� ��
+    private Craft[] craft_build; 
 
-    private GameObject go_Preview; //�̸����� �������� ���� ����
-    private GameObject go_Prefab; //���� ������ �������� ���� ����
+    private GameObject go_Preview;
+    private GameObject go_Prefab; 
 
     [SerializeField]
-    private Transform tf_Player; //�÷��̾� ��ġ
+    private Transform tf_Player; 
 
-    //Raycast �ʿ� ���� ����
+    
     private RaycastHit hitInfo;
     [SerializeField]
     private LayerMask layerMask;
@@ -60,11 +60,15 @@ public class CraftManual : MonoBehaviour
     [SerializeField]
     private Text[] text_SlotNeedItem;
 
+    //�ʿ��� ������Ʈ
     private Inventory theInventory;
 
     private QuickSlotController theQuickSlot;
 
     public bool Stopattak = false;
+
+    public GunController gunController;
+
 
     private void Start()
     {
@@ -82,10 +86,10 @@ public class CraftManual : MonoBehaviour
         switch(tabNumber)
         {
             case 0:
-                TabSlotSetting(craft_fire); 
+                TabSlotSetting(craft_fire); //�Ҽ���
                 break;
             case 1:
-                TabSlotSetting(craft_build); 
+                TabSlotSetting(craft_build); //���༼��
                 break;
        
         }
@@ -206,10 +210,10 @@ public class CraftManual : MonoBehaviour
 
     }
 
-      IEnumerator stop()
+    private IEnumerator delaygun()
     {
-        yield return new WaitForSeconds(0.2f);
-        Stopattak = false;
+        yield return new WaitForSeconds(0.5f);
+        gunController.noFire = false;
     }
 
 
@@ -220,6 +224,8 @@ public class CraftManual : MonoBehaviour
         {
             Window();
             Stopattak = true;
+            gunController.noFire = true;
+            
         }
 
         if(isPreviewActivated)
@@ -236,9 +242,9 @@ public class CraftManual : MonoBehaviour
         {
             Cancel();
             Stopattak = false;
+            gunController.noFire = false;
         }
     }
-
 
     private void Build()
     {
@@ -251,10 +257,16 @@ public class CraftManual : MonoBehaviour
             isPreviewActivated= false;
             go_Preview= null;
             go_Prefab= null;
-
-            StartCoroutine(stop());
+            StartCoroutine(StopSwing());
+            StartCoroutine(delaygun());
         }
     }
+
+     private IEnumerator StopSwing()
+     {
+        yield return new WaitForSeconds(0.5f);
+        Stopattak = false;
+     }
 
     private void PreviewPositionUpdate()
     {
@@ -305,12 +317,10 @@ public class CraftManual : MonoBehaviour
         if(!isCraftActivated)
         {
             OpenWindow();
-           
         }
         else
         {
             CloseWindow();
-           
         }
     }
 

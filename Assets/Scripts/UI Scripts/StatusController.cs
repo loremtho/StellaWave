@@ -221,10 +221,12 @@ public class StatusController : MonoBehaviour
             playerController.damageprocess();
             return;
         }
+        else
+        {
+            currentHp-= _count;
+            playerController.damageprocess();
 
-        currentHp-= _count;
-        playerController.damageprocess();
-        
+        }
 
         if(currentHp <= 0)
         {

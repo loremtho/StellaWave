@@ -27,7 +27,7 @@ public class PreviewObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ChangeColor();
+        //ChangeColor();
     }
 
     private void ChangeColor()
@@ -45,7 +45,7 @@ public class PreviewObject : MonoBehaviour
         }
         else
         {
-            if (colliderList.Count > 0 || !needTypeFlag)
+            if (colliderList.Count > 0 || !needTypeFlag )
             {
                 SetColor(red);
             }

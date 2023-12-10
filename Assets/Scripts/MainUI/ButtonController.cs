@@ -29,6 +29,12 @@ public class ButtonController : MonoBehaviour
     public Animator animator;
     private string animName = "CutScene";
 
+    public GunController gunController;
+
+    public PlayerController playerController;
+
+
+
     void Start()
     {
         StartCoroutine(BtnAppear());
@@ -40,8 +46,12 @@ public class ButtonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H))
         {
             SoundManager.instance.PlaySE(BtnSound);
+            gunController.noFire = true;
+            playerController.axeSwingInProgress = true;
             inWeaponSelect();
         }
+       
+      
 
         if (Input.GetKeyDown(KeyCode.C))
         {
@@ -112,10 +122,12 @@ public class ButtonController : MonoBehaviour
 
     public void inWeaponSelect()
     {
+    
         SoundManager.instance.PlaySE(BtnSound);
         WeaponSelectionUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
     }
 
     public void outWeaponSelect()
@@ -163,6 +175,15 @@ public class ButtonController : MonoBehaviour
     public void HomeBtn()
     {
         SoundManager.instance.PlaySE(BtnSound);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainLobby");
+    }
+
+    public void BossHomeBtn()
+    {
+        SoundManager.instance.PlaySE(BtnSound);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainLobby");
     }
