@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     public bool playergun = false;  //총을 들었을떄 모드
 
     public bool playeraxe = false; //도끼 모드
-    private bool axeSwingInProgress = false; //도끼가 나가는 중인지 판단
+    public bool axeSwingInProgress = false; //도끼가 나가는 중인지 판단
 
     private bool axeSwingcombo = false;
 

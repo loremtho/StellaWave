@@ -83,24 +83,20 @@ public class BossAtt : Boss
            
               case 0:
               case 1:
+              case 2:
               //유도 미사일
               StartCoroutine(MissileShot());
               
 
             break;
-              case 2:
               case 3:
+              case 4:
                //기본
               StartCoroutine(Taunt());
-               
-                
-
-            break;
-             case 4:
+            
              //순간이동
-              StartCoroutine(Dive());
-             
-               
+              //StartCoroutine(Dive());
+            
                
             break;
              case 5:

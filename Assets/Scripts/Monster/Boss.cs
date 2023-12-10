@@ -254,6 +254,7 @@ public class Boss : MonoBehaviour
     {
         currentHp -= damage;
         isChase = false;
+        player.AddHitScore(1);
         Debug.Log(currentHp);
         UpdateHealth();
 
@@ -330,6 +331,8 @@ public class Boss : MonoBehaviour
 
         hpslider.SetActive(false);
         endingUi.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
  
 }
