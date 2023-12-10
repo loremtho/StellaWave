@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 //저장하는 방법
 //1. 저장할 데이터 존재
@@ -17,7 +18,6 @@ using System.IO;
 public class CoinData
 {
     public int Coin;
-    public int Medal;
 }
 
 public class DataJson : MonoBehaviour
@@ -30,14 +30,12 @@ public class DataJson : MonoBehaviour
     void SaveCoinDataToJson()
     {
         string jsonData = JsonUtility.ToJson(coinData,true);
-        //string path = Path.Combine(Application.dataPath, "coinData.json");
         File.WriteAllText(coinDataPath, jsonData);
     }
 
     [ContextMenu("From Json Data")]
     void LoadCoinDataFromJson()
     {
-        //string path = Path.Combine(Application.dataPath, "coinData.json");
         string jsonData = File.ReadAllText(coinDataPath);
         coinData = JsonUtility.FromJson<CoinData>(jsonData);
     }
@@ -81,7 +79,7 @@ public class DataJson : MonoBehaviour
         Debug.Log("데이터가 저장되었습니다.");
     }
 
-    public void ClearStage()
+    public void ClearStageGiveCoin()
     {
         coinData.Coin += 200;
         SaveData();

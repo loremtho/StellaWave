@@ -18,7 +18,7 @@ public class StageCount : MonoBehaviour
 
     void LateUpdate()
     {
-        stageCount.text = "Wave  " + gameManager.stagecount + "  Start";
+        stageCount.text = "Wave  " + gameManager.wavecount + "  Start";
     }
 
     public void AnimStart()

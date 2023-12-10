@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playTimeTxtTMP;
     public TextMeshProUGUI killcountTxtTMP;
     public float playTime;
-    public int stagecount = 1; //현재 스테이지
+    public int wavecount = 1; //현재 스테이지
 
     private int bosscount = 0;
     float timer;
@@ -76,8 +76,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject wapontxt;
 
-    //********************************
+    //***********스테이지 정보 관리*********************
+
+    private int stageNumber = 1;
    
+   //********************************
     public GameObject StartZone; //스테이지 게임 시작존 관리
 
     //몬스터 관리***********************
@@ -112,6 +115,9 @@ public class GameManager : MonoBehaviour
 
     public ButtonController buttonController;
     public StatusController statusController;
+    public DataJson dataJson;
+    public StageDataJson stageDataJson;
+    public StageClearData stageClearData;
 
     [SerializeField]
     private string bgm;
@@ -159,7 +165,7 @@ public class GameManager : MonoBehaviour
         BatteryRespawner();
         isBattle = false;
         //baseCamp.EndDecreaseBaseHP();
-        stagecount++;
+        wavecount++;
         stage += 40;
 
     }
@@ -167,7 +173,7 @@ public class GameManager : MonoBehaviour
     IEnumerator InBattle()
     {
     
-        if(stagecount % 1 == 0) //보스
+        if(wavecount % 1 == 0) //보스
         {
             bosscount++;
 
@@ -263,14 +269,14 @@ public class GameManager : MonoBehaviour
         {
             playTime += Time.deltaTime;
         }
-        StageCheck();
+        WaveCheck();
         return;
     }
 
 
     void LateUpdate() 
     {
-        stageTxtTMP.text = "Wave " + stagecount + " / 5";
+        stageTxtTMP.text = "Wave " + wavecount + " / 5";
 
         scoreTxtTMP.text = string.Format("Score : {0:n0}",player.score);
 
@@ -292,7 +298,7 @@ public class GameManager : MonoBehaviour
     }
     public void PauseUI()
     {
-        pauseStageTxt.text = "Wave " + stagecount + " / 5";
+        pauseStageTxt.text = "Wave " + wavecount + " / 5";
         
         pausescoreTxt.text = string.Format("Score : {0:n0}",player.score);
 
@@ -306,7 +312,7 @@ public class GameManager : MonoBehaviour
 
     public void FailUI()
     {
-        failStageTxt.text = "Wave " + stagecount + " / 5";
+        failStageTxt.text = "Wave " + wavecount + " / 5";
         
         failscoreTxt.text = string.Format("Score : {0:n0}",player.score);
 
@@ -318,17 +324,17 @@ public class GameManager : MonoBehaviour
         failplayTimeTxt.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
     }
 
-    public void StageCheck()// 스테이지 상태 체크 함수
+    public void WaveCheck()// 웨이브 상태 체크 함수
     {
-        // 아니면 스테이지가 6에 진입되면 바로 클리어 시켜버려도 됨
-        
-        if(stagecount == 6) 
+        // 아니면 웨이브가 6에 진입되면 바로 클리어 시켜버려도 됨
+        if(wavecount == 6) 
         {
             buttonController.inEnding();
             StartZone.SetActive(false);
-
+            dataJson.ClearStageGiveCoin();
+            stageNumber++;
+            stageDataJson.ClearStage(stageNumber);
         }
-   
     }
 
     private void BatteryRespawner() //배터리 프리팹을 스폰시킴
