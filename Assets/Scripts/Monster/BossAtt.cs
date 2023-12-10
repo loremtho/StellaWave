@@ -20,6 +20,9 @@ public class BossAtt : Boss
     public GameObject missileeffect;
     Vector3 lookvec;
 
+    [SerializeField]
+    private string bgm2;
+
 
 
     
@@ -39,6 +42,8 @@ public class BossAtt : Boss
 
         nav.isStopped = true;
         StartCoroutine(CutSceneWait());
+        SoundManager.instance.PlayBGM(bgm2); 
+        
 
         
         
@@ -90,14 +95,14 @@ public class BossAtt : Boss
 
             break;
               case 3:
-              case 4:
+        
                //기본
               StartCoroutine(Taunt());
-            
+            break;
+             case 4:
              //순간이동
-              //StartCoroutine(Dive());
+              StartCoroutine(Dive());
             
-               
             break;
              case 5:
              case 6:

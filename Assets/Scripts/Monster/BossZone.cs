@@ -11,7 +11,7 @@ public class BossZone : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player")
         {
-            SoundManager.instance.PlayBGM(bgm2); 
+            
             SceneManager.LoadScene("BossStage1");
         }
     }

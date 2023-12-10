@@ -17,6 +17,8 @@ public class ButtonController : MonoBehaviour
     public GameObject PauseUI;
     public GameObject StoryImage;
     public GameObject SkipBtn;
+
+    public GameObject BossRush;
     public CinemachineVirtualCamera CineCam = null;
 
     public bool isPause = false;
@@ -108,6 +110,30 @@ public class ButtonController : MonoBehaviour
     {
         LoadingSceneManager.LoadScene("Stage1");
     }
+
+    public void inGame2()
+    {
+        LoadingSceneManager.LoadScene("Stage2");
+    }
+
+    public void inGame3()
+    {
+        LoadingSceneManager.LoadScene("Stage3");
+    }
+
+    public void inBoss1()
+    {
+        LoadingSceneManager.LoadScene("BossRush1");
+    }
+
+    public void BossRushUI()
+    {
+        BossRush.SetActive(true);
+
+    }
+
+
+
 
     public void inShop()
     {
