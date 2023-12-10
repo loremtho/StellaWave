@@ -663,7 +663,7 @@ MonoBehaviour:
   playTimeTxtTMP: {fileID: 1704756439}
   killcountTxtTMP: {fileID: 68973950}
   playTime: 0
-  stagecount: 1
+  wavecount: 1
   LastscoreTxt: {fileID: 1684182606}
   LastplayTimeTxt: {fileID: 974880074}
   LastkillcountTxt: {fileID: 1138366414}
@@ -712,6 +712,7 @@ MonoBehaviour:
   weaponchanger: {fileID: 17621721}
   buttonController: {fileID: 804396602}
   statusController: {fileID: 1675389013}
+  dataJson: {fileID: 0}
   bgm: 
   StageStartSound: 
 --- !u!4 &17621720
@@ -2345,7 +2346,7 @@ PrefabInstance:
       objectReference: {fileID: 1035475685}
     - target: {fileID: 223423292, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.58847064
+      value: 0.5888645
       objectReference: {fileID: 0}
     - target: {fileID: 223423292, guid: b34ed99bf7e4e24448f92519bb7fa8f9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15091,7 +15092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 617425208, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: Hp
-      value: 1000
+      value: 6000
       objectReference: {fileID: 0}
     - target: {fileID: 617425208, guid: a613577a2e997b94fab966097b159fdb, type: 3}
       propertyPath: bgm2
@@ -16367,7 +16368,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinData:
     Coin: 0
-    Medal: 0
 --- !u!4 &599573397
 Transform:
   m_ObjectHideFlags: 0
@@ -53351,7 +53351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891410311}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 65.993, y: 1.78, z: -0.11152917}
+  m_LocalPosition: {x: 65.993, y: 1.78, z: -0.111135304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

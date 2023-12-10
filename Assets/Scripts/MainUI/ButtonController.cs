@@ -33,6 +33,8 @@ public class ButtonController : MonoBehaviour
 
     public PlayerController playerController;
 
+    public GameObject TapTxt;
+
 
 
     void Start()
@@ -57,6 +59,11 @@ public class ButtonController : MonoBehaviour
         {
             SoundManager.instance.PlaySE(BtnSound);
             inEnding();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+           TapTxt.SetActive(false);
         }
 
         if(Input.GetKeyDown(KeyCode.F))
