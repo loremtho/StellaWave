@@ -118,8 +118,8 @@ public class GameManager : MonoBehaviour
     public ButtonController buttonController;
     public StatusController statusController;
     public DataJson dataJson;
-    public StageDataJson stageDataJson;
-    public StageClearData stageClearData;
+    //public StageDataJson stageDataJson;
+    //public StageClearData stageClearData;
 
     [SerializeField]
     private string bgm;
@@ -333,9 +333,9 @@ public class GameManager : MonoBehaviour
         {
             buttonController.inEnding();
             StartZone.SetActive(false);
-            dataJson.ClearStageGiveCoin();
+            //dataJson.ClearStageGiveCoin();
             stageNumber++;
-            stageDataJson.ClearStage(stageNumber);
+            //stageDataJson.ClearStage(stageNumber);
 
         }
     }
