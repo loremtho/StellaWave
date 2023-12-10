@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
    
     public GameObject StartZone; //스테이지 게임 시작존 관리
 
+    public GameObject Bosszone; //보스존 관리
+
     //몬스터 관리***********************
     public Transform[] enemyZone; 
     public GameObject[] enemies;
@@ -324,8 +326,8 @@ public class GameManager : MonoBehaviour
         
         if(stagecount == 6) 
         {
-            buttonController.inEnding();
             StartZone.SetActive(false);
+            Bosszone.SetActive(true);
 
         }
    

@@ -301,7 +301,7 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("Explosion") && !hasboomHit)
         {
             hasnomarHit = true;
-            TakeDamage(200);
+            TakeDamage(250);
             StartCoroutine(ResetHitStatusAfterboomDelay(0.5f));
         }
     }
