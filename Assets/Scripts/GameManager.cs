@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     //***********스테이지 정보 관리*********************
 
     private int stageNumber = 1;
+    public TextMeshProUGUI Cointext;
     private bool isCoin = false;
    
    //********************************
@@ -183,6 +184,7 @@ public class GameManager : MonoBehaviour
             for(int i =0; i< bosscount; i++)
             {
 
+                /*
                 enemyCntD++;
                 GameObject instantEnemy = Instantiate(enemies[3], enemyZone[0].position, enemyZone[0].rotation);
                 Enemy enemy = instantEnemy.GetComponent<Enemy>();
@@ -190,6 +192,7 @@ public class GameManager : MonoBehaviour
                 enemy.gameManager = this;
                 enemy.statusController = statusController;
                 enemy.gunController = gunController;
+                */
            
 
             }
@@ -297,6 +300,8 @@ public class GameManager : MonoBehaviour
         LastscoreTxt.text = string.Format("Score : {0:n0}",player.score);
 
         LastkillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
+
+        Cointext.text = string.Format("Coin : {0:n0}", dataJson.coinData.Coin);
 
         int hour = (int)(playTime / 3600);
         int min = (int)((playTime - hour * 3600) /60);

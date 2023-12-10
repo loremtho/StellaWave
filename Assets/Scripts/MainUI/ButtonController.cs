@@ -24,8 +24,6 @@ public class ButtonController : MonoBehaviour
     public bool isPause = false;
     [SerializeField]
     private string BtnSound;
-    [SerializeField]
-    private GameObject BossZone;
 
     public GameManager gameManager;
     public Animator animator;
@@ -69,7 +67,7 @@ public class ButtonController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.T))
         {
             //버튼 사운드 넣기
-            BossZone.SetActive(true);
+            inEnding();
         }
     }
 
