@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Redcode.Pools;
 using UnityEngine.VFX;
 using Unity.Mathematics;
 using UnityEngine.UI;
@@ -302,7 +301,7 @@ public class Enemy : MonoBehaviour
         if(other.CompareTag("Explosion") && !hasboomHit)
         {
             hasnomarHit = true;
-            TakeDamage(200);
+            TakeDamage(250);
             StartCoroutine(ResetHitStatusAfterboomDelay(0.5f));
         }
     }
