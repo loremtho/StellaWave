@@ -79,6 +79,7 @@ public class GameManager : MonoBehaviour
     //***********스테이지 정보 관리*********************
 
     private int stageNumber = 1;
+    private bool isCoin = false;
    
    //********************************
     public GameObject StartZone; //스테이지 게임 시작존 관리
@@ -118,8 +119,8 @@ public class GameManager : MonoBehaviour
     public ButtonController buttonController;
     public StatusController statusController;
     public DataJson dataJson;
-    //public StageDataJson stageDataJson;
-    //public StageClearData stageClearData;
+    public StageDataJson stageDataJson;
+    
 
     [SerializeField]
     private string bgm;
@@ -140,7 +141,7 @@ public class GameManager : MonoBehaviour
         baseCamp = GetComponent<BaseCamp>();
         BatteryRespawner(); // 게임 시작시 배터리 스폰시킴
         SoundManager.instance.PlayBGM(bgm); 
-        
+        isCoin = false;
         //weaponchanger.GunA(); //플레이어 무기 타입 결정 임시
         
     }
@@ -168,7 +169,7 @@ public class GameManager : MonoBehaviour
         isBattle = false;
         //baseCamp.EndDecreaseBaseHP();
         wavecount++;
-        stage += 40;
+        stage += 1;
 
     }
 
@@ -297,6 +298,11 @@ public class GameManager : MonoBehaviour
 
         LastkillcountTxt.text = string.Format("Kill : {0:n0}",player.killcount);
 
+        int hour = (int)(playTime / 3600);
+        int min = (int)((playTime - hour * 3600) /60);
+        int second = (int)(playTime % 60);
+        LastplayTimeTxt.text = string.Format("{0 : 00}", hour) + ":" + string.Format("{0 : 00}", min) + ":" + string.Format("{0 : 00}", second);
+
     }
     public void PauseUI()
     {
@@ -329,14 +335,14 @@ public class GameManager : MonoBehaviour
     public void WaveCheck()// 웨이브 상태 체크 함수
     {
         // 아니면 웨이브가 6에 진입되면 바로 클리어 시켜버려도 됨
-        if(wavecount == 6) 
+        if(wavecount == 6 && !isCoin) 
         {
+            isCoin = true;
             buttonController.inEnding();
             StartZone.SetActive(false);
-            //dataJson.ClearStageGiveCoin();
+            dataJson.ClearStageGiveCoin();
             stageNumber++;
-            //stageDataJson.ClearStage(stageNumber);
-
+            stageDataJson.ClearStage(stageNumber);
         }
     }
 
