@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+
+[System.Serializable]
+public class StageClearData
+{
+    public int stageNumber;
+    public bool isCleared;
+
+    public StageClearData(int stageNumber, bool isCleared)
+    {
+        this.stageNumber = stageNumber;
+        this.isCleared = isCleared;
+    }
+}
 public class StageDataJson : MonoBehaviour
 {
     private const string stageClearDataPath = "Assets/stageClearData.json";
